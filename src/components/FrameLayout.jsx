@@ -3,15 +3,15 @@ import BurgerButton from "./BurgerButton.jsx";
 import {useState} from "react";
 
 function FrameLayout() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isSideBarVisible, setIsSideBarVisible] = useState(false);
 
   return (
     <div id={"grid-container"}>
       <div id={"nav-bar"}>nav
-        <BurgerButton visible={!isVisible} onPress={() => setIsVisible(!isVisible)} />
+        <BurgerButton visible={!isSideBarVisible} onPress={() => setIsSideBarVisible(!isSideBarVisible)} />
       </div>
-      <div id={"side-bar"} className={isVisible ? "show" : ""}>
-        <BurgerButton visible={isVisible} onPress={() => setIsVisible(!isVisible)} />
+      <div id={"side-bar"} className={isSideBarVisible ? "show" : ""}>
+        <BurgerButton visible={isSideBarVisible} onPress={() => setIsSideBarVisible(!isSideBarVisible)} />
         side
       </div>
       <div id={"main-section"}>main</div>
