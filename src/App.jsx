@@ -1,10 +1,8 @@
-import './App.css'
+import FrameLayout from "./components/FrameLayout.jsx";
 
 function App() {
   return (
-    <p>
-      Just testing out
-    </p>
+    <FrameLayout />
   )
 }
 
