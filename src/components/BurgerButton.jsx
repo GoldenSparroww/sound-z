@@ -1,6 +1,6 @@
 import "../style/BurgerButton.css"
 
-function BurgerButton(props) {
+const BurgerButton = (props) => {
   if (props.visible) {
     return (
       <button
