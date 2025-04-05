@@ -18,7 +18,7 @@ import StarBorder from '@mui/icons-material/StarBorder';
 import Colors from '../global/colors.js'
 
 
-export default function NestedList() {
+export default function NestedList(props) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [selectedSubIndex, setSelectedSubIndex] = React.useState(-1);
@@ -27,8 +27,11 @@ export default function NestedList() {
     setOpen(!open);
   };
 
-  const handleListItemClick = (event, index) => {
+  const handleListItemClick = (event, index, section) => {
     setSelectedIndex(index);
+    if (section) {
+      props.changeMainSection(section)
+    }
   };
 
   const handleCombinedClick = (event, index) => {
@@ -49,7 +52,7 @@ export default function NestedList() {
     >
       <ListItemButton
         selected={selectedIndex === 0}
-        onClick={(event) => handleListItemClick(event, 0)}
+        onClick={(event) => handleListItemClick(event, 0, "homepage")}
       >
         <ListItemIcon>
           <HomeIcon sx={{ fontSize: '3rem', padding: "0 1rem 0 0" }}/>
@@ -59,7 +62,7 @@ export default function NestedList() {
 
       <ListItemButton
         selected={selectedIndex === 1}
-        onClick={(event) => handleListItemClick(event, 1)}
+        onClick={(event) => handleListItemClick(event, 1, "queue")}
       >
         <ListItemIcon>
           <LayersIcon sx={{ fontSize: '3rem', padding: "0 1rem 0 0" }}/>
@@ -69,7 +72,7 @@ export default function NestedList() {
 
       <ListItemButton
         selected={selectedIndex === 2}
-        onClick={(event) => handleListItemClick(event, 2)}
+        onClick={(event) => handleListItemClick(event, 2, "favourites")}
       >
         <ListItemIcon>
           <FavoriteIcon sx={{ fontSize: '3rem', padding: "0 1rem 0 0" }} />
