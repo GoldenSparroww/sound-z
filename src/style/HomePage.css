@@ -1,0 +1,47 @@
+#home-page-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: var(--color-background);
+}
+
+@media (max-width: 1000px) {
+    #home-page-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem max(2rem, 10%) 2rem max(2rem, 10%) !important;
+    }
+
+    #tile-recently-played {
+        height: 200px;
+    }
+
+    .basic-tile {
+        height: 15rem;
+        width: 100% !important;
+    }
+}
+
+#tile-recently-played {
+    width: 100%;
+    height: 30rem;
+}
+
+#tile-recently-played, #tile-settings, #tile-about, #tile-help {
+    background-color: var(--color-side-bar);
+}
+
+.basic-tile {
+    height: 15rem;
+    width: 20rem;
+}
+
+.basic-tile:hover {
+    background-color: var(--color-hover) !important;
+}
+
+.basic-tile:active {
+    background-color: var(--color-selection) !important;
+}

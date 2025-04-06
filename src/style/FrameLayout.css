@@ -24,7 +24,8 @@
 
 #main-section{
     grid-area: main-section;
-    background-color: beige;
+    background-color: var(--color-background);
+    overflow-y: auto;
 }
 
 #footer-player{
