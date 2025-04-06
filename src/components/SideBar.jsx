@@ -1,6 +1,6 @@
 import BurgerButton from "./BurgerButton.jsx";
 import {ThemeProvider} from "@mui/material/styles";
-import theme from "../global/theme.js";
+import theme from "../global/Theme.js";
 import NestedList from "./MUI-NestedList.jsx";
 
 const SideBar = (props) => {
@@ -10,7 +10,6 @@ const SideBar = (props) => {
       <ThemeProvider theme={theme}>
         <NestedList changeMainSection={props.setShownMainSection}/>
       </ThemeProvider>
-      side
     </div>
   )
 }

@@ -1,3 +1,5 @@
+@import "../global/Variables.css";
+
 #grid-container {
     height: 100dvh;
     display: grid;
@@ -12,12 +14,12 @@
 #nav-bar{
     grid-area: nav-bar;
     padding: 2em;
-    background-color: darkgray;
 }
 
 #side-bar{
     grid-area: side-bar;
     background-color: cornflowerblue;
+    border-right: 3px solid var(--color-footer);
 }
 
 #main-section{

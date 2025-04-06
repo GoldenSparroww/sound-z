@@ -1,16 +1,24 @@
 import { createTheme } from '@mui/material/styles';
-import Colors from '../global/colors';
+import Colors from './Colors.js';
 
 // &.something → aktuální element MÁ classu something
 // & .something → uvnitř aktuálního elementu JE potomek s classou something
 
 const theme = createTheme({
   components: {
+    MuiListItemText: {
+      styleOverrides: {
+        primary: {
+            fontSize: '1.2em',
+        }
+      }
+    },
+
     MuiList: {
+
       styleOverrides: {
         root: {
           backgroundColor: Colors.color_side_bar,
-
           '&::-webkit-scrollbar': {
             display: 'none',        // Skrýt scroll bar pro WebKit prohlížeče (Chrome, Safari)
           },

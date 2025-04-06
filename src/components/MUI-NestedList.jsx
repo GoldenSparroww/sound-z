@@ -15,8 +15,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
 
-import Colors from '../global/colors.js'
-
+import Colors from '../global/Colors.js'
 
 export default function NestedList(props) {
   const [open, setOpen] = React.useState(false);

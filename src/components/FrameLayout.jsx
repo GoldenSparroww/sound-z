@@ -24,7 +24,6 @@ const FrameLayout = () => {
       {/* id={"main-section"} */}
       <MainSection show={shownMainSection}/>
 
-
       <div id={"footer-player"}>footer</div>
     </div>
   )

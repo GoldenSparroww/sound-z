@@ -1,7 +1,11 @@
+import HomePage from './HomePage'
+
 const MainSection = (props) => {
   if (props.show === "homepage") {
     return (
-      <div id={"main-section"}>homepage1</div>
+      <div id={"main-section"}>
+        <HomePage />
+      </div>
     )
   } else if (props.show === "queue") {
     return (

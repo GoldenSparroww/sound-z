@@ -1,3 +1,6 @@
+// javscriptova kopie stejnych barvev jako v Variables.css
+// hlavnim duvodem jsou themes a sx property v MUI
+
 const colors = {
   color_empty_field: '#EDEDED',
   color_details: '#EC625F',
