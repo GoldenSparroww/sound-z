@@ -1,7 +1,7 @@
-import BurgerButton from "./BurgerButton.jsx";
+import BurgerButton from "../components/BurgerButton.jsx";
 import {ThemeProvider} from "@mui/material/styles";
 import theme from "../global/Theme.js";
-import NestedList from "./MUI-NestedList.jsx";
+import NestedList from "../components/MUI-NestedList.jsx";
 
 const SideBar = (props) => {
   return (

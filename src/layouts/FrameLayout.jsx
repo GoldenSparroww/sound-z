@@ -1,8 +1,8 @@
-import "../style/FrameLayout.css"
-import BurgerButton from "./BurgerButton.jsx";
+import "../style/layout/FrameLayout.css"
+import BurgerButton from "../components/BurgerButton.jsx";
 import {useState} from "react";
 import MainSection from "./MainSection.jsx";
-import SideBar from "./Sidebar.jsx";
+import SideBar from "./SideBar.jsx";
 
 const FrameLayout = () => {
   const [isSideBarVisible, setIsSideBarVisible] = useState(false);

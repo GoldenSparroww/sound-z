@@ -1,4 +1,4 @@
-@import "../global/Variables.css";
+@import "../../global/Variables.css";
 
 #grid-container {
     height: 100dvh;
@@ -48,7 +48,7 @@
         transition: all 1s ease-in-out;
         width: 400px;
         height: 100dvh;
-        left: -400px;
+        left: -420px;
     }
 
     .show{

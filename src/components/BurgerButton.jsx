@@ -1,4 +1,4 @@
-import "../style/BurgerButton.css"
+import "../style/components/BurgerButton.css"
 
 const BurgerButton = (props) => {
   if (props.visible) {
