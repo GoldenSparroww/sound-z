@@ -3,7 +3,7 @@
     --color-details: #EC625F;
     --color-text: #EDEDED;
 
-    --color-background: #525252;
+    --color-background: #575757;
     --color-side-bar: #414141;
     --color-side-bar-list: #525252;
     --color-nav-bar: #313131;
@@ -13,4 +13,6 @@
     --color-hover: #666160;
 
     /*#############################*/
+
+    --font-tile-size: 1.5rem;
 }

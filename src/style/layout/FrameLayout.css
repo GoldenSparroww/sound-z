@@ -55,3 +55,18 @@
         left: 0 !important;
     }
 }
+
+/*----------------*/
+
+#popup-menu-content {
+    display: block;
+    position: fixed;
+    width: clamp(400px, 65%, 1000px);
+    height: 80vh;
+    background-color: yellow;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+

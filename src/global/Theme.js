@@ -9,7 +9,7 @@ const theme = createTheme({
     MuiListItemText: {
       styleOverrides: {
         primary: {
-            fontSize: '1.2em',
+            fontSize: '1.2rem',
         }
       }
     },
