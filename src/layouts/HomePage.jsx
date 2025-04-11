@@ -13,17 +13,17 @@ const HomePage = (props) => {
       {/*DODELAT*/}
       <div id={"tile-recently-played"}>tile-recently-played</div>
 
-      <Tile class={"basic-tile"} id={"tile-settings"} onClick={() => props.popupMenu('settings')}>
+      <Tile class={"basic-tile"} id={"tile-settings"} onClick={() => props.setShownPopupMenu('settings')}>
         <SettingsIcon sx={{fontSize: "8rem"}} />
         <span>Settings</span>
       </Tile>
 
-      <Tile class={"basic-tile"} id={"tile-about"}>
+      <Tile class={"basic-tile"} id={"tile-about"} onClick={() => props.setShownPopupMenu('about')}>
         <InfoIcon sx={{fontSize: "8rem"}}/>
         <span>About</span>
       </Tile>
 
-      <Tile class={"basic-tile"} id={"tile-help"}>
+      <Tile class={"basic-tile"} id={"tile-help"} onClick={() => props.setShownPopupMenu('help')}>
         <HelpIcon sx={{fontSize: "8rem"}}/>
         <span>Help</span>
       </Tile>
