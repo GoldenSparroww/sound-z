@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import MainSection from "./MainSection.jsx";
 import SideBar from "./SideBar.jsx";
 import PopupMenu from "../components/PopupMenu.jsx";
+import SearchBar from "../components/SearchBar.jsx";
 
 const FrameLayout = () => {
   const [isSideBarVisible, setIsSideBarVisible] = useState(false);
@@ -19,8 +20,9 @@ const FrameLayout = () => {
 
       <div id={"grid-container"}>
 
-        <div id={"nav-bar"}>nav
+        <div id={"nav-bar"}>
           <BurgerButton visible={!isSideBarVisible} onPress={() => setIsSideBarVisible(!isSideBarVisible)}/>
+          <SearchBar />
         </div>
 
         {/* id={"side-bar"} */}
@@ -38,6 +40,8 @@ const FrameLayout = () => {
 
         <div id={"footer-player"}>footer</div>
       </div>
+
+
     </>
   )
 }
