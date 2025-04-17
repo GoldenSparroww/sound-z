@@ -1,4 +1,5 @@
 import HomePage from './HomePage.jsx'
+import SearchResults from "./SearchResults.jsx";
 
 const MainSection = (props) => {
   if (props.show === "homepage") {
@@ -15,7 +16,13 @@ const MainSection = (props) => {
     return (
       <div id={"main-section"}>favourites1</div>
     )
-  }
+  } else if (props.show === "search-results") {
+  return (
+    <div id={"main-section"}>
+      <SearchResults current={props.current} setCurrent={props.setCurrent} searchedResults={props.searchedResults} />
+    </div>
+  )
+}
 }
 
 export default MainSection;

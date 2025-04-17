@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
-import {
-  TextField,
-  Box,
-  Typography,
-  List,
-  ListItemButton,
-  ListItemText,
-  Divider
-} from "@mui/material";
+import { TextField, Box } from "@mui/material";
 
-function SearchBar() {
+function SearchBar(props) {
   const [allSongs, setAllSongs] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [results, setResults] = useState({ tracks: [], genres: [], artists: [] });
-  const [current, setCurrent] = useState(null);
+
 
   const API_URL = "http://localhost/list.php";
   const query = inputValue.toLowerCase();
@@ -50,11 +41,12 @@ function SearchBar() {
 
   useEffect(() => {
     if (!inputValue) {
-      setResults({ tracks: [], genres: [], artists: [] });
+      props.setSearchedResults({ tracks: [], genres: [], artists: [] });
       return;
     }
 
-    setResults({ tracks, genres, artists });
+    props.setShownMainSection("search-results")
+    props.setSearchedResults({ tracks, genres, artists });
   }, [inputValue, allSongs]);
 
   return (
@@ -66,60 +58,7 @@ function SearchBar() {
         onChange={(e) => setInputValue(e.target.value)}
       />
 
-      <Box>
-        {results.tracks.length > 0 && (
-          <>
-            <Typography variant="h6">🎵 Skladby</Typography>
-            <List>
-              {results.tracks.map((song, idx) => (
-                <ListItemButton key={idx} onClick={() => setCurrent(song.url)}>
-                  <ListItemText primary={song.name} secondary={`${song.artist} • ${song.genre}`} />
-                </ListItemButton>
-              ))}
-            </List>
-          </>
-        )}
 
-        {results.genres.length > 0 && (
-          <>
-            <Divider sx={{ my: 2 }} />
-            <Typography variant="h6">🎧 Žánry</Typography>
-            <List>
-              {results.genres.map((genre, idx) => (
-                <ListItemButton
-                  key={idx}
-                  onClick={() => alert(`Zobrazit skladby pro žánr: ${genre}`)}
-                >
-                  <ListItemText primary={genre} />
-                </ListItemButton>
-              ))}
-            </List>
-          </>
-        )}
-
-        {results.artists.length > 0 && (
-          <>
-            <Divider sx={{ my: 2 }} />
-            <Typography variant="h6">🎤 Autoři</Typography>
-            <List>
-              {results.artists.map((artist, idx) => (
-                <ListItemButton
-                  key={idx}
-                  onClick={() => alert(`Zobrazit skladby pro autora: ${artist}`)}
-                >
-                  <ListItemText primary={artist} />
-                </ListItemButton>
-              ))}
-            </List>
-          </>
-        )}
-      </Box>
-
-      {current && (
-        <Box mt={4}>
-          <audio controls autoPlay src={current} style={{ width: "100%" }} />
-        </Box>
-      )}
     </Box>
   );
 }

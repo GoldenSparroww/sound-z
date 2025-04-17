@@ -6,11 +6,16 @@ import SideBar from "./SideBar.jsx";
 import PopupMenu from "../components/PopupMenu.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import NavBar from "./NavBar.jsx";
+import Footer from "./Footer.jsx";
+import AudioPlayer from "../components/AudioPlayer.jsx";
 
 const FrameLayout = () => {
   const [isSideBarVisible, setIsSideBarVisible] = useState(false);
   const [shownMainSection, setShownMainSection] = useState("homepage");
   const [shownPopupMenu, setShownPopupMenu] = useState(null);
+
+  const [searchedResults, setSearchedResults] = useState({ tracks: [], genres: [], artists: [] });
+  const [current, setCurrent] = useState(null);
 
   return (
     <>
@@ -23,7 +28,7 @@ const FrameLayout = () => {
 
         <NavBar id={"nav-bar"}>
           <BurgerButton visible={!isSideBarVisible} onPress={() => setIsSideBarVisible(!isSideBarVisible)}/>
-          <SearchBar />
+          <SearchBar setShownMainSection={setShownMainSection} setSearchedResults={setSearchedResults} />
         </NavBar>
 
         {/* id={"side-bar"} */}
@@ -37,12 +42,16 @@ const FrameLayout = () => {
         <MainSection
           show={shownMainSection}
           setShownPopupMenu={setShownPopupMenu}
+          searchedResults={searchedResults}
+          setCurrent={setCurrent}
+          current={current}
         />
 
-        <div id={"footer-player"}>footer</div>
+        <Footer id={"footer-player"}>
+          <AudioPlayer current={current} />
+        </Footer>
+
       </div>
-
-
     </>
   )
 }
