@@ -5,7 +5,6 @@ function SearchBar(props) {
   const [allSongs, setAllSongs] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
-
   const API_URL = "http://localhost/list.php";
   const query = inputValue.toLowerCase();
 
@@ -57,8 +56,6 @@ function SearchBar(props) {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-
-
     </Box>
   );
 }

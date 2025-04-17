@@ -31,15 +31,15 @@ const FrameLayout = () => {
           <SearchBar setShownMainSection={setShownMainSection} setSearchedResults={setSearchedResults} />
         </NavBar>
 
-        {/* id={"side-bar"} */}
         <SideBar
+          id={"side-bar"}
           setShownMainSection={setShownMainSection}
           isSideBarVisible={isSideBarVisible}
           setIsSideBarVisible={setIsSideBarVisible}
         />
 
-        {/* id={"main-section"} */}
         <MainSection
+          id={"main-section"}
           show={shownMainSection}
           setShownPopupMenu={setShownPopupMenu}
           searchedResults={searchedResults}
