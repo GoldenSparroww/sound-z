@@ -8,6 +8,8 @@ import SearchBar from "../components/SearchBar.jsx";
 import NavBar from "./NavBar.jsx";
 import Footer from "./Footer.jsx";
 import AudioPlayer from "../components/AudioPlayer.jsx";
+import ThemeSongsList from "../global/ThemeSongsList.js";
+import {ThemeProvider} from "@mui/material/styles";
 
 const FrameLayout = () => {
   const [isSideBarVisible, setIsSideBarVisible] = useState(false);
@@ -38,14 +40,16 @@ const FrameLayout = () => {
           setIsSideBarVisible={setIsSideBarVisible}
         />
 
-        <MainSection
-          id={"main-section"}
-          show={shownMainSection}
-          setShownPopupMenu={setShownPopupMenu}
-          searchedResults={searchedResults}
-          setCurrent={setCurrent}
-          current={current}
-        />
+        <ThemeProvider theme={ThemeSongsList}>
+          <MainSection
+            id={"main-section"}
+            show={shownMainSection}
+            setShownPopupMenu={setShownPopupMenu}
+            searchedResults={searchedResults}
+            setCurrent={setCurrent}
+            current={current}
+          />
+        </ThemeProvider>
 
         <Footer id={"footer-player"}>
           <AudioPlayer current={current} />

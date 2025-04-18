@@ -49,6 +49,7 @@
         width: 400px;
         height: 100dvh;
         left: -420px;
+        z-index: 1000;
     }
 
     .show{

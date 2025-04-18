@@ -9,7 +9,13 @@ function SearchBar(props) {
   const query = inputValue.toLowerCase();
 
   const tracks = allSongs
-    .filter(song => song.name.toLowerCase().includes(query))
+    .filter(song => {
+      return (
+        song.name.toLowerCase().includes(query) ||
+        song.artist.toLowerCase().includes(query) ||
+        song.genre.toLowerCase().includes(query)
+      )
+    })
     .slice(0, 5);
 
   /* reduce((acc, song) - acc je prazdne pole, kam se budou vkladat jen unikatni hodnoty */

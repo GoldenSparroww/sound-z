@@ -4,21 +4,35 @@ import Colors from './Colors.js';
 // &.something → aktuální element MÁ classu something
 // & .something → uvnitř aktuálního elementu JE potomek s classou something
 
-const theme = createTheme({
+const themeSongsList = createTheme({
   components: {
-    MuiListItemText: {
+    MuiTypography: {
       styleOverrides: {
         primary: {
-            fontSize: '1.2rem',
+          color: Colors.color_empty_field,
+          fontSize: '1.2rem',
+        },
+        h6: {
+          color: Colors.color_empty_field,
         }
       }
     },
 
-    MuiList: {
+    MuiListItemText: {
+      styleOverrides: {
+        primary: {
+          fontSize: '1.2rem',
+        },
+        secondary: {
+          fontSize: '0.9rem',
+          color: Colors.color_empty_field,
+        },
+      }
+    },
 
+    MuiList: {
       styleOverrides: {
         root: {
-          backgroundColor: Colors.color_side_bar,
           '&::-webkit-scrollbar': {
             display: 'none',        // Skrýt scroll bar pro WebKit prohlížeče (Chrome, Safari)
           },
@@ -35,10 +49,11 @@ const theme = createTheme({
         root: {
           color: Colors.color_empty_field,
           transition: 'none',
-          height: "100px",
 
           '&.Mui-selected': {
-            backgroundColor: Colors.color_selection,
+            /* Pozadi nastavim na stejnou barvu jako bez kliknuti, abych to nemusel vypinat */
+            backgroundColor: Colors.color_background,
+            color: Colors.color_details,
           },
 
           '&:hover': {
@@ -59,4 +74,4 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+export default themeSongsList;
