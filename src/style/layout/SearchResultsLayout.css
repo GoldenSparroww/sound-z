@@ -8,5 +8,6 @@
 }
 
 .search-results-field {
-    /*background-color: var(--color-side-bar)*/;
+    background-color: var(--color-side-bar);
+    padding: 1rem;
 }

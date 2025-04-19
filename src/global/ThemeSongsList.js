@@ -55,7 +55,7 @@ const themeSongsList = createTheme({
 
           '&.Mui-selected': {
             /* Pozadi nastavim na stejnou barvu jako bez kliknuti, abych to nemusel vypinat */
-            backgroundColor: Colors.color_background,
+            backgroundColor: 'transparent',
             color: Colors.color_details,
           },
 

@@ -18,13 +18,14 @@ const FrameLayout = () => {
 
   const [allSongs, setAllSongs] = useState([]);
   const [searchedResults, setSearchedResults] = useState({ tracks: [], genres: [], artists: [] });
-  const [current, setCurrent] = useState(null); /* URL of current track */
-  const [currentAuthor, setCurrentAuthor] = useState(null);
 
-  const HandleAuthorSelection = (author) => {
-    if (author) {
-      setCurrentAuthor(author);
-      setShownMainSection("author");
+  const [current, setCurrent] = useState(null); /* URL of current track */
+  const [currentArtist, setCurrentArtist] = useState(null);
+
+  const HandleArtistSelection = (artist) => {
+    if (artist) {
+      setCurrentArtist(artist);
+      setShownMainSection("artist");
     }
   }
 
@@ -61,8 +62,8 @@ const FrameLayout = () => {
             searchedResults={searchedResults}
             setCurrent={setCurrent}
             current={current}
-            HandleAuthorSelection={HandleAuthorSelection}
-            currentAuthor={currentAuthor}
+            HandleArtistSelection={HandleArtistSelection}
+            currentArtist={currentArtist}
             allSongs={allSongs}
           />
         </ThemeProvider>
