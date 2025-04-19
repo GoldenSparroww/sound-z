@@ -14,7 +14,10 @@ const themeSongsList = createTheme({
         },
         h6: {
           color: Colors.color_empty_field,
-        }
+        },
+        h1: {
+          color: Colors.color_empty_field,
+        },
       }
     },
 

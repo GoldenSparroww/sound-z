@@ -1,5 +1,6 @@
 import HomePage from './HomePage.jsx'
 import SearchResults from "./SearchResults.jsx";
+import AuthorPage from "./AuthorPage.jsx";
 
 const MainSection = (props) => {
   if (props.show === "homepage") {
@@ -23,7 +24,21 @@ const MainSection = (props) => {
   } else if (props.show === "search-results") {
     return (
       <div id={props.id}>
-        <SearchResults current={props.current} setCurrent={props.setCurrent} searchedResults={props.searchedResults} />
+        <SearchResults
+          current={props.current}
+          setCurrent={props.setCurrent}
+          searchedResults={props.searchedResults}
+          HandleAuthorSelection={props.HandleAuthorSelection}
+        />
+      </div>
+    )
+  } else if (props.show === "author") {
+    return (
+      <div id={props.id}>
+        <AuthorPage
+          currentAuthor={props.currentAuthor}
+          allSongs={props.allSongs}
+        />
       </div>
     )
   }

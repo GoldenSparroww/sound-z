@@ -16,8 +16,17 @@ const FrameLayout = () => {
   const [shownMainSection, setShownMainSection] = useState("homepage");
   const [shownPopupMenu, setShownPopupMenu] = useState(null);
 
+  const [allSongs, setAllSongs] = useState([]);
   const [searchedResults, setSearchedResults] = useState({ tracks: [], genres: [], artists: [] });
-  const [current, setCurrent] = useState(null);
+  const [current, setCurrent] = useState(null); /* URL of current track */
+  const [currentAuthor, setCurrentAuthor] = useState(null);
+
+  const HandleAuthorSelection = (author) => {
+    if (author) {
+      setCurrentAuthor(author);
+      setShownMainSection("author");
+    }
+  }
 
   return (
     <>
@@ -30,7 +39,11 @@ const FrameLayout = () => {
 
         <NavBar id={"nav-bar"}>
           <BurgerButton visible={!isSideBarVisible} onPress={() => setIsSideBarVisible(!isSideBarVisible)}/>
-          <SearchBar setShownMainSection={setShownMainSection} setSearchedResults={setSearchedResults} />
+          <SearchBar
+            setShownMainSection={setShownMainSection}
+            setSearchedResults={setSearchedResults}
+            allSongs={allSongs}
+            setAllSongs={setAllSongs}/>
         </NavBar>
 
         <SideBar
@@ -48,6 +61,9 @@ const FrameLayout = () => {
             searchedResults={searchedResults}
             setCurrent={setCurrent}
             current={current}
+            HandleAuthorSelection={HandleAuthorSelection}
+            currentAuthor={currentAuthor}
+            allSongs={allSongs}
           />
         </ThemeProvider>
 

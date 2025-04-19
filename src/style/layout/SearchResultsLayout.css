@@ -1,4 +1,4 @@
-@import "src/global/Variables.css";
+@import "../../global/Variables.css";
 
 #search-results-container {
     display: flex;

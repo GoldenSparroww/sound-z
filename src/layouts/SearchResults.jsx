@@ -62,7 +62,7 @@ function SearchResults(props) {
               {props.searchedResults.artists.map((artist, idx) => (
                 <ListItemButton
                   key={idx}
-                  onClick={() => alert(`Zobrazit skladby pro autora: ${artist}`)}
+                  onClick={() => props.HandleAuthorSelection(artist)}
                 >
                   <ListItemText primary={artist} />
                 </ListItemButton>

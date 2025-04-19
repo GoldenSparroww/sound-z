@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { TextField, Box } from "@mui/material";
 
 function SearchBar(props) {
-  const [allSongs, setAllSongs] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
   const API_URL = "http://localhost/list.php";
   const query = inputValue.toLowerCase();
 
-  const tracks = allSongs
+  const tracks = props.allSongs
     .filter(song => {
       return (
         song.name.toLowerCase().includes(query) ||
@@ -20,7 +19,7 @@ function SearchBar(props) {
 
   /* reduce((acc, song) - acc je prazdne pole, kam se budou vkladat jen unikatni hodnoty */
 
-  const genres = allSongs
+  const genres = props.allSongs
     .filter(song => song.genre.toLowerCase().includes(query))
     .reduce((acc, song) => {
       if (!acc.includes(song.genre)) acc.push(song.genre);
@@ -28,7 +27,7 @@ function SearchBar(props) {
     }, [])
     .slice(0, 3);
 
-  const artists = allSongs
+  const artists = props.allSongs
     .filter(song => song.artist.toLowerCase().includes(query))
     .reduce((acc, song) => {
       if (!acc.includes(song.artist)) acc.push(song.artist);
@@ -41,7 +40,7 @@ function SearchBar(props) {
   useEffect(() => {
     fetch(API_URL)
       .then(res => res.json())
-      .then(data => setAllSongs(data));
+      .then(data => props.setAllSongs(data));
   }, []);
 
   useEffect(() => {
@@ -52,7 +51,7 @@ function SearchBar(props) {
 
     props.setShownMainSection("search-results")
     props.setSearchedResults({ tracks, genres, artists });
-  }, [inputValue, allSongs]);
+  }, [inputValue, props.allSongs]);
 
   return (
     <Box sx={{ maxWidth: 700, margin: "auto"}}>
