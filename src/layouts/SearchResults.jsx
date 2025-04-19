@@ -43,7 +43,7 @@ function SearchResults(props) {
             {props.searchedResults.genres.map((genre, idx) => (
               <ListItemButton
                 key={idx}
-                onClick={() => alert(`Zobrazit skladby pro žánr: ${genre}`)}
+                onClick={() => props.HandleGenreSelection(genre)}
               >
                 <ListItemText primary={genre} />
               </ListItemButton>

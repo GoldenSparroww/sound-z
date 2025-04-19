@@ -21,11 +21,19 @@ const FrameLayout = () => {
 
   const [current, setCurrent] = useState(null); /* URL of current track */
   const [currentArtist, setCurrentArtist] = useState(null);
+  const [currentGenre, setCurrentGenre] = useState(null);
 
   const HandleArtistSelection = (artist) => {
     if (artist) {
       setCurrentArtist(artist);
       setShownMainSection("artist");
+    }
+  }
+
+  const HandleGenreSelection = (genre) => {
+    if (genre) {
+      setCurrentGenre(genre);
+      setShownMainSection("genre");
     }
   }
 
@@ -64,6 +72,8 @@ const FrameLayout = () => {
             current={current}
             HandleArtistSelection={HandleArtistSelection}
             currentArtist={currentArtist}
+            HandleGenreSelection={HandleGenreSelection}
+            currentGenre={currentGenre}
             allSongs={allSongs}
           />
         </ThemeProvider>

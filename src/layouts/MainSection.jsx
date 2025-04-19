@@ -1,6 +1,7 @@
 import HomePage from './HomePage.jsx'
 import SearchResults from "./SearchResults.jsx";
 import ArtistPage from "./ArtistPage.jsx";
+import GenrePage from "./GenrePage.jsx";
 
 const MainSection = (props) => {
   if (props.show === "homepage") {
@@ -29,6 +30,7 @@ const MainSection = (props) => {
           setCurrent={props.setCurrent}
           searchedResults={props.searchedResults}
           HandleArtistSelection={props.HandleArtistSelection}
+          HandleGenreSelection={props.HandleGenreSelection}
         />
       </div>
     )
@@ -37,6 +39,17 @@ const MainSection = (props) => {
       <div id={props.id}>
         <ArtistPage
           currentArtist={props.currentArtist}
+          current={props.current}
+          setCurrent={props.setCurrent}
+          allSongs={props.allSongs}
+        />
+      </div>
+    )
+  } else if (props.show === "genre") {
+    return (
+      <div id={props.id}>
+        <GenrePage
+          currentGenre={props.currentGenre}
           current={props.current}
           setCurrent={props.setCurrent}
           allSongs={props.allSongs}
