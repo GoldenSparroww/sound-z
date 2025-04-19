@@ -22,3 +22,8 @@
 {
     background-color: var(--color-footer);
 }
+
+img{
+    max-width: 3rem;
+    max-height: 3rem;
+}

@@ -19,7 +19,7 @@ const MainSection = (props) => {
   } else if (props.show === "favourites") {
     return (
       <div id={props.id}>
-        favourites1
+        <></>
       </div>
     )
   } else if (props.show === "search-results") {
@@ -28,9 +28,17 @@ const MainSection = (props) => {
         <SearchResults
           current={props.current}
           setCurrent={props.setCurrent}
+          allSongs={props.allSongs}
           searchedResults={props.searchedResults}
           HandleArtistSelection={props.HandleArtistSelection}
           HandleGenreSelection={props.HandleGenreSelection}
+          FavouritesAdd={props.FavouritesAdd}
+          FavouritesRemove={props.FavouritesRemove}
+          favouriteTracks={props.favouriteTracks}
+          QueueAdd={props.QueueAdd}
+          QueueRemove={props.QueueRemove}
+          queueTracks={props.queueTracks}
+          HandleActionPopup={props.HandleActionPopup}
         />
       </div>
     )
@@ -42,6 +50,13 @@ const MainSection = (props) => {
           current={props.current}
           setCurrent={props.setCurrent}
           allSongs={props.allSongs}
+          FavouritesAdd={props.FavouritesAdd}
+          FavouritesRemove={props.FavouritesRemove}
+          favouriteTracks={props.favouriteTracks}
+          QueueAdd={props.QueueAdd}
+          QueueRemove={props.QueueRemove}
+          queueTracks={props.queueTracks}
+          HandleActionPopup={props.HandleActionPopup}
         />
       </div>
     )
@@ -53,6 +68,13 @@ const MainSection = (props) => {
           current={props.current}
           setCurrent={props.setCurrent}
           allSongs={props.allSongs}
+          FavouritesAdd={props.FavouritesAdd}
+          FavouritesRemove={props.FavouritesRemove}
+          favouriteTracks={props.favouriteTracks}
+          QueueAdd={props.QueueAdd}
+          QueueRemove={props.QueueRemove}
+          queueTracks={props.queueTracks}
+          HandleActionPopup={props.HandleActionPopup}
         />
       </div>
     )

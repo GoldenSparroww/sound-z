@@ -2,6 +2,8 @@ import {IconButton, List, ListItemButton, ListItemText, Typography} from "@mui/m
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import * as React from "react";
 import "../style/layout/SearchResultsLayout.css"
+import LayersIcon from "@mui/icons-material/Layers";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 function SearchResults(props) {
   return (
@@ -11,26 +13,45 @@ function SearchResults(props) {
         <div className={"search-results-field"} id={"search-results-tracks"}>
           <Typography variant="h6">SKLADBY</Typography>
           <List>
-
             {props.searchedResults.tracks.map((song, idx) => (
               <ListItemButton
                 key={idx}
                 selected={props.current === song.url}
                 onClick={() => {
                   props.setCurrent(song.url);
-              }}>
-                <Typography sx={{pr: 3}}>{idx + 1}</Typography>
-                <ListItemText primary={song.name} secondary={`${song.artist} • ${song.genre}`} />
+                }}>
+                <Typography sx={{pr: 3, fontSize: "1.2rem"}}>{idx + 1}</Typography>
+                <img
+                  src={`http://localhost/music/images/${song.image}`}
+                  alt={song.image}
+                ></img>
+                <ListItemText
+                  sx={{pl: 3}}
+                  primary={song.name}
+                  secondary={`${props.showArtist ? song.artist : ''} ${props.showGenre ? '•' : '' } ${props.showGenre ? song.genre : ''}`} />
+                <Typography sx={{pr: "15%"}}>{song.duration}</Typography>
                 <IconButton
                   onClick={ (e) => {
                     e.stopPropagation();
-                    alert("Ulozeno do oblibenech xddd");
+                    props.QueueAdd(song);
+                    props.HandleActionPopup("Přidáno do fronty.");
+                  }}>
+                  <LayersIcon />
+                </IconButton>
+                <IconButton
+                  onClick={ (e) => {
+                    if (props.favouriteTracks.includes(song)){
+                      props.FavouritesRemove(song);
+                      props.HandleActionPopup("Odebráno z oblíbených.");
+                    } else {
+                      props.FavouritesAdd(song);
+                      props.HandleActionPopup("Přidáno do oblíbených.");
                     }
-                  }>
-                  <FavoriteIcon />
+                    e.stopPropagation();
+                  }}>
+                  {(props.favouriteTracks.includes(song)) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                 </IconButton>
               </ListItemButton>
-
             ))}
           </List>
         </div>

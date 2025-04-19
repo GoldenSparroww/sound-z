@@ -9,13 +9,12 @@ const themeSideBar = createTheme({
     MuiListItemText: {
       styleOverrides: {
         primary: {
-            fontSize: '1.2rem',
+          fontSize: '1.2rem',
         }
       }
     },
 
     MuiList: {
-
       styleOverrides: {
         root: {
           backgroundColor: Colors.color_side_bar,

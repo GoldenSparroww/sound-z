@@ -10,6 +10,7 @@ import Footer from "./Footer.jsx";
 import AudioPlayer from "../components/AudioPlayer.jsx";
 import ThemeSongsList from "../global/ThemeSongsList.js";
 import {ThemeProvider} from "@mui/material/styles";
+import {Snackbar} from "@mui/material";
 
 const FrameLayout = () => {
   const [isSideBarVisible, setIsSideBarVisible] = useState(false);
@@ -22,6 +23,12 @@ const FrameLayout = () => {
   const [current, setCurrent] = useState(null); /* URL of current track */
   const [currentArtist, setCurrentArtist] = useState(null);
   const [currentGenre, setCurrentGenre] = useState(null);
+
+  const [favouriteTracks, setFavouriteTracks] = useState([]);
+  const [queueTracks, setQueueTracks] = useState([]);
+
+  const [actionPopup, setActionPopup] = useState(false);
+  const [actionPopupMessage, setActionPopupMessage] = useState("");
 
   const HandleArtistSelection = (artist) => {
     if (artist) {
@@ -37,15 +44,34 @@ const FrameLayout = () => {
     }
   }
 
+  const FavouritesAdd = (newTrack) => {
+    setFavouriteTracks([...favouriteTracks, newTrack]);
+  }
+
+  const FavouritesRemove = (track) => {
+    setFavouriteTracks(favouriteTracks.filter((item) => item !== track));
+  }
+
+  const QueueAdd = (newTrack) => {
+    setQueueTracks([...queueTracks, newTrack]);
+  }
+
+  const QueueRemove = (track) => {
+    setQueueTracks(queueTracks.filter((item) => item !== track));
+  }
+
+  const HandleActionPopup = (message) => {
+    setActionPopupMessage(message);
+    setActionPopup(true);
+  }
+
   return (
     <>
-
       <PopupMenu
         setShownPopupMenu={setShownPopupMenu}
         shownPopupMenu={shownPopupMenu /* Slouží i jako props.visible, viz. PopupMenu */}/>
 
       <div id={"grid-container"}>
-
         <NavBar id={"nav-bar"}>
           <BurgerButton visible={!isSideBarVisible} onPress={() => setIsSideBarVisible(!isSideBarVisible)}/>
           <SearchBar
@@ -75,14 +101,27 @@ const FrameLayout = () => {
             HandleGenreSelection={HandleGenreSelection}
             currentGenre={currentGenre}
             allSongs={allSongs}
+            FavouritesAdd={FavouritesAdd}
+            FavouritesRemove={FavouritesRemove}
+            favouriteTracks={favouriteTracks}
+            QueueAdd={QueueAdd}
+            QueueRemove={QueueRemove}
+            queueTracks={queueTracks}
+            HandleActionPopup={HandleActionPopup}
           />
         </ThemeProvider>
 
         <Footer id={"footer-player"}>
           <AudioPlayer current={current} />
         </Footer>
-
       </div>
+
+      <Snackbar
+        open={actionPopup}
+        onClose={() => setActionPopup(false)}
+        message={actionPopupMessage}
+        autoHideDuration={1000}
+      />
     </>
   )
 }

@@ -6,6 +6,14 @@ import Colors from './Colors.js';
 
 const themeSongsList = createTheme({
   components: {
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: Colors.color_empty_field
+        }
+      }
+    },
+
     MuiTypography: {
       styleOverrides: {
         primary: {

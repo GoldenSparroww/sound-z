@@ -1,10 +1,11 @@
 import {Typography} from "@mui/material";
 import * as React from "react";
 import PrintList from "../components/PrintList.jsx";
+import "../style/layout/SearchResultsLayout.css"
 
 function ArtistPage(props) {
   return (
-    <div>
+    <div className={"search-results-field"}>
       <Typography variant="h1">{props.currentArtist}</Typography>
       <PrintList
         allSongs={props.allSongs}
@@ -14,6 +15,13 @@ function ArtistPage(props) {
         showGenre={false}
         current={props.current}
         setCurrent={props.setCurrent}
+        FavouritesAdd={props.FavouritesAdd}
+        FavouritesRemove={props.FavouritesRemove}
+        favouriteTracks={props.favouriteTracks}
+        QueueAdd={props.QueueAdd}
+        QueueRemove={props.QueueRemove}
+        queueTracks={props.queueTracks}
+        HandleActionPopup={props.HandleActionPopup}
       ></PrintList>
     </div>
   )
