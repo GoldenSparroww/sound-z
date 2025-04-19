@@ -28,7 +28,7 @@ function SearchResults(props) {
                 <ListItemText
                   sx={{pl: 3}}
                   primary={song.name}
-                  secondary={`${props.showArtist ? song.artist : ''} ${props.showGenre ? '•' : '' } ${props.showGenre ? song.genre : ''}`} />
+                  secondary={`${song.artist} • ${song.genre}`} />
                 <Typography sx={{pr: "15%"}}>{song.duration}</Typography>
                 <IconButton
                   onClick={ (e) => {
