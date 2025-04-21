@@ -7,7 +7,7 @@ const QueuePage = (props) => {
     <div>
       <Typography variant="h1">Fronta</Typography>
       <PrintList
-        allSongs={props.queueTracks}
+        allSongs={[...props.immediateFollowingTracks, ...props.activeList]}
         whatToFilter={null}
         filter={null}
         showArtist={true}
@@ -17,9 +17,8 @@ const QueuePage = (props) => {
         FavouritesAdd={props.FavouritesAdd}
         FavouritesRemove={props.FavouritesRemove}
         favouriteTracks={props.favouriteTracks}
-        QueueAdd={props.QueueAdd}
-        QueueRemove={props.QueueRemove}
-        queueTracks={props.queueTracks}
+        ChangeActiveList={props.ChangeActiveList}
+        AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
         HandleActionPopup={props.HandleActionPopup}
       ></PrintList>
     </div>

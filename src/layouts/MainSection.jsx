@@ -23,9 +23,10 @@ const MainSection = (props) => {
           FavouritesAdd={props.FavouritesAdd}
           FavouritesRemove={props.FavouritesRemove}
           favouriteTracks={props.favouriteTracks}
-          QueueAdd={props.QueueAdd}
-          QueueRemove={props.QueueRemove}
-          queueTracks={props.queueTracks}
+          ChangeActiveList={props.ChangeActiveList}
+          AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
+          activeList={props.activeList}
+          immediateFollowingTracks={props.immediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
         />
       </div>
@@ -41,9 +42,8 @@ const MainSection = (props) => {
           FavouritesAdd={props.FavouritesAdd}
           FavouritesRemove={props.FavouritesRemove}
           favouriteTracks={props.favouriteTracks}
-          QueueAdd={props.QueueAdd}
-          QueueRemove={props.QueueRemove}
-          queueTracks={props.queueTracks}
+          ChangeActiveList={props.ChangeActiveList}
+          AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
         >
         </FavouritesPage>
@@ -62,9 +62,8 @@ const MainSection = (props) => {
           FavouritesAdd={props.FavouritesAdd}
           FavouritesRemove={props.FavouritesRemove}
           favouriteTracks={props.favouriteTracks}
-          QueueAdd={props.QueueAdd}
-          QueueRemove={props.QueueRemove}
-          queueTracks={props.queueTracks}
+          ChangeActiveList={props.ChangeActiveList}
+          AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
         />
       </div>
@@ -80,9 +79,6 @@ const MainSection = (props) => {
           FavouritesAdd={props.FavouritesAdd}
           FavouritesRemove={props.FavouritesRemove}
           favouriteTracks={props.favouriteTracks}
-          /*QueueAdd={props.QueueAdd}
-          QueueRemove={props.QueueRemove}
-          queueTracks={props.queueTracks}*/
           HandleActionPopup={props.HandleActionPopup}
           ChangeActiveList={props.ChangeActiveList}
           AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
@@ -100,9 +96,8 @@ const MainSection = (props) => {
           FavouritesAdd={props.FavouritesAdd}
           FavouritesRemove={props.FavouritesRemove}
           favouriteTracks={props.favouriteTracks}
-          QueueAdd={props.QueueAdd}
-          QueueRemove={props.QueueRemove}
-          queueTracks={props.queueTracks}
+          ChangeActiveList={props.ChangeActiveList}
+          AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
         />
       </div>

@@ -19,6 +19,11 @@ function SearchResults(props) {
                 selected={props.current === song.url}
                 onClick={() => {
                   props.setCurrent(song.url);
+                  props.ChangeActiveList(
+                    idx,
+                    props.allSongs.filter(song => {
+                      return (props.whatToFilter !== null ? song[props.whatToFilter] : true) === (props.filter !== null ? props.filter : true);
+                    }));
                 }}>
                 <Typography sx={{pr: 3, fontSize: "1.2rem"}}>{idx + 1}</Typography>
                 <img
@@ -33,7 +38,7 @@ function SearchResults(props) {
                 <IconButton
                   onClick={ (e) => {
                     e.stopPropagation();
-                    props.QueueAdd(song);
+                    props.AddImmediateFollowingTracks(song);
                     props.HandleActionPopup("Přidáno do fronty.");
                   }}>
                   <LayersIcon />

@@ -122,9 +122,8 @@ const FrameLayout = () => {
             FavouritesAdd={FavouritesAdd}
             FavouritesRemove={FavouritesRemove}
             favouriteTracks={favouriteTracks}
-            /*QueueAdd={QueueAdd}
-            QueueRemove={QueueRemove}
-            queueTracks={queueTracks}*/
+            activeList={activeList}
+            immediateFollowingTracks={immediateFollowingTracks}
             ChangeActiveList={ChangeActiveList}
             AddImmediateFollowingTracks={AddImmediateFollowingTracks}
             HandleActionPopup={HandleActionPopup}

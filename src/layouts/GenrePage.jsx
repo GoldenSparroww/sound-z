@@ -18,9 +18,8 @@ function GenrePage(props) {
         FavouritesAdd={props.FavouritesAdd}
         FavouritesRemove={props.FavouritesRemove}
         favouriteTracks={props.favouriteTracks}
-        QueueAdd={props.QueueAdd}
-        QueueRemove={props.QueueRemove}
-        queueTracks={props.queueTracks}
+        ChangeActiveList={props.ChangeActiveList}
+        AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
         HandleActionPopup={props.HandleActionPopup}
       ></PrintList>
     </div>
