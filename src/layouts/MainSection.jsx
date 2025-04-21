@@ -2,6 +2,8 @@ import HomePage from './HomePage.jsx'
 import SearchResults from "./SearchResults.jsx";
 import ArtistPage from "./ArtistPage.jsx";
 import GenrePage from "./GenrePage.jsx";
+import QueuePage from "./QueuePage.jsx";
+import FavouritesPage from "./FavouritesPage.jsx";
 
 const MainSection = (props) => {
   if (props.show === "homepage") {
@@ -13,13 +15,38 @@ const MainSection = (props) => {
   } else if (props.show === "queue") {
     return (
       <div id={props.id}>
-        queue1
+        <QueuePage
+          currentArtist={props.currentArtist}
+          current={props.current}
+          setCurrent={props.setCurrent}
+          allSongs={props.allSongs}
+          FavouritesAdd={props.FavouritesAdd}
+          FavouritesRemove={props.FavouritesRemove}
+          favouriteTracks={props.favouriteTracks}
+          QueueAdd={props.QueueAdd}
+          QueueRemove={props.QueueRemove}
+          queueTracks={props.queueTracks}
+          HandleActionPopup={props.HandleActionPopup}
+        />
       </div>
     )
   } else if (props.show === "favourites") {
     return (
       <div id={props.id}>
-        <></>
+        <FavouritesPage
+          currentArtist={props.currentArtist}
+          current={props.current}
+          setCurrent={props.setCurrent}
+          allSongs={props.allSongs}
+          FavouritesAdd={props.FavouritesAdd}
+          FavouritesRemove={props.FavouritesRemove}
+          favouriteTracks={props.favouriteTracks}
+          QueueAdd={props.QueueAdd}
+          QueueRemove={props.QueueRemove}
+          queueTracks={props.queueTracks}
+          HandleActionPopup={props.HandleActionPopup}
+        >
+        </FavouritesPage>
       </div>
     )
   } else if (props.show === "search-results") {

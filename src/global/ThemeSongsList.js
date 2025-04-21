@@ -30,6 +30,24 @@ const themeSongsList = createTheme({
     },
 
     MuiListItemText: {
+      defaultProps: {
+        slotProps: {
+          primary: {
+            noWrap: true,
+            sx: {
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }
+          },
+          secondary: {
+            noWrap: true,
+            sx: {
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }
+          }
+        }
+      },
       styleOverrides: {
         primary: {
           fontSize: '1.2rem',
@@ -55,6 +73,7 @@ const themeSongsList = createTheme({
     MuiListItemButton: {
       defaultProps: {
         disableRipple: true,
+
       },
       styleOverrides: {
         root: {

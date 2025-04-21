@@ -1,16 +1,15 @@
 import {Typography} from "@mui/material";
-import * as React from "react";
 import PrintList from "../components/PrintList.jsx";
-import "../style/layout/SearchResultsLayout.css"
+import * as React from "react";
 
-function ArtistPage(props) {
+const QueuePage = (props) => {
   return (
-    <div className={"search-results-field"}>
-      <Typography variant="h1">{props.currentArtist}</Typography>
+    <div>
+      <Typography variant="h1">Fronta</Typography>
       <PrintList
-        allSongs={props.allSongs}
-        whatToFilter={"artist"}
-        filter={props.currentArtist}
+        allSongs={props.queueTracks}
+        whatToFilter={null}
+        filter={null}
         showArtist={true}
         showGenre={true}
         current={props.current}
@@ -27,4 +26,4 @@ function ArtistPage(props) {
   )
 }
 
-export default ArtistPage;
+export default QueuePage;

@@ -10,7 +10,10 @@ function PrintList(props) {
     <div>
       <List>
         {props.allSongs
-          .filter(song => song[props.whatToFilter] === props.filter)
+          .filter(song => {
+            /* pokud whatToFilter a filter je null, tak se nic nefiltruje */
+            return (props.whatToFilter !== null ? song[props.whatToFilter] : true) === (props.filter !== null ? props.filter : true);
+          })
           .map((song, idx) => (
             <ListItemButton
               key={idx}
@@ -27,7 +30,7 @@ function PrintList(props) {
                 sx={{pl: 3}}
                 primary={song.name}
                 secondary={`${props.showArtist ? song.artist : ''} ${props.showGenre ? '•' : '' } ${props.showGenre ? song.genre : ''}`} />
-              <Typography sx={{pr: "15%"}}>{song.duration}</Typography>
+              <Typography sx={{pr: "15%", pl: "5%"}}>{song.duration}</Typography>
               <IconButton
                 onClick={ (e) => {
                   e.stopPropagation();

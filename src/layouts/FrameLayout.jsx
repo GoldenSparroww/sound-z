@@ -21,6 +21,8 @@ const FrameLayout = () => {
   const [searchedResults, setSearchedResults] = useState({ tracks: [], genres: [], artists: [] });
 
   const [current, setCurrent] = useState(null); /* URL of current track */
+  /* abych na to nezapomel... "zavadejici nazvy" - current a currentAuthor/currentGenre maji jine vyznamy */
+  /* current je pro aktualni prehravanou hudbu a currentAuthor/currentGenre je pro komponentu SearchResults */
   const [currentArtist, setCurrentArtist] = useState(null);
   const [currentGenre, setCurrentGenre] = useState(null);
 

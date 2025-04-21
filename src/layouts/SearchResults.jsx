@@ -29,7 +29,7 @@ function SearchResults(props) {
                   sx={{pl: 3}}
                   primary={song.name}
                   secondary={`${song.artist} • ${song.genre}`} />
-                <Typography sx={{pr: "15%"}}>{song.duration}</Typography>
+                <Typography sx={{pr: "15%", pl: "5%"}}>{song.duration}</Typography>
                 <IconButton
                   onClick={ (e) => {
                     e.stopPropagation();
