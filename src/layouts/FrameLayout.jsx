@@ -1,6 +1,6 @@
 import "../style/layout/FrameLayout.css"
 import BurgerButton from "../components/BurgerButton.jsx";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import MainSection from "./MainSection.jsx";
 import SideBar from "./SideBar.jsx";
 import PopupMenu from "../components/PopupMenu.jsx";
@@ -27,7 +27,11 @@ const FrameLayout = () => {
   const [currentGenre, setCurrentGenre] = useState(null);
 
   const [favouriteTracks, setFavouriteTracks] = useState([]);
-  const [queueTracks, setQueueTracks] = useState([]);
+
+  const [immediateFollowingTracks, setImmediateFollowingTracks] = useState([]);
+  const [activeList, setActiveList] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [queueTracksMap, setQueueTracksMap] = useState([]);
 
   const [actionPopup, setActionPopup] = useState(false);
   const [actionPopupMessage, setActionPopupMessage] = useState("");
@@ -46,6 +50,7 @@ const FrameLayout = () => {
     }
   }
 
+  /*-----------------------------------------------------------------------------------------*/
   const FavouritesAdd = (newTrack) => {
     setFavouriteTracks([...favouriteTracks, newTrack]);
   }
@@ -54,14 +59,25 @@ const FrameLayout = () => {
     setFavouriteTracks(favouriteTracks.filter((item) => item !== track));
   }
 
-  const QueueAdd = (newTrack) => {
-    setQueueTracks([...queueTracks, newTrack]);
+  /*-----------------------------------------------------------------------------------------*/
+  /* Kvuli asynchornim zmenam stavu immediateFollowingTracks, activeList musim pouzit useEffect jinak nesiham zmeny */
+  useEffect(() => {
+    setQueueTracksMap([
+      ...immediateFollowingTracks.map(() => "immediateItem"),
+      ...activeList.map(() => "acitveListItem")
+    ])
+  }, [immediateFollowingTracks, activeList])
+
+  const ChangeActiveList = (index, list) => {
+    setActiveIndex(index);
+    setActiveList(list);
   }
 
-  const QueueRemove = (track) => {
-    setQueueTracks(queueTracks.filter((item) => item !== track));
+  const AddImmediateFollowingTracks = (newTrack) => {
+    setImmediateFollowingTracks([...immediateFollowingTracks, newTrack]);
   }
 
+  /*-----------------------------------------------------------------------------------------*/
   const HandleActionPopup = (message) => {
     setActionPopupMessage(message);
     setActionPopup(true);
@@ -106,15 +122,27 @@ const FrameLayout = () => {
             FavouritesAdd={FavouritesAdd}
             FavouritesRemove={FavouritesRemove}
             favouriteTracks={favouriteTracks}
-            QueueAdd={QueueAdd}
+            /*QueueAdd={QueueAdd}
             QueueRemove={QueueRemove}
-            queueTracks={queueTracks}
+            queueTracks={queueTracks}*/
+            ChangeActiveList={ChangeActiveList}
+            AddImmediateFollowingTracks={AddImmediateFollowingTracks}
             HandleActionPopup={HandleActionPopup}
           />
         </ThemeProvider>
 
         <Footer id={"footer-player"}>
-          <AudioPlayer current={current} />
+          <AudioPlayer
+            current={current}
+            setCurrent={setCurrent}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+            activeList={activeList}
+            setActiveList={setActiveList}
+            immediateFollowingTracks={immediateFollowingTracks}
+            setImmediateFollowingTracks={setImmediateFollowingTracks}
+            queueTracksMap={queueTracksMap}
+          />
         </Footer>
       </div>
 

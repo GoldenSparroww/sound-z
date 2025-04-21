@@ -80,10 +80,12 @@ const MainSection = (props) => {
           FavouritesAdd={props.FavouritesAdd}
           FavouritesRemove={props.FavouritesRemove}
           favouriteTracks={props.favouriteTracks}
-          QueueAdd={props.QueueAdd}
+          /*QueueAdd={props.QueueAdd}
           QueueRemove={props.QueueRemove}
-          queueTracks={props.queueTracks}
+          queueTracks={props.queueTracks}*/
           HandleActionPopup={props.HandleActionPopup}
+          ChangeActiveList={props.ChangeActiveList}
+          AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
         />
       </div>
     )
