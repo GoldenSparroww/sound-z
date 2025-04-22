@@ -1,5 +1,4 @@
 import {Typography} from "@mui/material";
-import PrintList from "../components/PrintList.jsx";
 import * as React from "react";
 
 const QueuePage = (props) => {
