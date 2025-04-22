@@ -19,11 +19,7 @@ function SearchResults(props) {
                 selected={props.current.url === song.url}
                 onClick={() => {
                   props.setCurrent(song);
-                  props.ChangeActiveList(
-                    idx,
-                    props.allSongs.filter(song => {
-                      return (props.whatToFilter !== null ? song[props.whatToFilter] : true) === (props.filter !== null ? props.filter : true);
-                    }));
+                  props.ChangeActiveList(0,[])
                 }}>
                 <Typography sx={{pr: 3, fontSize: "1.2rem"}}>{idx + 1}</Typography>
                 <img
