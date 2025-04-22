@@ -6,7 +6,7 @@ const QueuePage = (props) => {
   return (
     <div>
       <Typography variant="h1">Fronta</Typography>
-      <Typography variant="h6">Prave hraje - {props.current}</Typography>
+      <Typography variant="h6">Prave hraje - {props.current.name}</Typography>
 
       {props.immediateFollowingTracks.length > 0 && (
         <>

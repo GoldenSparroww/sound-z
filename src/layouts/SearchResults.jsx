@@ -16,9 +16,9 @@ function SearchResults(props) {
             {props.searchedResults.tracks.map((song, idx) => (
               <ListItemButton
                 key={idx}
-                selected={props.current === song.url}
+                selected={props.current.url === song.url}
                 onClick={() => {
-                  props.setCurrent(song.url);
+                  props.setCurrent(song);
                   props.ChangeActiveList(
                     idx,
                     props.allSongs.filter(song => {
