@@ -1,3 +1,5 @@
+import {IsEmptyObject} from "../logic/TestInput.js";
+
 function AudioPlayer(props) {
   const PlayNext = () => {
     if (props.queueTracksMap.includes("immediateItem")) {
@@ -14,10 +16,6 @@ function AudioPlayer(props) {
     } else {
       props.setCurrent({});
     }
-  }
-
-  const IsEmptyObject = (obj) => {
-    return (Object.keys(obj).length === 0);
   }
 
   return (

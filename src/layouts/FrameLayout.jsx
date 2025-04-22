@@ -11,6 +11,7 @@ import AudioPlayer from "../components/AudioPlayer.jsx";
 import ThemeSongsList from "../global/ThemeSongsList.js";
 import {ThemeProvider} from "@mui/material/styles";
 import {Snackbar} from "@mui/material";
+import {IsEmptyObject} from "../logic/TestInput.js";
 
 const FrameLayout = () => {
   const [isSideBarVisible, setIsSideBarVisible] = useState(false);
@@ -74,7 +75,11 @@ const FrameLayout = () => {
   }
 
   const AddImmediateFollowingTracks = (newTrack) => {
-    setImmediateFollowingTracks([...immediateFollowingTracks, newTrack]);
+    if (IsEmptyObject(current)) {
+      setCurrent(newTrack)
+    } else {
+      setImmediateFollowingTracks([...immediateFollowingTracks, newTrack]);
+    }
   }
 
   /*-----------------------------------------------------------------------------------------*/
@@ -151,6 +156,7 @@ const FrameLayout = () => {
         onClose={() => setActionPopup(false)}
         message={actionPopupMessage}
         autoHideDuration={1000}
+        key={actionPopupMessage}
       />
     </>
   )

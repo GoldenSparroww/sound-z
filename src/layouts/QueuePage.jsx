@@ -3,28 +3,36 @@ import * as React from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import List from "@mui/material/List";
 import ListItemText from "@mui/material/ListItemText";
+import {IsEmptyObject} from "../logic/TestInput.js";
 
 const QueuePage = (props) => {
   return (
     <div>
       <Typography variant="h1">Fronta</Typography>
-      <Typography variant="h6">Právě hraje:</Typography>
-      <List>
-        <ListItemButton
-          sx={{height: 100}}
-          selected={true}
-        >
-          <img
-            src={`http://localhost/music/images/${props.current.image}`}
-            alt={props.current.image}
-          ></img>
-          <ListItemText
-            sx={{pl: 3}}
-            primary={props.current.name}
-            secondary={`${props.current.artist} • ${props.current.genre}`}
-          ></ListItemText>
-        </ListItemButton>
-      </List>
+
+      {!IsEmptyObject(props.current) ? (
+        <>
+          <Typography variant="h6">Právě hraje:</Typography>
+          <List>
+            <ListItemButton
+              sx={{height: 100}}
+              selected={true}
+            >
+              <img
+                src={`http://localhost/music/images/${props.current.image}`}
+                alt={props.current.image}
+              ></img>
+              <ListItemText
+                sx={{pl: 3}}
+                primary={props.current.name}
+                secondary={`${props.current.artist} • ${props.current.genre}`}
+              ></ListItemText>
+            </ListItemButton>
+          </List>
+        </>
+      ) : (
+        <Typography variant="h6">Nejdřív musíš něco zapnout hochu</Typography>
+      )}
 
       {props.immediateFollowingTracks.length > 0 && (
         <>
