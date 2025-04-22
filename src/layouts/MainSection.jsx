@@ -28,6 +28,7 @@ const MainSection = (props) => {
           activeList={props.activeList}
           immediateFollowingTracks={props.immediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
+          activeIndex={props.activeIndex}
         />
       </div>
     )

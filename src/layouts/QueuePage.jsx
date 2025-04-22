@@ -6,7 +6,30 @@ const QueuePage = (props) => {
   return (
     <div>
       <Typography variant="h1">Fronta</Typography>
-      <PrintList
+      <Typography variant="h6">Prave hraje - {props.current}</Typography>
+
+      {props.immediateFollowingTracks.length > 0 && (
+        <>
+          <Typography variant="h6">Dalsi ve fronte</Typography>
+          {props.immediateFollowingTracks.map((track, i) => (
+            <p key={i}>{track.name}</p>
+          ))}
+        </>
+      )}
+
+      {(props.activeList.length > 0 && props.activeList.length - 1 > props.activeIndex) && (
+        <>
+          <Typography variant="h6">Dalsi v playlistu ??????</Typography>
+          {props.activeList
+            .filter((track, i) => i > props.activeIndex)
+            .map((track, i) => (
+            <p key={i}>{track.name}</p>
+          ))}
+        </>
+      )}
+
+
+      {/*<PrintList
         allSongs={[...props.immediateFollowingTracks, ...props.activeList]}
         whatToFilter={null}
         filter={null}
@@ -20,7 +43,7 @@ const QueuePage = (props) => {
         ChangeActiveList={props.ChangeActiveList}
         AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
         HandleActionPopup={props.HandleActionPopup}
-      ></PrintList>
+      ></PrintList>*/}
     </div>
   )
 }

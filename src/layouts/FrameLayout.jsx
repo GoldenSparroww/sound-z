@@ -126,6 +126,7 @@ const FrameLayout = () => {
             immediateFollowingTracks={immediateFollowingTracks}
             ChangeActiveList={ChangeActiveList}
             AddImmediateFollowingTracks={AddImmediateFollowingTracks}
+            activeIndex={activeIndex}
             HandleActionPopup={HandleActionPopup}
           />
         </ThemeProvider>
