@@ -2,6 +2,7 @@ import {Typography} from "@mui/material";
 import * as React from "react";
 import PrintList from "../components/PrintList.jsx";
 import "../style/layout/SearchResultsLayout.css"
+import PrintTable from "../components/PrintTable.jsx";
 
 function ArtistPage(props) {
   return (
@@ -22,6 +23,24 @@ function ArtistPage(props) {
         AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
         HandleActionPopup={props.HandleActionPopup}
       ></PrintList>
+      <p>///////////</p>
+
+      <PrintTable
+        allSongs={props.allSongs}
+        whatToFilter={"artist"}
+        filter={props.currentArtist}
+        showArtist={true}
+        showGenre={true}
+        current={props.current}
+        setCurrent={props.setCurrent}
+        FavouritesAdd={props.FavouritesAdd}
+        FavouritesRemove={props.FavouritesRemove}
+        favouriteTracks={props.favouriteTracks}
+        ChangeActiveList={props.ChangeActiveList}
+        AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
+        HandleActionPopup={props.HandleActionPopup}
+      >
+      </PrintTable>
     </div>
   )
 }

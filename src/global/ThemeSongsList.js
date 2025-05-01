@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import { DataGrid } from '@mui/x-data-grid';
 import Colors from './Colors.js';
 
 // &.something → aktuální element MÁ classu something
@@ -73,7 +74,6 @@ const themeSongsList = createTheme({
     MuiListItemButton: {
       defaultProps: {
         disableRipple: true,
-
       },
       styleOverrides: {
         root: {
@@ -101,6 +101,53 @@ const themeSongsList = createTheme({
         },
       },
     },
+
+    MuiDataGrid: {
+      styleOverrides: {
+        root: {
+          '&::-webkit-scrollbar': {
+            display: 'none',        // Skrýt scroll bar pro WebKit prohlížeče (Chrome, Safari)
+          },
+          scrollbarWidth: 'none',   // Skrytí scrollu ve Firefoxu
+          backgroundColor: 'transparent',
+          border: "none",
+        },
+        row: {
+          '&.Mui-selected': {
+            /* Pozadi nastavim na stejnou barvu jako bez kliknuti, abych to nemusel vypinat */
+            backgroundColor: 'transparent',
+            color: Colors.color_details,
+          },
+
+          '&:hover': {
+            backgroundColor: Colors.color_hover,
+          },
+
+          '&.Mui-selected:hover': {
+            backgroundColor: Colors.color_hover,
+          },
+
+          '& .MuiListItemIcon-root': {
+            color: Colors.color_empty_field,
+            //fontSize: 40,
+          },
+        },
+        cell: {
+          borderBottom: "none", // Dolní ohraničení buněk
+        },
+        columnHeaders: {
+          backgroundColor: "blue", // Tmavší modrá pro pozadí záhlaví
+        },
+        columnHeader: {
+          borderRight: `1px solid blue`, // Světlejší modrá pro pravé ohraničení
+          borderBottom: `2px solid blue`, // Silnější modrá pro dolní ohraničení
+          '&:first-child': { // Styl pro první sloupec (bez levého ohraničení)
+            borderLeft: 'none',
+          },
+        },
+      },
+    },
+
   },
 });
 
