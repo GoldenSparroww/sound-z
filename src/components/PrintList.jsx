@@ -33,7 +33,7 @@ function PrintList(props) {
               <ListItemText
                 sx={{pl: 3}}
                 primary={song.name}
-                secondary={`${props.showArtist ? song.artist : ''} ${props.showGenre ? '•' : '' } ${props.showGenre ? song.genre : ''}`} />
+                secondary={`${props.showArtist ? song.artist : ''} ${props.showArtist && props.showGenre ? '•' : '' } ${props.showGenre ? song.genre : ''}`} />
               <Typography sx={{pr: "15%", pl: "5%"}}>{song.duration}</Typography>
               <IconButton
                 onClick={ (e) => {

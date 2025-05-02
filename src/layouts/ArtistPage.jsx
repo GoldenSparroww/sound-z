@@ -11,7 +11,7 @@ function ArtistPage(props) {
         allSongs={props.allSongs}
         whatToFilter={"artist"}
         filter={props.currentArtist}
-        showArtist={true}
+        showArtist={false}
         showGenre={true}
         current={props.current}
         setCurrent={props.setCurrent}
