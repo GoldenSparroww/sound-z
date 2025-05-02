@@ -16,11 +16,32 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
 
 import Colors from '../global/Colors.js'
+import {useEffect, useRef, useState} from "react";
 
 
 export default function NestedList(props) {
-  const [open, setOpen] = React.useState(false);
-  const [selectedSection, setSelectedSection] = React.useState("");
+  const [open, setOpen] = useState(false);
+  const [selectedSection, setSelectedSection] = useState("");
+
+  //---------------------------------------------------------------------------------
+  // odkaz na kotvu na konci seznamu playlistů
+  const playlistEndRef = useRef(null);
+  // odkaz na predchozi pocet playlistu, abych mohl scrollovat jen kdyz bude pocet vetsi
+  const prevPlaylistCountRef = React.useRef(Object.keys(props.playlists).length);
+
+  // pro posunuti po pridani
+  useEffect(() => {
+    const currentCount = Object.keys(props.playlists).length;
+    const prevCount = prevPlaylistCountRef.current;
+
+    if (playlistEndRef.current && currentCount > prevCount) {
+      //scrollIntoView je nativní JavaScript metoda (ne z Reactu), která je dostupná na každém DOM elementu
+      playlistEndRef.current.scrollIntoView({ behavior: 'smooth' });
+
+      prevPlaylistCountRef.current = currentCount;
+    }
+  }, [props.playlists]);
+  //---------------------------------------------------------------------------------
 
   const handleCollapseMenuClick = () => {
     setOpen(!open);
@@ -34,11 +55,6 @@ export default function NestedList(props) {
       props.ChangeMainSection(section, true);
     }
   };
-
-  /*const handleCombinedClick = (event, index) => {
-    handleCollapseMenuClick();
-    handleListItemClick(event, index);
-  };*/
 
   const GetPlaylistAutomaticName = () => {
     let currentNumber = 1;
@@ -165,6 +181,9 @@ export default function NestedList(props) {
               <ListItemText primary={playlistName}/>
             </ListItemButton>
           ))}
+
+          {/* Kotva pro scrollovani pri vytvoreni */}
+          <div ref={playlistEndRef}></div>
 
         </List>
       </Collapse>
