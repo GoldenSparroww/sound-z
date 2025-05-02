@@ -8,7 +8,11 @@ const SideBar = (props) => {
     <div id={props.id} className={props.isSideBarVisible ? "show" : ""}>
       <BurgerButton visible={props.isSideBarVisible} onPress={() => props.setIsSideBarVisible(!props.isSideBarVisible)}/>
       <ThemeProvider theme={themeSideBar}>
-        <NestedList changeMainSection={props.setShownMainSection}/>
+        <NestedList
+          ChangeMainSection={props.ChangeMainSection}
+          playlists={props.playlists}
+          setPlaylists={props.setPlaylists}
+        />
       </ThemeProvider>
     </div>
   )

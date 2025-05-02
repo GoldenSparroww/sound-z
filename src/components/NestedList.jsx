@@ -20,24 +20,38 @@ import Colors from '../global/Colors.js'
 
 export default function NestedList(props) {
   const [open, setOpen] = React.useState(false);
-  const [selectedIndex, setSelectedIndex] = React.useState(-1);
-  const [selectedSubIndex, setSelectedSubIndex] = React.useState(-1);
+  const [selectedSection, setSelectedSection] = React.useState("");
 
-  const handleClick = () => {
+  const handleCollapseMenuClick = () => {
     setOpen(!open);
   };
 
-  const handleListItemClick = (event, index, section) => {
-    setSelectedIndex(index);
-    if (section) {
-      props.changeMainSection(section)
+  const handleListItemClick = (section, isPlaylist = false) => {
+    setSelectedSection(section);
+    if (!isPlaylist) {
+      props.ChangeMainSection(section);
+    } else {
+      props.ChangeMainSection(section, true);
     }
   };
 
-  const handleCombinedClick = (event, index) => {
-    handleClick();
+  /*const handleCombinedClick = (event, index) => {
+    handleCollapseMenuClick();
     handleListItemClick(event, index);
-  };
+  };*/
+
+  const GetPlaylistAutomaticName = () => {
+    let currentNumber = 1;
+
+    while (true) {
+      const newName = `New playlist n. ${currentNumber}`;
+      if (!props.playlists[newName]) {
+        return newName;
+      } else {
+        currentNumber++;
+      }
+    }
+  }
 
   return (
     <List
@@ -51,8 +65,8 @@ export default function NestedList(props) {
       aria-labelledby="nested-list-subheader"
     >
       <ListItemButton
-        selected={selectedIndex === 0}
-        onClick={(event) => handleListItemClick(event, 0, "homepage")}
+        selected={selectedSection === "homepage"}
+        onClick={() => handleListItemClick("homepage")}
       >
         <ListItemIcon>
           <HomeIcon sx={{ fontSize: '3rem', padding: "0 1rem 0 0" }}/>
@@ -61,8 +75,8 @@ export default function NestedList(props) {
       </ListItemButton>
 
       <ListItemButton
-        selected={selectedIndex === 1}
-        onClick={(event) => handleListItemClick(event, 1, "queue")}
+        selected={selectedSection === "queue"}
+        onClick={() => handleListItemClick("queue")}
       >
         <ListItemIcon>
           <LayersIcon sx={{ fontSize: '3rem', padding: "0 1rem 0 0" }}/>
@@ -71,8 +85,8 @@ export default function NestedList(props) {
       </ListItemButton>
 
       <ListItemButton
-        selected={selectedIndex === 2}
-        onClick={(event) => handleListItemClick(event, 2, "favourites")}
+        selected={selectedSection === "favourites"}
+        onClick={() => handleListItemClick("favourites")}
       >
         <ListItemIcon>
           <FavoriteIcon sx={{ fontSize: '3rem', padding: "0 1rem 0 0" }} />
@@ -81,8 +95,7 @@ export default function NestedList(props) {
       </ListItemButton>
 
       <ListItemButton
-        selected={selectedIndex === 3}
-        onClick={(event) => handleCombinedClick(event, 3)}
+        onClick={() => handleCollapseMenuClick()}
       >
         <ListItemIcon>
           <QueueMusicIcon sx={{ fontSize: '3rem', padding: "0 1rem 0 0" }}/>
@@ -92,56 +105,67 @@ export default function NestedList(props) {
       </ListItemButton>
 
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <List sx={{
-          maxHeight: '300px',
-          bgcolor: Colors.color_side_bar_list,
-          overflowY: 'auto',
-          padding: 0,
-        }} component="div" disablePadding>
+        <List
+          sx={{
+            maxHeight: '300px',
+            bgcolor: Colors.color_side_bar_list,
+            overflowY: 'auto',
+            padding: 0,
+          }}
+          component="div"
+          disablePadding>
 
           <ListItemButton
             sx={{pl: 6}}
-            selected={selectedSubIndex === 0}
-            onClick={() => setSelectedSubIndex(0)}
-          >
+            onClick={() => {
+              const playlistAutomaticName = GetPlaylistAutomaticName();
+              props.setPlaylists({
+                ...props.playlists,
+                [playlistAutomaticName]: [
+                  {
+                    "id": 5,
+                    "name": "Bumpy Sax",
+                    "artist": "Copyright Free Music",
+                    "genre": "Smooth Jazz",
+                    "file": "Copyright Free Music - Bumpy Sax.mp3",
+                    "image": "image (5).jpg",
+                    "duration": "4:03",
+                    "url": "http://localhost/music/Copyright Free Music - Bumpy Sax.mp3"
+                  },
+                  {
+                    "id": 8,
+                    "name": "Bad",
+                    "artist": "David Guetta",
+                    "genre": "Dubstep",
+                    "file": "David Guetta - Bad.mp3",
+                    "image": "image (8).jpg",
+                    "duration": "2:51",
+                    "url": "http://localhost/music/David Guetta - Bad.mp3"
+                  },
+                ],
+              });
+              handleListItemClick(playlistAutomaticName, true)
+            }}>
             <ListItemIcon>
               <StarBorder/>
             </ListItemIcon>
             <ListItemText primary="Add a New Playlist"/>
           </ListItemButton>
 
-          <ListItemButton
-            sx={{pl: 6}}
-            selected={selectedSubIndex === 1}
-            onClick={() => setSelectedSubIndex(1)}
-          >
-            <ListItemIcon>
-              <StarBorder/>
-            </ListItemIcon>
-            <ListItemText primary="Goofy"/>
-          </ListItemButton>
+          {Object.keys(props.playlists).map((playlistName) => (
+            <ListItemButton
+              key={playlistName}
+              sx={{pl: 6}}
+              selected={selectedSection === playlistName}
+              onClick={() => handleListItemClick(playlistName, true)}
+            >
+              <ListItemIcon>
+                <StarBorder/>
+              </ListItemIcon>
+              <ListItemText primary={playlistName}/>
+            </ListItemButton>
+          ))}
 
-          <ListItemButton
-            sx={{pl: 6}}
-            selected={selectedSubIndex === 2}
-            onClick={() => setSelectedSubIndex(2)}
-          >
-            <ListItemIcon>
-              <StarBorder/>
-            </ListItemIcon>
-            <ListItemText primary="Goofy"/>
-          </ListItemButton>
-
-          <ListItemButton
-            sx={{pl: 6}}
-            selected={selectedSubIndex === 3}
-            onClick={() => setSelectedSubIndex(3)}
-          >
-            <ListItemIcon>
-              <StarBorder/>
-            </ListItemIcon>
-            <ListItemText primary="Goofy"/>
-          </ListItemButton>
         </List>
       </Collapse>
     </List>

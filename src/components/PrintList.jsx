@@ -5,27 +5,26 @@ import LayersIcon from '@mui/icons-material/Layers';
 import * as React from "react";
 
 function PrintList(props) {
+  const filteredSongs = props.allSongs.filter(song => {
+    return (props.whatToFilter !== null ? song[props.whatToFilter] : true) === (props.filter !== null ? props.filter : true)
+  });
+
   return (
     <div>
       <List>
-        {props.allSongs
-          .filter(song => {
-            /* pokud whatToFilter a filter je null, tak se nic nefiltruje */
-            return (props.whatToFilter !== null ? song[props.whatToFilter] : true) === (props.filter !== null ? props.filter : true);
-          })
+        {filteredSongs
           .map((song, idx) => (
             <ListItemButton
               key={idx}
-              selected={props.current.url === song.url}
+              selected={props.current.id === song.id}
               onClick={() => {
                 props.setCurrent(song);
                 props.ChangeActiveList(
                   idx,
-                  props.allSongs.filter(song => {
-                  return (props.whatToFilter !== null ? song[props.whatToFilter] : true) === (props.filter !== null ? props.filter : true);
-                }));
+                  filteredSongs
+                );
               }}>
-              <Typography sx={{pr: 3, fontSize: "1.2rem"}}>{idx + 1}</Typography>
+              <Typography sx={{pr: 3, fontSize: "1.2rem", width: "40px"}}>{idx + 1}</Typography>
               <img
                 src={`http://localhost/music/images/${song.image}`}
                 alt={song.image}

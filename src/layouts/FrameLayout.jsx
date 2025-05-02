@@ -26,6 +26,7 @@ const FrameLayout = () => {
   /* current je pro aktualni prehravanou hudbu a currentAuthor/currentGenre je pro komponentu SearchResults */
   const [currentArtist, setCurrentArtist] = useState(null);
   const [currentGenre, setCurrentGenre] = useState(null);
+  const [currentPlaylist, setCurrentPlaylist] = useState(null);
 
   const [favouriteTracks, setFavouriteTracks] = useState([]);
 
@@ -36,6 +37,17 @@ const FrameLayout = () => {
 
   const [actionPopup, setActionPopup] = useState(false);
   const [actionPopupMessage, setActionPopupMessage] = useState("");
+
+  const [playlists, setPlaylists] = useState({});
+
+  const ChangeMainSection = (section, isPlaylist = false) => {
+    if (!isPlaylist) {
+      setShownMainSection(section);
+    } else {
+      setShownMainSection("playlists");
+      setCurrentPlaylist(section);
+    }
+  }
 
   const HandleArtistSelection = (artist) => {
     if (artist) {
@@ -98,7 +110,7 @@ const FrameLayout = () => {
         <NavBar id={"nav-bar"}>
           <BurgerButton visible={!isSideBarVisible} onPress={() => setIsSideBarVisible(!isSideBarVisible)}/>
           <SearchBar
-            setShownMainSection={setShownMainSection}
+            ChangeMainSection={ChangeMainSection}
             setSearchedResults={setSearchedResults}
             allSongs={allSongs}
             setAllSongs={setAllSongs}/>
@@ -106,9 +118,11 @@ const FrameLayout = () => {
 
         <SideBar
           id={"side-bar"}
-          setShownMainSection={setShownMainSection}
+          ChangeMainSection={ChangeMainSection}
           isSideBarVisible={isSideBarVisible}
           setIsSideBarVisible={setIsSideBarVisible}
+          playlists={playlists}
+          setPlaylists={setPlaylists}
         />
 
         <ThemeProvider theme={ThemeSongsList}>
@@ -133,6 +147,9 @@ const FrameLayout = () => {
             AddImmediateFollowingTracks={AddImmediateFollowingTracks}
             activeIndex={activeIndex}
             HandleActionPopup={HandleActionPopup}
+            playlists={playlists}
+            setPlaylists={setPlaylists}
+            currentPlaylist={currentPlaylist}
           />
         </ThemeProvider>
 

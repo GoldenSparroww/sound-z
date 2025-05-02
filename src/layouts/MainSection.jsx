@@ -4,6 +4,7 @@ import ArtistPage from "./ArtistPage.jsx";
 import GenrePage from "./GenrePage.jsx";
 import QueuePage from "./QueuePage.jsx";
 import FavouritesPage from "./FavouritesPage.jsx";
+import PlaylistPage from "./PlaylistPage.jsx";
 
 const MainSection = (props) => {
   if (props.show === "homepage") {
@@ -100,6 +101,27 @@ const MainSection = (props) => {
           ChangeActiveList={props.ChangeActiveList}
           AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
+        />
+      </div>
+    )
+  } else if (props.show === "playlists") {
+    return (
+      <div id={props.id}>
+        <PlaylistPage
+          currentGenre={props.currentGenre}
+          current={props.current}
+          setCurrent={props.setCurrent}
+          allSongs={props.allSongs}
+          FavouritesAdd={props.FavouritesAdd}
+          FavouritesRemove={props.FavouritesRemove}
+          favouriteTracks={props.favouriteTracks}
+          ChangeActiveList={props.ChangeActiveList}
+          AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
+          HandleActionPopup={props.HandleActionPopup}
+
+          playlists={props.playlists}
+          setPlaylists={props.setPlaylists}
+          currentPlaylist={props.currentPlaylist}
         />
       </div>
     )

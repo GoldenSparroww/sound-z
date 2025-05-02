@@ -27,7 +27,7 @@ function SearchBar(props) {
       return;
     }
 
-    props.setShownMainSection("search-results")
+    props.ChangeMainSection("search-results")
     props.setSearchedResults({ tracks, genres, artists });
   }, [inputValue, props.allSongs]);
 
