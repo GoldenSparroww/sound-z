@@ -137,28 +137,32 @@ export default function NestedList(props) {
               const playlistAutomaticName = GetPlaylistAutomaticName();
               props.setPlaylists({
                 ...props.playlists,
-                [playlistAutomaticName]: [
-                  {
-                    "id": 5,
-                    "name": "Bumpy Sax",
-                    "artist": "Copyright Free Music",
-                    "genre": "Smooth Jazz",
-                    "file": "Copyright Free Music - Bumpy Sax.mp3",
-                    "image": "image (5).jpg",
-                    "duration": "4:03",
-                    "url": "http://localhost/music/Copyright Free Music - Bumpy Sax.mp3"
-                  },
-                  {
-                    "id": 8,
-                    "name": "Bad",
-                    "artist": "David Guetta",
-                    "genre": "Dubstep",
-                    "file": "David Guetta - Bad.mp3",
-                    "image": "image (8).jpg",
-                    "duration": "2:51",
-                    "url": "http://localhost/music/David Guetta - Bad.mp3"
-                  },
-                ],
+                [playlistAutomaticName]: {
+                  "image": "",
+                  "description": "",
+                  "songs": [
+                    {
+                      "id": 5,
+                      "name": "Bumpy Sax",
+                      "artist": "Copyright Free Music",
+                      "genre": "Smooth Jazz",
+                      "file": "Copyright Free Music - Bumpy Sax.mp3",
+                      "image": "image (5).jpg",
+                      "duration": "4:03",
+                      "url": "http://localhost/music/Copyright Free Music - Bumpy Sax.mp3"
+                    },
+                    {
+                      "id": 8,
+                      "name": "Bad",
+                      "artist": "David Guetta",
+                      "genre": "Dubstep",
+                      "file": "David Guetta - Bad.mp3",
+                      "image": "image (8).jpg",
+                      "duration": "2:51",
+                      "url": "http://localhost/music/David Guetta - Bad.mp3"
+                    }
+                  ]
+                }
               });
               handleListItemClick(playlistAutomaticName, true)
             }}>

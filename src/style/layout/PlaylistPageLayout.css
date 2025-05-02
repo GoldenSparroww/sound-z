@@ -1,0 +1,44 @@
+#playlist-page-container{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+#playlist-header{
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+        'image      name'
+        'image      description'
+        'options    options';
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: repeat(2, 150px) auto;
+    padding-bottom: 1rem;
+}
+
+#playlist-name{
+    grid-area: name;
+    font-size: 3rem;
+    padding-left: 4rem;
+}
+
+#playlist-image{
+    grid-area: image;
+    background-color: yellow;
+}
+
+#playlist-description{
+    grid-area: description;
+    padding-left: 4rem;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+}
+
+#playlist-options{
+    grid-area: options;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
