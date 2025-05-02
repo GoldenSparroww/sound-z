@@ -1,0 +1,16 @@
+#favourites-container{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#favourites-header{
+    background-color: var(--color-side-bar);
+    padding: 1rem;
+}
+
+#favourites-list{
+    background-color: var(--color-side-bar);
+    padding: 1rem;
+}

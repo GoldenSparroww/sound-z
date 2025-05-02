@@ -139,7 +139,7 @@ export default function NestedList(props) {
                 ...props.playlists,
                 [playlistAutomaticName]: {
                   "image": "",
-                  "description": "",
+                  "description": "descriptiondescription",
                   "songs": [
                     {
                       "id": 5,
@@ -148,7 +148,7 @@ export default function NestedList(props) {
                       "genre": "Smooth Jazz",
                       "file": "Copyright Free Music - Bumpy Sax.mp3",
                       "image": "image (5).jpg",
-                      "duration": "4:03",
+                      "duration": 243,
                       "url": "http://localhost/music/Copyright Free Music - Bumpy Sax.mp3"
                     },
                     {
@@ -158,7 +158,7 @@ export default function NestedList(props) {
                       "genre": "Dubstep",
                       "file": "David Guetta - Bad.mp3",
                       "image": "image (8).jpg",
-                      "duration": "2:51",
+                      "duration": 171,
                       "url": "http://localhost/music/David Guetta - Bad.mp3"
                     }
                   ]

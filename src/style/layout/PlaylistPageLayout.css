@@ -6,7 +6,6 @@
 
 #playlist-header{
     display: grid;
-    gap: 1rem;
     grid-template-areas:
         'image      name'
         'image      description'
@@ -25,6 +24,7 @@
 #playlist-image{
     grid-area: image;
     background-color: yellow;
+    margin: auto;
 }
 
 #playlist-description{
@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-start;
+    font-size: 1.3rem;
 }
 
 #playlist-options{
@@ -41,4 +42,33 @@
     flex-direction: row;
     align-items: center;
     gap: 1rem;
+    padding-top: 2rem;
+}
+
+@media (max-width: 1000px) {
+    #playlist-header{
+        display: grid;
+        gap: 1rem;
+        grid-template-areas:
+            'image          image'
+            'name           name'
+            'description    options';
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 300px auto auto;
+        padding-bottom: 1rem;
+    }
+
+    #playlist-image{
+        margin: auto;
+        padding-top: 0;
+    }
+
+    #playlist-name, #playlist-description{
+        padding-left: 0;
+    }
+
+    #playlist-options{
+        flex-direction: row-reverse;
+        padding-top: 0;
+    }
 }

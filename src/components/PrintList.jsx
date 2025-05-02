@@ -3,6 +3,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LayersIcon from '@mui/icons-material/Layers';
 import * as React from "react";
+import formatTime from "../logic/FormatTime.js";
 
 function PrintList(props) {
   const filteredSongs = props.allSongs.filter(song => {
@@ -24,7 +25,15 @@ function PrintList(props) {
                   filteredSongs
                 );
               }}>
-              <Typography sx={{pr: 3, fontSize: "1.2rem", width: "40px"}}>{idx + 1}</Typography>
+              <Typography
+                sx={{
+                  pr: 3,
+                  fontSize: "1.2rem",
+                  minWidth: "40px",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap"
+              }}>{idx + 1}</Typography>
               <img
                 src={`http://localhost/music/images/${song.image}`}
                 alt={song.image}
@@ -33,7 +42,9 @@ function PrintList(props) {
                 sx={{pl: 3}}
                 primary={song.name}
                 secondary={`${props.showArtist ? song.artist : ''} ${props.showArtist && props.showGenre ? '•' : '' } ${props.showGenre ? song.genre : ''}`} />
-              <Typography sx={{pr: "15%", pl: "5%"}}>{song.duration}</Typography>
+              <Typography sx={{pr: "15%", pl: "5%"}}>
+                {formatTime(song.duration)}
+              </Typography>
               <IconButton
                 onClick={ (e) => {
                   e.stopPropagation();

@@ -4,6 +4,7 @@ import * as React from "react";
 import "../style/layout/SearchResultsLayout.css"
 import LayersIcon from "@mui/icons-material/Layers";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import formatTime from "../logic/FormatTime.js";
 
 function SearchResults(props) {
   return (
@@ -30,7 +31,9 @@ function SearchResults(props) {
                   sx={{pl: 3}}
                   primary={song.name}
                   secondary={`${song.artist} • ${song.genre}`} />
-                <Typography sx={{pr: "15%", pl: "5%"}}>{song.duration}</Typography>
+                <Typography sx={{pr: "15%", pl: "5%"}}>
+                  {formatTime(song.duration)}
+                </Typography>
                 <IconButton
                   onClick={ (e) => {
                     e.stopPropagation();

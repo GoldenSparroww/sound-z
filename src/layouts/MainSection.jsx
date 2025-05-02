@@ -30,6 +30,7 @@ const MainSection = (props) => {
           immediateFollowingTracks={props.immediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
           activeIndex={props.activeIndex}
+          currentPlaylist={props.currentPlaylist}
         />
       </div>
     )
