@@ -1,7 +1,6 @@
 #playlist-page-container{
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
 }
 
 #playlist-header{
@@ -12,7 +11,8 @@
         'options    options';
     grid-template-columns: 300px 1fr;
     grid-template-rows: repeat(2, 150px) auto;
-    padding-bottom: 1rem;
+    background-color: var(--color-side-bar);
+    padding: 1.5rem;
 }
 
 #playlist-name{
@@ -43,6 +43,10 @@
     align-items: center;
     gap: 1rem;
     padding-top: 2rem;
+}
+
+#playlist-content{
+    padding: 1.5rem;
 }
 
 @media (max-width: 1000px) {
