@@ -2,16 +2,36 @@ import "../style/layout/PlaylistPageLayout.css"
 import PrintList from "../components/PrintList.jsx";
 import * as React from "react";
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import MenuIcon from '@mui/icons-material/Menu';
+import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import formatTime from "../logic/FormatTime.js";
+import PlaylistMenu from "../components/PlaylistMenu.jsx";
+import {IconButton} from "@mui/material";
+import {useState} from "react";
 
 const PlaylistPage = (props) => {
+  const [playingNow, setPlayingNow] = useState(false);
 
   const totalTrackTime = props.playlists[props.currentPlaylist]["songs"].reduce((sum, song) => {
     return sum + song.duration;
   }, 0)
 
   const trackCount = props.playlists[props.currentPlaylist]["songs"].length;
+
+  /*const PlayPlaylist = () => {
+    if (props.playlists[props.currentPlaylist]["songs"][0]) {
+      props.setCurrent(props.playlists[props.currentPlaylist]["songs"][0]);
+      props.ChangeActiveList(
+        0,
+        [...props.playlists[props.currentPlaylist]["songs"]]
+      );
+    } else {
+      props.HandleActionPopup("Playlist je prázdný!");
+    }
+  };*/
+
+  const PlayButtonHandle = () => {
+    setPlayingNow(!playingNow);
+  }
 
   return (
     <div id={"playlist-page-container"}>
@@ -23,7 +43,7 @@ const PlaylistPage = (props) => {
         ></div>
         <div id={'playlist-description'}>
           <p>
-            {trackCount} {trackCount > 1 ? "tracks" : "track"}
+            {trackCount} {trackCount === 1 ? "track" : "tracks"}
           </p>
           <p>
             {formatTime(totalTrackTime)}
@@ -33,8 +53,10 @@ const PlaylistPage = (props) => {
           </p>
         </div>
         <div id={'playlist-options'}>
-          <PlayCircleIcon sx={{ fontSize: '5em' }} />
-          <MenuIcon sx={{ fontSize: '3em' }}/>
+          <IconButton onClick={PlayButtonHandle}>
+            {!playingNow ? <PlayCircleIcon sx={{fontSize: '5rem'}}/> : <PauseCircleIcon sx={{fontSize: '5rem'}}/>}
+          </IconButton>
+          <PlaylistMenu />
         </div>
       </div>
 

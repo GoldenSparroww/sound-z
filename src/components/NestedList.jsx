@@ -180,9 +180,13 @@ export default function NestedList(props) {
               onClick={() => handleListItemClick(playlistName, true)}
             >
               <ListItemIcon>
-                <StarBorder/>
+                <div
+                  style={{backgroundColor: 'blue', width: '50px', height: '50px'}}
+                />
               </ListItemIcon>
-              <ListItemText primary={playlistName}/>
+              <ListItemText
+                sx={{ pl: "1rem"}}
+                primary={playlistName}/>
             </ListItemButton>
           ))}
 

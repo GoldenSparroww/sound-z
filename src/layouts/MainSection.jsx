@@ -123,6 +123,7 @@ const MainSection = (props) => {
           playlists={props.playlists}
           setPlaylists={props.setPlaylists}
           currentPlaylist={props.currentPlaylist}
+          activeList={props.activeList}
         />
       </div>
     )
