@@ -11,11 +11,11 @@ import {useState} from "react";
 const PlaylistPage = (props) => {
   const [playingNow, setPlayingNow] = useState(false);
 
-  const totalTrackTime = props.playlists[props.currentPlaylist]["songs"].reduce((sum, song) => {
-    return sum + song.duration;
-  }, 0)
+  const selectedPlaylist = props.playlists.find(playlist => playlist.id === props.currentPlaylist);
 
-  const trackCount = props.playlists[props.currentPlaylist]["songs"].length;
+  const totalTrackTime = selectedPlaylist["songs"].reduce((acc, song) => acc + song.duration, 0);
+
+  const trackCount = selectedPlaylist["songs"].length;
 
   /*const PlayPlaylist = () => {
     if (props.playlists[props.currentPlaylist]["songs"][0]) {
@@ -36,7 +36,7 @@ const PlaylistPage = (props) => {
   return (
     <div id={"playlist-page-container"}>
       <div id={"playlist-header"}>
-        <span id={'playlist-name'}>{props.currentPlaylist}</span>
+        <span id={'playlist-name'}>{selectedPlaylist["name"]}</span>
         <div
           style={{width:'300px', height:'300px'}}
           id={'playlist-image'}

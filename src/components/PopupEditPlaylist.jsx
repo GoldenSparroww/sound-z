@@ -7,15 +7,46 @@ import ThemeForm from "../global/ThemeForm.js";
 import {ThemeProvider} from "@mui/material/styles";
 
 const PopupEditPlaylist = (props) => {
-  const [currentlyEdited, setCurrentlyEdited] = useState({
-    [props.currentPlaylist]: {...props.playlists[props.currentPlaylist]}});
+  const [nameError, setNameError] = useState("");
+  const [descriptionError, setDescriptionError] = useState("");
+
+  const [currentlyEdited, setCurrentlyEdited] = useState(() => {
+    return props.playlists.find(playlist => playlist.id === props.currentPlaylist)
+  });
 
   const TemporarySaveName = (e) => {
-    setCurrentlyEdited({[e.target.value]: {...props.playlists[props.currentPlaylist]}});
+    const newName = e.target.value.trim();
+    const duplicate = props.playlists.some(
+      playlist =>
+        playlist.name === newName &&
+        playlist.id !== currentlyEdited.id
+    );
+
+    if (newName === "") {
+      setNameError("Název nesmí být prázdný.");
+    } else if (duplicate) {
+      setNameError("Název už existuje.");
+    } else if (newName.length > 100){
+      e.target.value = newName.slice(0, 100);
+      setNameError("100/100");
+    } else {
+      setNameError("");
+    }
+
+    setCurrentlyEdited({...currentlyEdited, name: newName});
   };
 
   const TemporarySaveDescription = (e) => {
-    //setCurrentlyEdited({...currentlyEdited, description: e.target.value})
+    const newValue = e.target.value;
+
+    if (newValue.length > 500) {
+      setDescriptionError("500/500")
+      e.target.value = newValue.slice(0, 500);
+    } else {
+      setDescriptionError("");
+    }
+
+    setCurrentlyEdited({...currentlyEdited, description: newValue})
   };
 
   const TemporarySaveImage = (e) => {
@@ -23,11 +54,12 @@ const PopupEditPlaylist = (props) => {
   };
 
   const SaveChanges = () => {
-    const updatedPlaylistName = Object.keys(currentlyEdited)[0];
-    props.setPlaylists({
-      ...props.playlists,
-      [updatedPlaylistName]: currentlyEdited[updatedPlaylistName]
-    });
+    props.setPlaylists(
+      props.playlists.map(playlist =>
+        playlist.id === currentlyEdited.id ? currentlyEdited : playlist
+      )
+    );
+
     props.setShownPopupMenu(null);
   };
 
@@ -38,7 +70,7 @@ const PopupEditPlaylist = (props) => {
         onClick={() => props.setShownPopupMenu(null)}
       ></div>
 
-      <div id={'popup-menu-content'}>
+      <div id={'popup-menu-content'} className="mui-like-border">
         <ThemeProvider theme={ThemeForm}>
           <div id={'edit-playlist-popup-container'}>
 
@@ -61,8 +93,10 @@ const PopupEditPlaylist = (props) => {
               id="edit-playlist-popup-name"
               label="Název Playlistu"
               variant="outlined"
-              defaultValue={props.currentPlaylist}
+              defaultValue={props.playlists[props.currentPlaylist].name}
               onChange={(e) => TemporarySaveName(e)}
+              helperText={nameError !== "" ? nameError : ""}
+              error={nameError !== ""}
             />
             <TextField
               id="edit-playlist-popup-description"
@@ -72,6 +106,8 @@ const PopupEditPlaylist = (props) => {
               multiline
               rows={9}
               onChange={(e) => TemporarySaveDescription(e)}
+              helperText={descriptionError !== "" ? descriptionError : ""}
+              error={descriptionError !== ""}
             />
             <div
               id="edit-playlist-popup-button"
@@ -79,7 +115,12 @@ const PopupEditPlaylist = (props) => {
               <Button variant="filled" startIcon={<CancelIcon />} onClick={() => props.setShownPopupMenu(null)}>
                 Zrušit
               </Button>
-              <Button variant="filled" startIcon={<CheckBoxIcon />} onClick={() => SaveChanges()}>
+              <Button
+                variant="filled"
+                startIcon={<CheckBoxIcon />}
+                onClick={() => SaveChanges()}
+                disabled={!!nameError || currentlyEdited.name.trim() === ""}
+              >
                 Uložit
               </Button>
             </div>

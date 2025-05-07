@@ -57,16 +57,30 @@ export default function NestedList(props) {
   };
 
   const GetPlaylistAutomaticName = () => {
-    let currentNumber = 1;
+    const usedNumbers = new Set();
 
-    while (true) {
-      const newName = `New playlist n. ${currentNumber}`;
-      if (!props.playlists[newName]) {
-        return newName;
-      } else {
-        currentNumber++;
+    props.playlists.forEach((playlist) => {
+      const match = playlist.name.match(/^New playlist n\. (\d+)$/);
+      if (match) {
+        usedNumbers.add(parseInt(match[1], 10));
       }
+    });
+
+    let newNumber = 1;
+    while (usedNumbers.has(newNumber)) {
+      newNumber++;
     }
+
+    return `New playlist n. ${newNumber}`;
+  }
+
+  function GetPlaylistAutomaticId() {
+    const idxs = props.playlists.map(playlist => playlist.id);
+    let currentIdx = 0;
+    while (idxs.includes(currentIdx)) {
+      currentIdx++;
+    }
+    return currentIdx;
   }
 
   return (
@@ -134,10 +148,12 @@ export default function NestedList(props) {
           <ListItemButton
             sx={{pl: 6}}
             onClick={() => {
-              const playlistAutomaticName = GetPlaylistAutomaticName();
-              props.setPlaylists({
+              const playlistAutomaticNameId = GetPlaylistAutomaticId();
+              props.setPlaylists([
                 ...props.playlists,
-                [playlistAutomaticName]: {
+                {
+                  "id": playlistAutomaticNameId,
+                  "name": GetPlaylistAutomaticName(),
                   "image": "http://localhost/playlists/empty.png",
                   "description": "",
                   "songs": [
@@ -163,8 +179,8 @@ export default function NestedList(props) {
                     }
                   ]
                 }
-              });
-              handleListItemClick(playlistAutomaticName, true)
+              ]);
+              handleListItemClick(playlistAutomaticNameId, true)
             }}>
             <ListItemIcon>
               <AddBoxIcon sx={{ fontSize: '2rem'}}/>
@@ -172,12 +188,12 @@ export default function NestedList(props) {
             <ListItemText primary="Add a New Playlist"/>
           </ListItemButton>
 
-          {Object.keys(props.playlists).map((playlistName) => (
+          {props.playlists.map((playlist, idx) => (
             <ListItemButton
-              key={playlistName}
+              key={idx}
               sx={{pl: 6}}
-              selected={selectedSection === playlistName}
-              onClick={() => handleListItemClick(playlistName, true)}
+              selected={selectedSection === playlist["id"]}
+              onClick={() => handleListItemClick(playlist["id"], true)}
             >
               <ListItemIcon>
                 <div
@@ -187,7 +203,7 @@ export default function NestedList(props) {
                   }}
                 >
                   <img
-                    src={props.playlists[playlistName].image}
+                    src={playlist["image"]}
                     style={{
                       minHeight: '50px',
                       minWidth: '50px',
@@ -198,7 +214,7 @@ export default function NestedList(props) {
               </ListItemIcon>
               <ListItemText
                 sx={{ pl: "1rem"}}
-                primary={playlistName}/>
+                primary={playlist["name"]}/>
             </ListItemButton>
           ))}
 

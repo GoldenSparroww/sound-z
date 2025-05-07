@@ -31,6 +31,11 @@ const ThemeForm = createTheme({
           '&:focus': {
             boxShadow: 'none',
           },
+          '&:disabled': {
+            opacity: 0.6,
+            cursor: 'not-allowed',
+            color: Colors.color_text,
+          },
         }
       }
     },
@@ -43,10 +48,10 @@ const ThemeForm = createTheme({
             color: Colors.color_text,
           },
           '& label.Mui-focused': {
-            color: Colors.color_details,
+            color: Colors.color_text,
           },
           '& .MuiInput-underline:after': {
-            borderBottomColor: Colors.color_details,
+            borderBottomColor: Colors.color_selection,
           },
           '& .MuiInputBase-input::placeholder': {
             color: Colors.color_text,
@@ -62,7 +67,7 @@ const ThemeForm = createTheme({
               borderColor: Colors.color_text,
             },
             '&.Mui-focused fieldset': {
-              borderColor: Colors.color_details,
+              borderColor: Colors.color_selection,
             },
           }
         }
