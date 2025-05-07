@@ -124,6 +124,8 @@ const MainSection = (props) => {
           setPlaylists={props.setPlaylists}
           currentPlaylist={props.currentPlaylist}
           activeList={props.activeList}
+          setShownPopupMenu={props.setShownPopupMenu}
+          shownMainSection={props.shownMainSection}
         />
       </div>
     )

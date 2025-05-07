@@ -24,8 +24,8 @@
 
 #playlist-image{
     grid-area: image;
-    background-color: yellow;
     margin: auto;
+    background-color: transparent;
 }
 
 #playlist-description{

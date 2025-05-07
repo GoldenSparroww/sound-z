@@ -38,7 +38,7 @@ const FrameLayout = () => {
   const [actionPopup, setActionPopup] = useState(false);
   const [actionPopupMessage, setActionPopupMessage] = useState("");
 
-  const [playlists, setPlaylists] = useState({});
+  const [playlists, setPlaylists] = useState([]);
 
   const ChangeMainSection = (section, isPlaylist = false) => {
     if (!isPlaylist) {
@@ -104,7 +104,12 @@ const FrameLayout = () => {
     <>
       <PopupMenu
         setShownPopupMenu={setShownPopupMenu}
-        shownPopupMenu={shownPopupMenu /* Slouží i jako props.visible, viz. PopupMenu */}/>
+        shownPopupMenu={shownPopupMenu /* Slouží i jako props.visible, viz. PopupMenu */}
+        playlists={playlists}
+        currentPlaylist={currentPlaylist}
+        setPlaylists={setPlaylists}
+        setCurrentPlaylist={setCurrentPlaylist}
+      />
 
       <div id={"grid-container"}>
         <NavBar id={"nav-bar"}>
@@ -150,6 +155,7 @@ const FrameLayout = () => {
             playlists={playlists}
             setPlaylists={setPlaylists}
             currentPlaylist={currentPlaylist}
+            shownMainSection={shownMainSection}
           />
         </ThemeProvider>
 

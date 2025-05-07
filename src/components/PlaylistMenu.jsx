@@ -8,7 +8,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import AddIcon from '@mui/icons-material/Add';
 import QueueIcon from '@mui/icons-material/Queue';
 
-export default function PlaylistMenu() {
+export default function PlaylistMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -19,6 +19,11 @@ export default function PlaylistMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleEditClick = () => {
+    handleClose()
+    props.setShownPopupMenu("edit-playlist");
+  }
 
   return (
     <div>
@@ -37,7 +42,7 @@ export default function PlaylistMenu() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => handleEditClick()}>
           <AddIcon sx={{ paddingRight: '0.5em' }} />
           <ListItemText>Edit playlist appearance</ListItemText>
         </MenuItem>

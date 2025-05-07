@@ -13,7 +13,7 @@ import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 import Colors from '../global/Colors.js'
 import {useEffect, useRef, useState} from "react";
@@ -138,8 +138,8 @@ export default function NestedList(props) {
               props.setPlaylists({
                 ...props.playlists,
                 [playlistAutomaticName]: {
-                  "image": "",
-                  "description": "descriptiondescription",
+                  "image": "http://localhost/playlists/empty.png",
+                  "description": "",
                   "songs": [
                     {
                       "id": 5,
@@ -167,7 +167,7 @@ export default function NestedList(props) {
               handleListItemClick(playlistAutomaticName, true)
             }}>
             <ListItemIcon>
-              <StarBorder/>
+              <AddBoxIcon sx={{ fontSize: '2rem'}}/>
             </ListItemIcon>
             <ListItemText primary="Add a New Playlist"/>
           </ListItemButton>
@@ -181,8 +181,20 @@ export default function NestedList(props) {
             >
               <ListItemIcon>
                 <div
-                  style={{backgroundColor: 'blue', width: '50px', height: '50px'}}
-                />
+                  style={{
+                    width: '50px',
+                    height: '50px'
+                  }}
+                >
+                  <img
+                    src={props.playlists[playlistName].image}
+                    style={{
+                      minHeight: '50px',
+                      minWidth: '50px',
+                      objectFit: 'fill',
+                      borderRadius: '5px'
+                    }}/>
+                </div>
               </ListItemIcon>
               <ListItemText
                 sx={{ pl: "1rem"}}

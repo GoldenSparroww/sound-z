@@ -40,7 +40,16 @@ const PlaylistPage = (props) => {
         <div
           style={{width:'300px', height:'300px'}}
           id={'playlist-image'}
-        ></div>
+        >
+          <img
+            src={props.playlists[props.currentPlaylist].image}
+            style={{
+              minWidth:'100%',
+              minHeight:'100%',
+              objectFit: "fill"
+            }}
+          />
+        </div>
         <div id={'playlist-description'}>
           <p>
             {trackCount} {trackCount === 1 ? "track" : "tracks"}
@@ -56,7 +65,9 @@ const PlaylistPage = (props) => {
           <IconButton onClick={PlayButtonHandle}>
             {!playingNow ? <PlayCircleIcon sx={{fontSize: '5rem'}}/> : <PauseCircleIcon sx={{fontSize: '5rem'}}/>}
           </IconButton>
-          <PlaylistMenu />
+          <PlaylistMenu
+            setShownPopupMenu={props.setShownPopupMenu}
+          />
         </div>
       </div>
 
