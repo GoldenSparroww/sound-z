@@ -43,10 +43,10 @@ const PlaylistPage = (props) => {
         >
           <img
             src={props.playlists[props.currentPlaylist].image}
+            alt={"Image Preview"}
             style={{
               minWidth:'100%',
-              minHeight:'100%',
-              objectFit: "fill"
+              minHeight:'100%'
             }}
           />
         </div>

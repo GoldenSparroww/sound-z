@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import "../style/layout/PopupEditPlaylist.css"
 import {Button, TextField} from "@mui/material";
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
@@ -9,10 +9,13 @@ import {ThemeProvider} from "@mui/material/styles";
 const PopupEditPlaylist = (props) => {
   const [nameError, setNameError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
-
+  const fileInputRef = useRef(null);
   const [currentlyEdited, setCurrentlyEdited] = useState(() => {
     return props.playlists.find(playlist => playlist.id === props.currentPlaylist)
   });
+  // description, name se ukldájí rovnou do currentlyEdited, image ne
+  const [previewImageUrl, setPreviewImageUrl] = useState(currentlyEdited.image);
+  const [previewImage, setPreviewImage] = useState(null);
 
   const TemporarySaveName = (e) => {
     const newName = e.target.value.trim();
@@ -50,10 +53,28 @@ const PopupEditPlaylist = (props) => {
   };
 
   const TemporarySaveImage = (e) => {
-    setCurrentlyEdited({...currentlyEdited, image: e.target.value})
+    const newImage = e.target.files[0];
+
+    if (newImage) {
+      setPreviewImage(newImage);
+      const imageURL = URL.createObjectURL(newImage);
+      setPreviewImageUrl(imageURL);
+    }
+    //setCurrentlyEdited({...currentlyEdited, image: e.target.value})
   };
 
-  const SaveChanges = () => {
+  const SaveChanges = async () => {
+
+    if (previewImage) {
+      const uploadedUrl = await uploadImage(previewImage);
+      if (uploadedUrl) {
+        currentlyEdited.image = uploadedUrl;
+      } else {
+        alert("Nepodařilo se nahrát obrázek.");
+        return;
+      }
+    }
+
     props.setPlaylists(
       props.playlists.map(playlist =>
         playlist.id === currentlyEdited.id ? currentlyEdited : playlist
@@ -62,6 +83,31 @@ const PopupEditPlaylist = (props) => {
 
     props.setShownPopupMenu(null);
   };
+
+  const handleImageClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("playlistId", currentlyEdited.id);
+    console.log(formData);
+
+    try {
+      const response = await fetch("http://localhost/uploadImage.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+      return result.imageUrl; // např. "http://localhost/images/xyz.jpg"
+    } catch (error) {
+      console.error("Chyba při uploadu:", error);
+      return null;
+    }
+  };
+
 
   return (
     <>
@@ -75,16 +121,26 @@ const PopupEditPlaylist = (props) => {
           <div id={'edit-playlist-popup-container'}>
 
             <div id={'edit-playlist-popup-image'}>
+              <input
+                type="file"
+                id="fileInput"
+                accept="image/*"
+                style={{display: 'none'}}
+                ref={fileInputRef}
+                onChange={TemporarySaveImage}
+              />
               <div
                 id={'edit-playlist-popup-image-clickable'}
               >
                 <img
-                  src={props.playlists[props.currentPlaylist].image}
+                  src={previewImageUrl}
+                  alt={"Image preview"}
                   style={{
                     minWidth: "200px",
                     minHeight: "200px",
-                    objectFit: "fill"
+                    objectFit: "cover"
                   }}
+                  onClick={handleImageClick}
                 />
               </div>
             </div>
