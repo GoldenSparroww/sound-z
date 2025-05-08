@@ -103,6 +103,8 @@ const PlaylistPage = (props) => {
             playlists={props.playlists}
             setPlaylists={props.setPlaylists}
             isShownInPlaylist={true}
+            currentPlaylist={props.currentPlaylist}
+            //RefreshQueuePlaylist={props.RefreshQueuePlaylist}
           ></PrintList>
         ) : (
           <p>

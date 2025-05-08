@@ -3,7 +3,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import {Divider, IconButton} from "@mui/material";
 import ListItemText from "@mui/material/ListItemText";
-import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -69,7 +68,20 @@ export default function TrackMoreContextMenuButton(props) {
   }
 
   const handleRemoveFromPlaylist = (boundTrack) => {
+    handleClose();
+    let selectedPlaylist = props.playlists.find((playlist) => playlist.id === props.currentPlaylist);
 
+    selectedPlaylist.songs = selectedPlaylist.songs.filter((song) =>
+      song.id !== boundTrack.id
+    );
+
+    props.setPlaylists([
+      ...props.playlists.map((playlist) => (
+        playlist.id !== selectedPlaylist.id ? playlist : selectedPlaylist
+      ))
+    ])
+
+    //props.RefreshQueuePlaylist(selectedPlaylist.songs);
   };
 
   return (

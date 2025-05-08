@@ -134,6 +134,7 @@ const MainSection = (props) => {
           setShownPopupMenu={props.setShownPopupMenu}
           shownMainSection={props.shownMainSection}
           setShownMainSection={props.setShownMainSection}
+          //RefreshQueuePlaylist={props.RefreshQueuePlaylist}
         />
       </div>
     )

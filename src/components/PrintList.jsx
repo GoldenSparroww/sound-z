@@ -91,6 +91,10 @@ function PrintList(props) {
                   boundTrack={song}
                   HandleActionPopup={props.HandleActionPopup}
                   isShownInPlaylist={props.isShownInPlaylist}
+                  //optional, neni defaultne potreba mimo playlisty, protoze se pak stejne ani neukaze
+                  currentPlaylist={props.currentPlaylist}
+                  //optional, neni defaultne potreba mimo playlisty, protoze se pak stejne ani neukaze
+                  //RefreshQueuePlaylist={props.RefreshQueuePlaylist}
                 />
               </div>
             </ListItemButton>
