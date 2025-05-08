@@ -46,11 +46,15 @@ function PrintList(props) {
               <Typography sx={{pr: "15%", pl: "5%"}}>
                 {formatTime(song.duration)}
               </Typography>
-              <TrackAddContextMenuButton
-                playlists={props.playlists}
-                setPlaylists={props.setPlaylists}
-                bindedTrack={song}
-              />
+              <div onClick={(e) => {e.stopPropagation()}}>
+                <TrackAddContextMenuButton
+                  playlists={props.playlists}
+                  setPlaylists={props.setPlaylists}
+                  boundTrack={song}
+                  HandleActionPopup={props.HandleActionPopup}
+                />
+              </div>
+
               <IconButton
                 onClick={ (e) => {
                   e.stopPropagation();

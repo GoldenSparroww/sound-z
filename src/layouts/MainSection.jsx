@@ -47,6 +47,8 @@ const MainSection = (props) => {
           ChangeActiveList={props.ChangeActiveList}
           AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
+          playlists={props.playlists}
+          setPlaylists={props.setPlaylists}
         >
         </FavouritesPage>
       </div>
@@ -67,6 +69,8 @@ const MainSection = (props) => {
           ChangeActiveList={props.ChangeActiveList}
           AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
+          playlists={props.playlists}
+          setPlaylists={props.setPlaylists}
         />
       </div>
     )
@@ -84,6 +88,8 @@ const MainSection = (props) => {
           HandleActionPopup={props.HandleActionPopup}
           ChangeActiveList={props.ChangeActiveList}
           AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
+          playlists={props.playlists}
+          setPlaylists={props.setPlaylists}
         />
       </div>
     )
@@ -101,6 +107,8 @@ const MainSection = (props) => {
           ChangeActiveList={props.ChangeActiveList}
           AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
+          playlists={props.playlists}
+          setPlaylists={props.setPlaylists}
         />
       </div>
     )

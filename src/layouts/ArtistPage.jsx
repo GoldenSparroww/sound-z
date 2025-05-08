@@ -21,6 +21,8 @@ function ArtistPage(props) {
         ChangeActiveList={props.ChangeActiveList}
         AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
         HandleActionPopup={props.HandleActionPopup}
+        playlists={props.playlists}
+        setPlaylists={props.setPlaylists}
       ></PrintList>
     </div>
   )

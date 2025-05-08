@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { IconButton} from "@mui/material";
+import {Divider, IconButton} from "@mui/material";
 import ListItemText from "@mui/material/ListItemText";
 import AddIcon from '@mui/icons-material/Add';
 
@@ -17,14 +17,19 @@ export default function TrackAddContextMenuButton(props) {
     setAnchorEl(null);
   };
 
-  const handlePlaylistAdded = (currentPlaylist, bindedTrack) => {
+  const handlePlaylistAdded = (currentPlaylist, boundTrack) => {
     handleClose()
-
+    
+    if (containsBoundTrack(currentPlaylist, boundTrack)) {
+      props.HandleActionPopup(`Písnička už je v playlistu ${currentPlaylist.name} obsažena!`);
+      return;
+    }
+    
     const updatedPlaylist = {
       ...currentPlaylist,
       songs: [
         ...currentPlaylist.songs,
-        bindedTrack,
+        boundTrack,
       ]
     }
 
@@ -33,9 +38,15 @@ export default function TrackAddContextMenuButton(props) {
         playlist.id !== updatedPlaylist.id ? playlist : updatedPlaylist),
     ]);
   }
+  
+  const containsBoundTrack = (currentPlaylist, boundTrack) => {
+    return currentPlaylist.songs.some(song =>
+      song.id === boundTrack.id
+    )
+  }
 
   return (
-    <div>
+    <>
       <IconButton
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
@@ -53,14 +64,17 @@ export default function TrackAddContextMenuButton(props) {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem sx={{textAlign: "center"}} disabled={true}>Add to playlist...</MenuItem>
+        <MenuItem sx={{textAlign: "center", fontSize: "1.1rem"}} disabled={true}>Add to playlist...</MenuItem>
+        <Divider />
         {props.playlists.map((playlist, idx) => (
-          <MenuItem key={idx} onClick={() => handlePlaylistAdded(playlist, props.bindedTrack)}>
+          <MenuItem
+            key={idx}
+            onClick={() => handlePlaylistAdded(playlist, props.boundTrack)}
+          >
             <ListItemText>{playlist.name}</ListItemText>
           </MenuItem>
         ))}
-
       </Menu>
-    </div>
+    </>
   );
 }

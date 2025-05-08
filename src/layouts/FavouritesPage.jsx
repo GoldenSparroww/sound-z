@@ -25,6 +25,8 @@ const FavouritesPage = (props) => {
             ChangeActiveList={props.ChangeActiveList}
             AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
             HandleActionPopup={props.HandleActionPopup}
+            playlists={props.playlists}
+            setPlaylists={props.setPlaylists}
           ></PrintList>
         ) : (
           <Typography variant="h6">Zatím se ti nic nelíbí</Typography>
