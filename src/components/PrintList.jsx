@@ -4,7 +4,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LayersIcon from '@mui/icons-material/Layers';
 import * as React from "react";
 import formatTime from "../logic/FormatTime.js";
-import TrackAddContextMenuButton from "./TrackAddContextMenuButton.jsx";
+import TrackMoreContextMenuButton from "./TrackMoreContextMenuButton.jsx";
 
 function PrintList(props) {
   const filteredSongs = props.allSongs.filter(song => {
@@ -69,14 +69,6 @@ function PrintList(props) {
               <Typography sx={{pr: "15%", pl: "5%"}}>
                 {formatTime(song.duration)}
               </Typography>
-              <div onClick={(e) => {e.stopPropagation()}}>
-                <TrackAddContextMenuButton
-                  playlists={props.playlists}
-                  setPlaylists={props.setPlaylists}
-                  boundTrack={song}
-                  HandleActionPopup={props.HandleActionPopup}
-                />
-              </div>
 
               <IconButton
                 onClick={ (e) => {
@@ -92,6 +84,15 @@ function PrintList(props) {
                 }}>
                 {(props.favouriteTracks.includes(song)) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
               </IconButton>
+              <div onClick={(e) => {e.stopPropagation()}}>
+                <TrackMoreContextMenuButton
+                  playlists={props.playlists}
+                  setPlaylists={props.setPlaylists}
+                  boundTrack={song}
+                  HandleActionPopup={props.HandleActionPopup}
+                  isShownInPlaylist={props.isShownInPlaylist}
+                />
+              </div>
             </ListItemButton>
           ))}
       </List>

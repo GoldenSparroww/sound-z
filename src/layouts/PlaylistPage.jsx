@@ -32,7 +32,6 @@ const PlaylistPage = (props) => {
   const PlayButtonHandle = () => {
     setPlayingNow(!playingNow);
   }
-  console.log(props.playlists, props.currentPlaylist)
 
   return (
     <div id={"playlist-page-container"}>
@@ -103,6 +102,7 @@ const PlaylistPage = (props) => {
             HandleActionPopup={props.HandleActionPopup}
             playlists={props.playlists}
             setPlaylists={props.setPlaylists}
+            isShownInPlaylist={true}
           ></PrintList>
         ) : (
           <p>
