@@ -37,7 +37,11 @@ const PlaylistPage = (props) => {
   return (
     <div id={"playlist-page-container"}>
       <div id={"playlist-header"}>
-        <span id={'playlist-name'}>{selectedPlaylist["name"]}</span>
+        <span
+          id={'playlist-name'}
+        >
+          {selectedPlaylist["name"]}
+        </span>
         <div
           style={{width:'300px', height:'300px'}}
           id={'playlist-image'}
@@ -52,13 +56,17 @@ const PlaylistPage = (props) => {
           />
         </div>
         <div id={'playlist-description'}>
-          <Typography sx={{overflow: 'hidden', textOverflow: 'ellipsis'}} >
+          <Typography id={'playlist-description-track-count'} sx={{overflow: 'hidden', textOverflow: 'ellipsis'}} >
             {trackCount} {trackCount === 1 ? "track" : "tracks"}
           </Typography>
-          <Typography sx={{overflow: 'hidden', textOverflow: 'ellipsis', textWrap: 'nowrap'}} >
+          <Typography id={'playlist-description-total-time'} sx={{overflow: 'hidden', textOverflow: 'ellipsis', textWrap: 'nowrap'}} >
             {formatTime(totalTrackTime)}
           </Typography>
-          <Typography sx={{overflow: 'hidden', textOverflow: 'ellipsis', textWrap: 'nowrap'}} >
+          {selectedPlaylist["description"] !== "" ?
+            <hr style={{width: '100%'}}/>
+            : null
+          }
+          <Typography id={'playlist-description-text'} sx={{overflow: 'hidden', textOverflow: 'ellipsis', textWrap: 'nowrap'}} >
             {selectedPlaylist["description"]}
           </Typography>
         </div>

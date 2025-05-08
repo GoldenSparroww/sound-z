@@ -148,7 +148,7 @@ export default function NestedList(props) {
           {props.playlists.map((playlist, idx) => (
             <ListItemButton
               key={idx}
-              sx={{pl: 6}}
+              sx={{pl: 6, pr: 6}}
               selected={selectedSection === playlist["id"]}
               onClick={() => handleListItemClick(playlist["id"], true)}
             >
@@ -170,8 +170,26 @@ export default function NestedList(props) {
                 </div>
               </ListItemIcon>
               <ListItemText
-                sx={{ pl: "1rem"}}
-                primary={playlist["name"]}/>
+                slotProps={{
+                  primary: {
+                    sx: {
+                      pl: "1rem",
+                      overflow: "hidden",
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                    }
+                  },
+                  secondary: {
+                    sx: {
+                      pl: "1rem",
+                      overflow: "hidden",
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                    }
+                  }
+                }}
+                primary={playlist["name"]}
+                secondary={playlist["description"]}/>
             </ListItemButton>
           ))}
 
