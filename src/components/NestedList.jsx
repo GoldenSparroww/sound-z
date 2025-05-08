@@ -17,6 +17,8 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 
 import Colors from '../global/Colors.js'
 import {useEffect, useRef, useState} from "react";
+import GetPlaylistAutomaticId from "../logic/GetPlaylistAutomaticId.js";
+import GetPlaylistAutomaticName from "../logic/GetPlaylistAutomaticName.js";
 
 
 export default function NestedList(props) {
@@ -56,31 +58,19 @@ export default function NestedList(props) {
     }
   };
 
-  const GetPlaylistAutomaticName = () => {
-    const usedNumbers = new Set();
-
-    props.playlists.forEach((playlist) => {
-      const match = playlist.name.match(/^New playlist n\. (\d+)$/);
-      if (match) {
-        usedNumbers.add(parseInt(match[1], 10));
+  const handlePlaylistAdded = () => {
+    const playlistAutomaticNameId = GetPlaylistAutomaticId(props.playlists);
+    props.setPlaylists([
+      ...props.playlists,
+      {
+        "id": playlistAutomaticNameId,
+        "name": GetPlaylistAutomaticName(props.playlists),
+        "image": "http://localhost/default/empty.png",
+        "description": "",
+        "songs": []
       }
-    });
-
-    let newNumber = 1;
-    while (usedNumbers.has(newNumber)) {
-      newNumber++;
-    }
-
-    return `New playlist n. ${newNumber}`;
-  }
-
-  function GetPlaylistAutomaticId() {
-    const idxs = props.playlists.map(playlist => playlist.id);
-    let currentIdx = 0;
-    while (idxs.includes(currentIdx)) {
-      currentIdx++;
-    }
-    return currentIdx;
+    ]);
+    handleListItemClick(playlistAutomaticNameId, true);
   }
 
   return (
@@ -147,41 +137,7 @@ export default function NestedList(props) {
 
           <ListItemButton
             sx={{pl: 6}}
-            onClick={() => {
-              const playlistAutomaticNameId = GetPlaylistAutomaticId();
-              props.setPlaylists([
-                ...props.playlists,
-                {
-                  "id": playlistAutomaticNameId,
-                  "name": GetPlaylistAutomaticName(),
-                  "image": "http://localhost/playlists/empty.png",
-                  "description": "",
-                  "songs": [
-                    {
-                      "id": 5,
-                      "name": "Bumpy Sax",
-                      "artist": "Copyright Free Music",
-                      "genre": "Smooth Jazz",
-                      "file": "Copyright Free Music - Bumpy Sax.mp3",
-                      "image": "image (5).jpg",
-                      "duration": 243,
-                      "url": "http://localhost/music/Copyright Free Music - Bumpy Sax.mp3"
-                    },
-                    {
-                      "id": 8,
-                      "name": "Bad",
-                      "artist": "David Guetta",
-                      "genre": "Dubstep",
-                      "file": "David Guetta - Bad.mp3",
-                      "image": "image (8).jpg",
-                      "duration": 171,
-                      "url": "http://localhost/music/David Guetta - Bad.mp3"
-                    }
-                  ]
-                }
-              ]);
-              handleListItemClick(playlistAutomaticNameId, true)
-            }}>
+            onClick={() => handlePlaylistAdded()}>
             <ListItemIcon>
               <AddBoxIcon sx={{ fontSize: '2rem'}}/>
             </ListItemIcon>

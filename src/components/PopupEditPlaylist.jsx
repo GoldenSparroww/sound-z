@@ -67,8 +67,14 @@ const PopupEditPlaylist = (props) => {
 
     if (previewImage) {
       const uploadedUrl = await uploadImage(previewImage);
+
       if (uploadedUrl) {
-        currentlyEdited.image = uploadedUrl;
+        // Kvůli tomu ze se moje obrazky na backendu jmenuji podle id playlistu,
+        // tak pokud se změní např. 0.jpg na 0.jpg, tak prohlížeč si myslí, že se nic
+        // nezměnilo (ma obrazky stažene v cache), nebo by reagoval jen na zmenu pripon (png, jpg)
+        // reseni je tam pridat casovou neskodnou znacku, ktera vzdy zajisti nove stazeni obrazku
+        const cacheBustedUrl = uploadedUrl + "?t=" + Date.now();
+        currentlyEdited.image = cacheBustedUrl;
       } else {
         alert("Nepodařilo se nahrát obrázek.");
         return;
@@ -92,7 +98,6 @@ const PopupEditPlaylist = (props) => {
     const formData = new FormData();
     formData.append("image", file);
     formData.append("playlistId", currentlyEdited.id);
-    console.log(formData);
 
     try {
       const response = await fetch("http://localhost/uploadImage.php", {

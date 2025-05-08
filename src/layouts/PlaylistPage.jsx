@@ -72,23 +72,29 @@ const PlaylistPage = (props) => {
       </div>
 
       <div id={'playlist-content'}>
-        <PrintList
-          allSongs={props.playlists[props.currentPlaylist]["songs"]}
-          whatToFilter={null}
-          filter={null}
-          showArtist={true}
-          showGenre={true}
-          current={props.current}
-          setCurrent={props.setCurrent}
-          FavouritesAdd={props.FavouritesAdd}
-          FavouritesRemove={props.FavouritesRemove}
-          favouriteTracks={props.favouriteTracks}
-          ChangeActiveList={props.ChangeActiveList}
-          AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
-          HandleActionPopup={props.HandleActionPopup}
-          playlists={props.playlists}
-          setPlaylists={props.setPlaylists}
-        ></PrintList>
+        {props.playlists[props.currentPlaylist]["songs"].length > 0 ? (
+          <PrintList
+            allSongs={props.playlists[props.currentPlaylist]["songs"]}
+            whatToFilter={null}
+            filter={null}
+            showArtist={true}
+            showGenre={true}
+            current={props.current}
+            setCurrent={props.setCurrent}
+            FavouritesAdd={props.FavouritesAdd}
+            FavouritesRemove={props.FavouritesRemove}
+            favouriteTracks={props.favouriteTracks}
+            ChangeActiveList={props.ChangeActiveList}
+            AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
+            HandleActionPopup={props.HandleActionPopup}
+            playlists={props.playlists}
+            setPlaylists={props.setPlaylists}
+          ></PrintList>
+        ) : (
+          <p>
+            Je tu tak smutno... Co si takhle něco přidat?
+          </p>
+        )}
       </div>
 
     </div>

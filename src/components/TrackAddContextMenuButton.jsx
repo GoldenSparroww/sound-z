@@ -4,6 +4,9 @@ import MenuItem from '@mui/material/MenuItem';
 import {Divider, IconButton} from "@mui/material";
 import ListItemText from "@mui/material/ListItemText";
 import AddIcon from '@mui/icons-material/Add';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import GetPlaylistAutomaticId from "../logic/GetPlaylistAutomaticId.js";
+import GetPlaylistAutomaticName from "../logic/GetPlaylistAutomaticName.js";
 
 export default function TrackAddContextMenuButton(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -21,7 +24,7 @@ export default function TrackAddContextMenuButton(props) {
     handleClose()
     
     if (containsBoundTrack(currentPlaylist, boundTrack)) {
-      props.HandleActionPopup(`Písnička už je v playlistu ${currentPlaylist.name} obsažena!`);
+      props.HandleActionPopup(`Písnička už je v playlistu ${currentPlaylist.name} obsažena!`, 3000);
       return;
     }
     
@@ -45,6 +48,24 @@ export default function TrackAddContextMenuButton(props) {
     )
   }
 
+  const handleAddNewPlaylist = (track) => {
+    handleClose();
+    setTimeout(() => {
+      const playlistAutomaticNameId = GetPlaylistAutomaticId(props.playlists);
+      props.setPlaylists([
+        ...props.playlists,
+        {
+          "id": playlistAutomaticNameId,
+          "name": GetPlaylistAutomaticName(props.playlists),
+          "image": "http://localhost/default/empty.png",
+          "description": "",
+          "songs": [{ ...track }]
+        }
+      ]);
+    }, 250);
+    // google mui pouziva animace na cca 225 ms - 250 je akorat na to nez skonci
+  }
+
   return (
     <>
       <IconButton
@@ -64,16 +85,31 @@ export default function TrackAddContextMenuButton(props) {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem sx={{textAlign: "center", fontSize: "1.1rem"}} disabled={true}>Add to playlist...</MenuItem>
+        <MenuItem sx={{textAlign: "center", fontSize: "1.1rem"}} disabled={true}>
+          {(!(props.playlists.length > 0)) ? "Nemáš žádný playlist" : "Add to playlist..."}
+        </MenuItem>
         <Divider />
-        {props.playlists.map((playlist, idx) => (
+        {props.playlists.length > 0 ?
+          props.playlists.map((playlist, idx) => (
+
           <MenuItem
             key={idx}
             onClick={() => handlePlaylistAdded(playlist, props.boundTrack)}
           >
             <ListItemText>{playlist.name}</ListItemText>
           </MenuItem>
-        ))}
+        )) : (
+          <MenuItem
+            sx={{
+              textAlign: "center",
+              fontSize: "1.1rem"
+            }}
+            onClick={() => handleAddNewPlaylist(props.boundTrack)}
+          >
+            <AddBoxIcon sx={{ pr: "0.5rem" }} />
+            Vytvořit a přidat
+          </MenuItem>
+        )}
       </Menu>
     </>
   );

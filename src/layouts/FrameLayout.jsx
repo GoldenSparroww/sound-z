@@ -37,6 +37,7 @@ const FrameLayout = () => {
 
   const [actionPopup, setActionPopup] = useState(false);
   const [actionPopupMessage, setActionPopupMessage] = useState("");
+  const [actionPopupDuration, setActionPopupDuration] = useState(1000)
 
   const [playlists, setPlaylists] = useState([]);
 
@@ -95,8 +96,9 @@ const FrameLayout = () => {
   }
 
   /*-----------------------------------------------------------------------------------------*/
-  const HandleActionPopup = (message) => {
+  const HandleActionPopup = (message, duration = 1000) => {
     setActionPopupMessage(message);
+    setActionPopupDuration(duration);
     setActionPopup(true);
   }
 
@@ -176,9 +178,12 @@ const FrameLayout = () => {
 
       <Snackbar
         open={actionPopup}
-        onClose={() => setActionPopup(false)}
+        onClose={() => {
+          setActionPopup(false);
+          setActionPopupDuration(1000);
+        }}
         message={actionPopupMessage}
-        autoHideDuration={1000}
+        autoHideDuration={actionPopupDuration}
         key={actionPopupMessage}
       />
     </>

@@ -1,10 +1,7 @@
-import {IconButton, List, ListItemButton, ListItemText, Typography} from "@mui/material";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import {List, ListItemButton, ListItemText, Typography} from "@mui/material";
 import * as React from "react";
 import "../style/layout/SearchResultsLayout.css"
-import LayersIcon from "@mui/icons-material/Layers";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import formatTime from "../logic/FormatTime.js";
+import PrintList from "../components/PrintList.jsx";
 
 function SearchResults(props) {
   return (
@@ -13,7 +10,7 @@ function SearchResults(props) {
       {props.searchedResults.tracks.length > 0 && (
         <div className={"search-results-field"} id={"search-results-tracks"}>
           <Typography variant="h6">SKLADBY</Typography>
-          <List>
+          {/*<List>
             {props.searchedResults.tracks.map((song, idx) => (
               <ListItemButton
                 key={idx}
@@ -57,7 +54,26 @@ function SearchResults(props) {
                 </IconButton>
               </ListItemButton>
             ))}
-          </List>
+          </List>*/}
+
+          <PrintList
+            allSongs={props.searchedResults.tracks}
+            whatToFilter={null}
+            filter={null}
+            showArtist={true}
+            showGenre={true}
+            current={props.current}
+            setCurrent={props.setCurrent}
+            FavouritesAdd={props.FavouritesAdd}
+            FavouritesRemove={props.FavouritesRemove}
+            favouriteTracks={props.favouriteTracks}
+            ChangeActiveList={props.ChangeActiveList}
+            AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
+            HandleActionPopup={props.HandleActionPopup}
+            playlists={props.playlists}
+            setPlaylists={props.setPlaylists}
+            clearQueueOnClick={true}
+          ></PrintList>
         </div>
       )}
 

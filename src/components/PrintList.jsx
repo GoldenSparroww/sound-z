@@ -11,6 +11,33 @@ function PrintList(props) {
     return (props.whatToFilter !== null ? song[props.whatToFilter] : true) === (props.filter !== null ? props.filter : true)
   });
 
+  const handleListItemClick = (song, idx) => {
+    props.setCurrent(song);
+    if (!props.clearQueueOnClick) {
+      props.ChangeActiveList(
+        idx,
+        filteredSongs
+      );
+    } else {
+      props.ChangeActiveList(0,[])
+    }
+  }
+
+  const handleFavouritesClick = (song) => {
+    if (props.favouriteTracks.includes(song)){
+      props.FavouritesRemove(song);
+      props.HandleActionPopup("Odebráno z oblíbených.");
+    } else {
+      props.FavouritesAdd(song);
+      props.HandleActionPopup("Přidáno do oblíbených.");
+    }
+  }
+
+  const handleQueueClick = (song) => {
+    props.AddImmediateFollowingTracks(song);
+    props.HandleActionPopup("Přidáno do fronty.");
+  }
+
   return (
     <div>
       <List>
@@ -19,13 +46,7 @@ function PrintList(props) {
             <ListItemButton
               key={idx}
               selected={props.current.id === song.id}
-              onClick={() => {
-                props.setCurrent(song);
-                props.ChangeActiveList(
-                  idx,
-                  filteredSongs
-                );
-              }}>
+              onClick={() => handleListItemClick(song, idx)}>
               <Typography
                 sx={{
                   pr: 3,
@@ -34,7 +55,9 @@ function PrintList(props) {
                   overflow: "hidden",
                   textOverflow: "ellipsis",
                   whiteSpace: "nowrap"
-              }}>{idx + 1}</Typography>
+              }}>
+                {idx + 1}
+              </Typography>
               <img
                 src={`http://localhost/music/images/${song.image}`}
                 alt={song.image}
@@ -58,20 +81,13 @@ function PrintList(props) {
               <IconButton
                 onClick={ (e) => {
                   e.stopPropagation();
-                  props.AddImmediateFollowingTracks(song);
-                  props.HandleActionPopup("Přidáno do fronty.");
+                  handleQueueClick(song);
                 }}>
                 <LayersIcon />
               </IconButton>
               <IconButton
                 onClick={ (e) => {
-                  if (props.favouriteTracks.includes(song)){
-                    props.FavouritesRemove(song);
-                    props.HandleActionPopup("Odebráno z oblíbených.");
-                  } else {
-                    props.FavouritesAdd(song);
-                    props.HandleActionPopup("Přidáno do oblíbených.");
-                  }
+                  handleFavouritesClick(song);
                   e.stopPropagation();
                 }}>
                 {(props.favouriteTracks.includes(song)) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
