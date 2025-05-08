@@ -8,7 +8,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import AddIcon from '@mui/icons-material/Add';
 import QueueIcon from '@mui/icons-material/Queue';
 
-export default function PlaylistMenu(props) {
+export default function PlaylistContextMenuButton(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 

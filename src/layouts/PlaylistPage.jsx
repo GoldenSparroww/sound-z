@@ -4,7 +4,7 @@ import * as React from "react";
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import formatTime from "../logic/FormatTime.js";
-import PlaylistMenu from "../components/PlaylistMenu.jsx";
+import PlaylistContextMenuButton from "../components/PlaylistContextMenuButton.jsx";
 import {IconButton, Typography} from "@mui/material";
 import {useState} from "react";
 
@@ -65,7 +65,7 @@ const PlaylistPage = (props) => {
           <IconButton onClick={PlayButtonHandle}>
             {!playingNow ? <PlayCircleIcon sx={{fontSize: '5rem'}}/> : <PauseCircleIcon sx={{fontSize: '5rem'}}/>}
           </IconButton>
-          <PlaylistMenu
+          <PlaylistContextMenuButton
             setShownPopupMenu={props.setShownPopupMenu}
           />
         </div>
@@ -86,6 +86,8 @@ const PlaylistPage = (props) => {
           ChangeActiveList={props.ChangeActiveList}
           AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
+          playlists={props.playlists}
+          setPlaylists={props.setPlaylists}
         ></PrintList>
       </div>
 
