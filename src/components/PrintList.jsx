@@ -59,6 +59,7 @@ function PrintList(props) {
                 {idx + 1}
               </Typography>
               <img
+                className={"img-in-list"}
                 src={`http://localhost/music/images/${song.image}`}
                 alt={song.image}
               ></img>

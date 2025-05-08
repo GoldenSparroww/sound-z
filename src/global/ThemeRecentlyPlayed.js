@@ -4,37 +4,36 @@ import Colors from './Colors.js';
 // &.something → aktuální element MÁ classu something
 // & .something → uvnitř aktuálního elementu JE potomek s classou something
 
-const themeSideBar = createTheme({
+const themeRecentlyPlayed = createTheme({
   components: {
-    MuiListItemText: {
-      styleOverrides: {
-        primary: {
-          fontSize: '1.2rem',
-        }
-      }
-    },
-
-    MuiList: {
+    MuiTypography: {
       styleOverrides: {
         root: {
-          backgroundColor: Colors.color_side_bar,
-          '&::-webkit-scrollbar': {
-            display: 'none',        // Skrýt scroll bar pro WebKit prohlížeče (Chrome, Safari)
-          },
-          scrollbarWidth: 'none',   // Skrytí scrollu ve Firefoxu
+          color: Colors.color_text,
+          overflow: 'hidden',
+          display: '-webkit-box',
+          WebkitLineClamp: 1,
+          WebkitBoxOrient: 'vertical',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'normal',
+          wordBreak: 'break-word',
+          lineHeight: '3.5rem',
+          maxHeight: '3.5rem',
         }
       }
     },
 
-    MuiListItemButton: {
+    MuiCardActionArea: {
       defaultProps: {
         disableRipple: true,
       },
+    },
+
+    MuiCard: {
       styleOverrides: {
         root: {
           color: Colors.color_empty_field,
           transition: '0.2s',
-          height: "100px",
 
           '&.Mui-selected': {
             backgroundColor: Colors.color_selection,
@@ -62,4 +61,4 @@ const themeSideBar = createTheme({
   },
 });
 
-export default themeSideBar;
+export default themeRecentlyPlayed;

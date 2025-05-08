@@ -39,6 +39,8 @@ const FrameLayout = () => {
   const [actionPopupMessage, setActionPopupMessage] = useState("");
   const [actionPopupDuration, setActionPopupDuration] = useState(1000)
 
+  const [recentTracks, setRecentTracks] = useState([])
+
   const [playlists, setPlaylists] = useState([]);
 
   const ChangeMainSection = (section, isPlaylist = false) => {
@@ -117,6 +119,23 @@ const FrameLayout = () => {
     setActionPopup(true);
   }
 
+  useEffect(() => {
+    if (IsEmptyObject(current)) return;
+
+    setRecentTracks([
+      ...recentTracks,
+      current
+    ])
+
+    if (recentTracks.length > 10) {
+      setRecentTracks([
+        ...recentTracks.slice(0, 9)
+      ]);
+    }
+
+
+  }, [current]);
+
   return (
     <>
       <PopupMenu
@@ -175,6 +194,7 @@ const FrameLayout = () => {
             currentPlaylist={currentPlaylist}
             shownMainSection={shownMainSection}
             setShownMainSection={setShownMainSection}
+            recentTracks={recentTracks}
           />
         </ThemeProvider>
 

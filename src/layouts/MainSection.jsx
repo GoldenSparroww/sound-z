@@ -10,7 +10,11 @@ const MainSection = (props) => {
   if (props.show === "homepage") {
     return (
       <div id={props.id}>
-        <HomePage setShownPopupMenu={props.setShownPopupMenu} />
+        <HomePage
+          setShownPopupMenu={props.setShownPopupMenu}
+          recentTracks={props.recentTracks}
+          setCurrent={props.setCurrent}
+        />
       </div>
     )
   } else if (props.show === "queue") {

@@ -1,17 +1,41 @@
 import "../style/layout/HomePageLayout.css"
 import Tile from "../components/Tile.jsx"
-
 import SettingsIcon from '@mui/icons-material/Settings';
 import InfoIcon from '@mui/icons-material/Info';
 import HelpIcon from '@mui/icons-material/Help';
+import TrackCard from "../components/TrackCard.jsx";
+import Colors from "../global/Colors.js";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
+import {ThemeProvider} from "@mui/material/styles";
+import themeRecentlyPlayed from "../global/ThemeRecentlyPlayed.js";
 
 const HomePage = (props) => {
-
   return (
     <div id={'home-page-container'}>
 
       {/*DODELAT*/}
-      <div id={"tile-recently-played"}>tile-recently-played</div>
+      {props.recentTracks.length > 0 && (
+        <div id={"tile-recently-played"}>
+          <Typography sx={{color: Colors.color_text}} gutterBottom variant="h4" component="div">
+            Recently Played Tracks
+          </Typography>
+          <ThemeProvider theme={themeRecentlyPlayed}>
+            <div id={"recently-played-container"}>
+              {props.recentTracks.map((track, idx) => (
+                <TrackCard
+                  key={idx}
+                  track={track}
+                  recentTracks={props.recentTracks}
+                  setCurrent={props.setCurrent}
+                >
+                </TrackCard>
+              ))}
+            </div>
+          </ThemeProvider>
+        </div>
+      )}
+
 
       <Tile class={"basic-tile"} id={"tile-settings"} onClick={() => props.setShownPopupMenu('settings')}>
         <SettingsIcon sx={{fontSize: "8rem"}} />

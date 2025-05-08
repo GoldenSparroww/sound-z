@@ -17,7 +17,8 @@
     }
 
     #tile-recently-played {
-        height: 200px;
+        height: fit-content;
+        width: 100%;
     }
 
     .basic-tile {
@@ -26,9 +27,20 @@
     }
 }
 
-#tile-recently-played {
+#tile-recently-played{
+    padding: 2rem;
+    overflow: scroll;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 30rem;
+}
+
+#recently-played-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 #tile-recently-played{

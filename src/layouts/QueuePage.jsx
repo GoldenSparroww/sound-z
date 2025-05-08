@@ -23,6 +23,7 @@ const QueuePage = (props) => {
                 selected={true}
               >
                 <img
+                  className={"img-in-list"}
                   src={`http://localhost/music/images/${props.current.image}`}
                   alt={props.current.image}
                 ></img>
@@ -47,6 +48,7 @@ const QueuePage = (props) => {
             {props.immediateFollowingTracks.map((track, i) => (
               <ListItemButton key={i}>
                 <img
+                  className={"img-in-list"}
                   src={`http://localhost/music/images/${track.image}`}
                   alt={track.image}
                 ></img>
@@ -68,6 +70,7 @@ const QueuePage = (props) => {
               .map((track, i) => (
                 <ListItemButton key={i}>
                   <img
+                    className={"img-in-list"}
                     src={`http://localhost/music/images/${track.image}`}
                     alt={track.image}
                   ></img>

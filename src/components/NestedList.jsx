@@ -159,11 +159,10 @@ export default function NestedList(props) {
                   }}
                 >
                   <img
+                    className={"img-in-list"}
                     src={playlist["image"]}
                     alt={"Image Preview"}
                     style={{
-                      minHeight: '50px',
-                      minWidth: '50px',
                       borderRadius: '5px'
                     }}/>
                 </div>

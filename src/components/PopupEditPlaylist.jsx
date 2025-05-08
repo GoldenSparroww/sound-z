@@ -141,8 +141,8 @@ const PopupEditPlaylist = (props) => {
                   src={previewImageUrl}
                   alt={"Image preview"}
                   style={{
-                    minWidth: "200px",
-                    minHeight: "200px",
+                    width: "200px",
+                    height: "200px",
                     objectFit: "cover"
                   }}
                   onClick={handleImageClick}

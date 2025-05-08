@@ -46,6 +46,7 @@ const PlaylistPage = (props) => {
           id={'playlist-image'}
         >
           <img
+            className={"img-in-list"}
             src={selectedPlaylist.image}
             alt={"Image Preview"}
             style={{
