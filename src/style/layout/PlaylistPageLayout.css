@@ -12,7 +12,7 @@
     grid-template-columns: 300px 1fr;
     grid-template-rows: repeat(2, 150px) auto;
     background-color: var(--color-side-bar);
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 #playlist-name{
@@ -24,7 +24,6 @@
 
 #playlist-image{
     grid-area: image;
-    margin: auto;
     background-color: transparent;
 }
 
@@ -36,6 +35,7 @@
     align-items: flex-start;
     font-size: 1.3rem;
     color: var(--color-text);
+    overflow: hidden;
 }
 
 #playlist-options{

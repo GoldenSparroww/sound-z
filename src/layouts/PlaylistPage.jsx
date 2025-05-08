@@ -5,7 +5,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import formatTime from "../logic/FormatTime.js";
 import PlaylistMenu from "../components/PlaylistMenu.jsx";
-import {IconButton} from "@mui/material";
+import {IconButton, Typography} from "@mui/material";
 import {useState} from "react";
 
 const PlaylistPage = (props) => {
@@ -51,15 +51,15 @@ const PlaylistPage = (props) => {
           />
         </div>
         <div id={'playlist-description'}>
-          <p>
+          <Typography sx={{overflow: 'hidden', textOverflow: 'ellipsis'}} >
             {trackCount} {trackCount === 1 ? "track" : "tracks"}
-          </p>
-          <p>
+          </Typography>
+          <Typography sx={{overflow: 'hidden', textOverflow: 'ellipsis', textWrap: 'nowrap'}} >
             {formatTime(totalTrackTime)}
-          </p>
-          <p>
+          </Typography>
+          <Typography sx={{overflow: 'hidden', textOverflow: 'ellipsis', textWrap: 'nowrap'}} >
             {props.playlists[props.currentPlaylist]["description"]}
-          </p>
+          </Typography>
         </div>
         <div id={'playlist-options'}>
           <IconButton onClick={PlayButtonHandle}>
