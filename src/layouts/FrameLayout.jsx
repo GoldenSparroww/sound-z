@@ -87,11 +87,22 @@ const FrameLayout = () => {
     setActiveList(list);
   }
 
-  const AddImmediateFollowingTracks = (newTrack) => {
+  const AddImmediateFollowingTracks = (newTracks) => {
     if (IsEmptyObject(current)) {
-      setCurrent(newTrack)
+      if (Array.isArray(newTracks) && newTracks.length > 0) {
+        setCurrent(newTracks[0]);
+        setImmediateFollowingTracks([
+          ...immediateFollowingTracks,
+          ...newTracks.slice(1)
+        ]);
+      } else {
+        setCurrent(newTracks);
+      }
     } else {
-      setImmediateFollowingTracks([...immediateFollowingTracks, newTrack]);
+      setImmediateFollowingTracks([
+        ...immediateFollowingTracks,
+        ...(Array.isArray(newTracks) ? newTracks : [newTracks])
+      ]);
     }
   }
 
@@ -158,6 +169,7 @@ const FrameLayout = () => {
             setPlaylists={setPlaylists}
             currentPlaylist={currentPlaylist}
             shownMainSection={shownMainSection}
+            setShownMainSection={setShownMainSection}
           />
         </ThemeProvider>
 

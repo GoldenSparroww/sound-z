@@ -133,6 +133,7 @@ const MainSection = (props) => {
           activeList={props.activeList}
           setShownPopupMenu={props.setShownPopupMenu}
           shownMainSection={props.shownMainSection}
+          setShownMainSection={props.setShownMainSection}
         />
       </div>
     )

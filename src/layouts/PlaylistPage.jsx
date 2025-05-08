@@ -32,6 +32,7 @@ const PlaylistPage = (props) => {
   const PlayButtonHandle = () => {
     setPlayingNow(!playingNow);
   }
+  console.log(props.playlists, props.currentPlaylist)
 
   return (
     <div id={"playlist-page-container"}>
@@ -42,7 +43,7 @@ const PlaylistPage = (props) => {
           id={'playlist-image'}
         >
           <img
-            src={props.playlists[props.currentPlaylist].image}
+            src={selectedPlaylist.image}
             alt={"Image Preview"}
             style={{
               minWidth:'100%',
@@ -58,7 +59,7 @@ const PlaylistPage = (props) => {
             {formatTime(totalTrackTime)}
           </Typography>
           <Typography sx={{overflow: 'hidden', textOverflow: 'ellipsis', textWrap: 'nowrap'}} >
-            {props.playlists[props.currentPlaylist]["description"]}
+            {selectedPlaylist["description"]}
           </Typography>
         </div>
         <div id={'playlist-options'}>
@@ -67,14 +68,19 @@ const PlaylistPage = (props) => {
           </IconButton>
           <PlaylistContextMenuButton
             setShownPopupMenu={props.setShownPopupMenu}
+            AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
+            setPlaylists={props.setPlaylists}
+            currentPlaylist={props.currentPlaylist}
+            playlists={props.playlists}
+            setShownMainSection={props.setShownMainSection}
           />
         </div>
       </div>
 
       <div id={'playlist-content'}>
-        {props.playlists[props.currentPlaylist]["songs"].length > 0 ? (
+        {selectedPlaylist["songs"].length > 0 ? (
           <PrintList
-            allSongs={props.playlists[props.currentPlaylist]["songs"]}
+            allSongs={selectedPlaylist["songs"]}
             whatToFilter={null}
             filter={null}
             showArtist={true}

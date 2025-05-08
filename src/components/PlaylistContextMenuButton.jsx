@@ -11,6 +11,7 @@ import QueueIcon from '@mui/icons-material/Queue';
 export default function PlaylistContextMenuButton(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const selectedPlaylist = props.playlists.find(playlist => playlist.id === props.currentPlaylist);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -21,9 +22,25 @@ export default function PlaylistContextMenuButton(props) {
   };
 
   const handleEditClick = () => {
-    handleClose()
+    handleClose();
     props.setShownPopupMenu("edit-playlist");
   }
+
+  const handleQueueAdd = () => {
+    handleClose();
+    props.AddImmediateFollowingTracks([
+      ...selectedPlaylist.songs
+    ])
+  };
+
+  const handleRemove = () => {
+    handleClose();
+    props.setShownMainSection("homepage");
+    props.setPlaylists(props.playlists.filter((playlist) =>
+        playlist.id !== props.currentPlaylist
+
+    ));
+  };
 
   return (
     <div>
@@ -46,12 +63,12 @@ export default function PlaylistContextMenuButton(props) {
           <AddIcon sx={{ paddingRight: '0.5em' }} />
           <ListItemText>Edit playlist appearance</ListItemText>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => handleQueueAdd()}>
           <QueueIcon sx={{ paddingRight: '0.5em' }} />
           <ListItemText>Add playlist to queue</ListItemText>
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => handleRemove()}>
           <ClearIcon sx={{ paddingRight: '0.5em' }} />
           <ListItemText>Delete playlist</ListItemText>
         </MenuItem>

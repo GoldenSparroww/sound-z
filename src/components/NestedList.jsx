@@ -54,6 +54,7 @@ export default function NestedList(props) {
     if (!isPlaylist) {
       props.ChangeMainSection(section);
     } else {
+      console.log(section)
       props.ChangeMainSection(section, true);
     }
   };

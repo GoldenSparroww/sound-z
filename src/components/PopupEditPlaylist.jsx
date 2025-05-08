@@ -154,7 +154,7 @@ const PopupEditPlaylist = (props) => {
               id="edit-playlist-popup-name"
               label="Název Playlistu"
               variant="outlined"
-              defaultValue={props.playlists[props.currentPlaylist].name}
+              defaultValue={currentlyEdited.name}
               onChange={(e) => TemporarySaveName(e)}
               helperText={nameError !== "" ? nameError : ""}
               error={nameError !== ""}
@@ -163,7 +163,7 @@ const PopupEditPlaylist = (props) => {
               id="edit-playlist-popup-description"
               label="Volitelný popis playlistu"
               variant="outlined"
-              defaultValue={props.playlists[props.currentPlaylist].description}
+              defaultValue={currentlyEdited.description}
               multiline
               rows={9}
               onChange={(e) => TemporarySaveDescription(e)}
