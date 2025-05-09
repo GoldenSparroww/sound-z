@@ -147,6 +147,7 @@ const FrameLayout = () => {
         currentPlaylist={currentPlaylist}
         setPlaylists={setPlaylists}
         setCurrentPlaylist={setCurrentPlaylist}
+        setShownMainSection={setShownMainSection}
       />
 
       <div id={"grid-container"}>

@@ -3,6 +3,18 @@ import Colors from './Colors.js';
 
 const ThemeForm = createTheme({
   components: {
+    MuiTypography: {
+      styleOverrides: {
+        primary: {
+          color: Colors.color_empty_field,
+          fontSize: '1.2rem',
+        },
+        h6: {
+          color: Colors.color_empty_field,
+        },
+      }
+    },
+
     MuiButton: {
       defaultProps: {
         disableRipple: true,

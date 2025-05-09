@@ -35,11 +35,7 @@ export default function PlaylistContextMenuButton(props) {
 
   const handleRemove = () => {
     handleClose();
-    props.setShownMainSection("homepage");
-    props.setPlaylists(props.playlists.filter((playlist) =>
-        playlist.id !== props.currentPlaylist
-
-    ));
+    props.setShownPopupMenu("remove-playlist");
   };
 
   return (
