@@ -10,6 +10,9 @@ const themeSideBar = createTheme({
       styleOverrides: {
         primary: {
           fontSize: '1.2rem',
+        },
+        secondary: {
+          color: Colors.color_text,
         }
       }
     },
