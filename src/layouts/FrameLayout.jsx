@@ -1,10 +1,8 @@
 import "../style/layout/FrameLayout.css"
-import BurgerButton from "../components/BurgerButton.jsx";
 import React, {useEffect, useState} from "react";
 import MainSection from "./MainSection.jsx";
 import SideBar from "./SideBar.jsx";
 import PopupMenu from "../components/PopupMenu.jsx";
-import SearchBar from "../components/SearchBar.jsx";
 import NavBar from "./NavBar.jsx";
 import Footer from "./Footer.jsx";
 import AudioPlayer from "../components/AudioPlayer.jsx";
@@ -151,13 +149,15 @@ const FrameLayout = () => {
       />
 
       <div id={"grid-container"}>
-        <NavBar id={"nav-bar"}>
-          <BurgerButton visible={!isSideBarVisible} onPress={() => setIsSideBarVisible(!isSideBarVisible)}/>
-          <SearchBar
-            ChangeMainSection={ChangeMainSection}
-            setSearchedResults={setSearchedResults}
-            allSongs={allSongs}
-            setAllSongs={setAllSongs}/>
+        <NavBar
+          id={"nav-bar"}
+          isSideBarVisible={isSideBarVisible}
+          setIsSideBarVisible={setIsSideBarVisible}
+          ChangeMainSection={ChangeMainSection}
+          setSearchedResults={setSearchedResults}
+          allSongs={allSongs}
+          setAllSongs={setAllSongs}
+        >
         </NavBar>
 
         <SideBar
@@ -167,6 +167,7 @@ const FrameLayout = () => {
           setIsSideBarVisible={setIsSideBarVisible}
           playlists={playlists}
           setPlaylists={setPlaylists}
+          HandleActionPopup={HandleActionPopup}
         />
 
         <ThemeProvider theme={ThemeSongsList}>

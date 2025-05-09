@@ -180,7 +180,7 @@ const PopupEditPlaylist = (props) => {
                 variant="filled"
                 startIcon={<CheckBoxIcon />}
                 onClick={() => SaveChanges()}
-                disabled={!!nameError || currentlyEdited.name.trim() === ""}
+                disabled={!!nameError || !!descriptionError || currentlyEdited.name.trim() === ""}
               >
                 Uložit
               </Button>

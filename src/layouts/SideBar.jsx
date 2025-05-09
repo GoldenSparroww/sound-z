@@ -6,12 +6,16 @@ import NestedList from "../components/NestedList.jsx";
 const SideBar = (props) => {
   return (
     <div id={props.id} className={props.isSideBarVisible ? "show" : ""}>
-      <BurgerButton visible={props.isSideBarVisible} onPress={() => props.setIsSideBarVisible(!props.isSideBarVisible)}/>
+      <BurgerButton
+        isSideBarVisible={props.isSideBarVisible}
+        setIsSideBarVisible={props.setIsSideBarVisible}
+      />
       <ThemeProvider theme={themeSideBar}>
         <NestedList
           ChangeMainSection={props.ChangeMainSection}
           playlists={props.playlists}
           setPlaylists={props.setPlaylists}
+          HandleActionPopup={props.HandleActionPopup}
         />
       </ThemeProvider>
     </div>

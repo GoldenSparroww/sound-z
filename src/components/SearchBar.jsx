@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { TextField, Box } from "@mui/material";
+import {TextField, Box, IconButton} from "@mui/material";
 import GetSearchedResults from "../logic/GetSearchedResults.js";
+import SearchIcon from '@mui/icons-material/Search';
 
 function SearchBar(props) {
   const [inputValue, setInputValue] = useState("");
@@ -22,6 +23,10 @@ function SearchBar(props) {
   }, []);
 
   useEffect(() => {
+    searchInputValue();
+  }, [inputValue, props.allSongs]);
+
+  const searchInputValue = () => {
     if (!inputValue) {
       props.setSearchedResults({ tracks: [], genres: [], artists: [] });
       return;
@@ -29,16 +34,33 @@ function SearchBar(props) {
 
     props.ChangeMainSection("search-results")
     props.setSearchedResults({ tracks, genres, artists });
-  }, [inputValue, props.allSongs]);
+  };
 
   return (
-    <Box sx={{ maxWidth: 700, margin: "auto"}}>
+    <Box sx={{
+      flex: 1,
+      maxWidth:"700px",
+      display: "flex",
+      flexDirection: "row",
+      gap: "0.5rem",
+      alignItems: "center",
+    }}>
       <TextField
         fullWidth
         label="Hledat"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        variant="filled"
       />
+      <IconButton
+        sx={{
+          width: "3rem",
+          height: "3rem",
+        }}
+        onClick={searchInputValue}
+      >
+        <SearchIcon/>
+      </IconButton>
     </Box>
   );
 }

@@ -59,6 +59,15 @@ export default function NestedList(props) {
   };
 
   const handlePlaylistAdded = () => {
+    if (props.playlists.length > 50) {
+      props.HandleActionPopup(
+        "Dosažen maximální počet playlistů (50). " +
+        "Pro přidání smažte alespoň jeden playlist.",
+        5000
+      )
+      return;
+    }
+
     const playlistAutomaticNameId = GetPlaylistAutomaticId(props.playlists);
     props.setPlaylists([
       ...props.playlists,

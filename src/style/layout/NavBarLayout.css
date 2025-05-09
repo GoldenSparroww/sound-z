@@ -1,0 +1,11 @@
+#burger-button-container {
+    background-color: var(--color-empty-field);
+    align-self: center;
+    border-radius: 2rem;
+    height: fit-content;
+    width: fit-content;
+}
+
+.side-div{
+    width: 2rem;
+}

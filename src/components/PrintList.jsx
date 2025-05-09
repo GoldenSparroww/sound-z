@@ -48,6 +48,7 @@ function PrintList(props) {
               selected={props.current.id === song.id}
               onClick={() => handleListItemClick(song, idx)}>
               <Typography
+                id={"print-list-line-number"}
                 sx={{
                   pr: 3,
                   fontSize: "1.2rem",
@@ -67,7 +68,7 @@ function PrintList(props) {
                 sx={{pl: 3}}
                 primary={song.name}
                 secondary={`${props.showArtist ? song.artist : ''} ${props.showArtist && props.showGenre ? '•' : '' } ${props.showGenre ? song.genre : ''}`} />
-              <Typography sx={{pr: "15%", pl: "5%"}}>
+              <Typography id={"print-list-duration"} sx={{pr: "15%", pl: "5%"}}>
                 {formatTime(song.duration)}
               </Typography>
 
