@@ -33,6 +33,7 @@ const MainSection = (props) => {
           ChangeActiveList={props.ChangeActiveList}
           AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
           activeList={props.activeList}
+          setImmediateFollowingTracks={props.setImmediateFollowingTracks}
           immediateFollowingTracks={props.immediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
           activeIndex={props.activeIndex}

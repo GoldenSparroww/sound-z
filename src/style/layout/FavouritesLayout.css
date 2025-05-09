@@ -6,9 +6,14 @@
 
 #favourites-header{
     background-color: var(--color-side-bar);
-    padding: 1rem;
+    padding: 3rem;
+}
+
+#favourites-body{
+    padding: 1.5rem;
 }
 
 #favourites-list{
     padding: 1rem;
+    background-color: var(--color-side-bar);
 }

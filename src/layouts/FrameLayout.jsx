@@ -186,6 +186,7 @@ const FrameLayout = () => {
             FavouritesRemove={FavouritesRemove}
             favouriteTracks={favouriteTracks}
             activeList={activeList}
+            setImmediateFollowingTracks={setImmediateFollowingTracks}
             immediateFollowingTracks={immediateFollowingTracks}
             ChangeActiveList={ChangeActiveList}
             AddImmediateFollowingTracks={AddImmediateFollowingTracks}

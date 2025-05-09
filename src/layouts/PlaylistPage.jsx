@@ -98,33 +98,33 @@ const PlaylistPage = (props) => {
         </div>
       </div>
 
-      <div id={'playlist-content'}>
-        {selectedPlaylist["songs"].length > 0 ? (
-          <PrintList
-            allSongs={selectedPlaylist["songs"]}
-            whatToFilter={null}
-            filter={null}
-            showArtist={true}
-            showGenre={true}
-            current={props.current}
-            setCurrent={props.setCurrent}
-            FavouritesAdd={props.FavouritesAdd}
-            FavouritesRemove={props.FavouritesRemove}
-            favouriteTracks={props.favouriteTracks}
-            ChangeActiveList={props.ChangeActiveList}
-            AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
-            HandleActionPopup={props.HandleActionPopup}
-            playlists={props.playlists}
-            setPlaylists={props.setPlaylists}
-            isShownInPlaylist={true}
-            currentPlaylist={props.currentPlaylist}
-            //RefreshQueuePlaylist={props.RefreshQueuePlaylist}
-          ></PrintList>
-        ) : (
-          <p>
-            Je tu tak smutno... Co si takhle něco přidat?
-          </p>
-        )}
+      <div>
+        <div id={'playlist-content'}>
+          {selectedPlaylist["songs"].length > 0 ? (
+            <PrintList
+              allSongs={selectedPlaylist["songs"]}
+              whatToFilter={null}
+              filter={null}
+              showArtist={true}
+              showGenre={true}
+              current={props.current}
+              setCurrent={props.setCurrent}
+              FavouritesAdd={props.FavouritesAdd}
+              FavouritesRemove={props.FavouritesRemove}
+              favouriteTracks={props.favouriteTracks}
+              ChangeActiveList={props.ChangeActiveList}
+              AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
+              HandleActionPopup={props.HandleActionPopup}
+              playlists={props.playlists}
+              setPlaylists={props.setPlaylists}
+              isShownInPlaylist={true}
+              currentPlaylist={props.currentPlaylist}
+              //RefreshQueuePlaylist={props.RefreshQueuePlaylist}
+            ></PrintList>
+          ) : (
+            <Typography variant="h6">Playlist je prázdný...</Typography>
+          )}
+        </div>
       </div>
 
     </div>

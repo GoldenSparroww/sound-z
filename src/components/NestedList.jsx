@@ -139,7 +139,7 @@ export default function NestedList(props) {
             sx={{pl: 6}}
             onClick={() => handlePlaylistAdded()}>
             <ListItemIcon>
-              <AddBoxIcon sx={{ fontSize: '2rem'}}/>
+              <AddBoxIcon sx={{ fontSize: '2rem', color: Colors.color_details}}/>
             </ListItemIcon>
             <ListItemText primary="Add a New Playlist"/>
           </ListItemButton>

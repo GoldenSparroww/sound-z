@@ -9,7 +9,7 @@ const themeSongsList = createTheme({
     MuiIconButton: {
       styleOverrides: {
         root: {
-          color: Colors.color_empty_field
+          color: Colors.color_empty_field,
         }
       }
     },
@@ -73,12 +73,11 @@ const themeSongsList = createTheme({
     MuiListItemButton: {
       defaultProps: {
         disableRipple: true,
-
       },
       styleOverrides: {
         root: {
           color: Colors.color_empty_field,
-          transition: 'none',
+          transition: '0,2s',
 
           '&.Mui-selected': {
             /* Pozadi nastavim na stejnou barvu jako bez kliknuti, abych to nemusel vypinat */
@@ -97,6 +96,10 @@ const themeSongsList = createTheme({
           '& .MuiListItemIcon-root': {
             color: Colors.color_empty_field,
             //fontSize: 40,
+          },
+
+          '&:active': {
+            backgroundColor: Colors.color_selection,
           },
         },
       },
