@@ -63,7 +63,7 @@ const QueuePage = (props) => {
 
       {(props.activeList.length > 0 && props.activeList.length - 1 > props.activeIndex) && (
         <div id={"queue-following-in-playlist"}>
-          <Typography variant="h6">Další z playlistu:</Typography>
+          <Typography variant="h6">Další z aktuálního playlistu:</Typography>
           <List>
             {props.activeList
               .filter((track, i) => i > props.activeIndex)

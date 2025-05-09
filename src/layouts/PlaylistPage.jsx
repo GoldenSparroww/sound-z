@@ -2,14 +2,14 @@ import "../style/layout/PlaylistPageLayout.css"
 import PrintList from "../components/PrintList.jsx";
 import * as React from "react";
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import formatTime from "../logic/FormatTime.js";
 import PlaylistContextMenuButton from "../components/PlaylistContextMenuButton.jsx";
-import {IconButton, Typography} from "@mui/material";
-import {useState} from "react";
+import {Button, Typography} from "@mui/material";
+import {ThemeProvider} from "@mui/material/styles";
+import themeForm from "../global/ThemeForm.js";
 
 const PlaylistPage = (props) => {
-  const [playingNow, setPlayingNow] = useState(false);
+  /*const [playingNow, setPlayingNow] = useState(false);*/
 
   const selectedPlaylist = props.playlists.find(playlist => playlist.id === props.currentPlaylist);
 
@@ -29,8 +29,16 @@ const PlaylistPage = (props) => {
     }
   };*/
 
-  const PlayButtonHandle = () => {
+  /*const PlayButtonHandle = () => {
     setPlayingNow(!playingNow);
+  }*/
+
+  const PlayButtonHandle = () => {
+    props.setCurrent(selectedPlaylist.songs[0]);
+    props.ChangeActiveList(
+      0,
+      [...selectedPlaylist.songs]
+    );
   }
 
   return (
@@ -71,9 +79,14 @@ const PlaylistPage = (props) => {
           </Typography>
         </div>
         <div id={'playlist-options'}>
-          <IconButton onClick={PlayButtonHandle}>
+          <ThemeProvider theme={themeForm}>
+            <Button variant="filled" startIcon={<PlayCircleIcon />} onClick={PlayButtonHandle}>
+              Play
+            </Button>
+          </ThemeProvider>
+          {/*<IconButton onClick={PlayButtonHandle}>
             {!playingNow ? <PlayCircleIcon sx={{fontSize: '5rem'}}/> : <PauseCircleIcon sx={{fontSize: '5rem'}}/>}
-          </IconButton>
+          </IconButton>*/}
           <PlaylistContextMenuButton
             setShownPopupMenu={props.setShownPopupMenu}
             AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
