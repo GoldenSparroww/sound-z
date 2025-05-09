@@ -27,7 +27,10 @@ const QueuePage = (props) => {
               <Typography variant="h6">Právě hraje:</Typography>
               <List>
                 <ListItemButton
-                  sx={{height: 100}}
+                  sx={{
+                    height: 100,
+                    cursor: "default"
+                  }}
                   selected={true}
                 >
                   <img
@@ -61,7 +64,12 @@ const QueuePage = (props) => {
               {props.immediateFollowingTracks.map((track, i) => (
                 <ListItemButton
                   key={i}
-                  sx={{ cursor: "default" }}
+                  sx={{
+                    cursor: "default",
+                    '&:active': {
+                      backgroundColor: Colors.color_hover,
+                    },
+                  }}
                 >
                   <img
                     className={"img-in-list"}
@@ -117,7 +125,12 @@ const QueuePage = (props) => {
                 .map((track, i) => (
                   <ListItemButton
                     key={i}
-                    sx={{ cursor: "default" }}
+                    sx={{
+                      cursor: "default",
+                      '&:active': {
+                        backgroundColor: Colors.color_hover,
+                      },
+                    }}
                   >
                     <img
                       className={"img-in-list"}

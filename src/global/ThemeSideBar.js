@@ -6,6 +6,33 @@ import Colors from './Colors.js';
 
 const themeSideBar = createTheme({
   components: {
+    MuiIconButton: {
+      defaultProps: {
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          color: Colors.color_side_bar,
+          backgroundColor: Colors.color_empty_field,
+          '&:hover': {
+            backgroundColor: Colors.color_hover,
+            borderColor: Colors.color_hover,
+            color: Colors.color_empty_field,
+            boxShadow: 'none',
+          },
+          '&:active': {
+            boxShadow: 'none',
+            backgroundColor: Colors.color_selection,
+            borderColor: Colors.color_selection,
+            color: Colors.color_empty_field,
+          },
+          '&:focus': {
+            boxShadow: 'none',
+          },
+        }
+      }
+    },
+
     MuiListItemText: {
       styleOverrides: {
         primary: {
@@ -13,7 +40,7 @@ const themeSideBar = createTheme({
         },
         secondary: {
           color: Colors.color_text,
-        }
+        },
       }
     },
 

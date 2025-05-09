@@ -23,7 +23,7 @@
 
 #side-bar{
     grid-area: side-bar;
-    background-color: cornflowerblue;
+    /*background-color: cornflowerblue;*/
     border-right: 3px solid var(--color-footer);
     overflow-y: scroll;
     scrollbar-width: none;

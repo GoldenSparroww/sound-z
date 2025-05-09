@@ -19,6 +19,7 @@ import Colors from '../global/Colors.js'
 import {useEffect, useRef, useState} from "react";
 import GetPlaylistAutomaticId from "../logic/GetPlaylistAutomaticId.js";
 import GetPlaylistAutomaticName from "../logic/GetPlaylistAutomaticName.js";
+import BurgerButton from "./BurgerButton.jsx";
 
 
 export default function NestedList(props) {
@@ -93,6 +94,23 @@ export default function NestedList(props) {
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
+      <ListItemText
+        sx={{
+          margin: 0,
+          display: "flex",
+          flexDirection: 'row-reverse',
+          alignItems: "flex-start",
+          justifyContent: "flex-start",
+          "@media (max-width: 1000px)": {
+            padding: "2rem 1rem 1rem 1rem",
+          }
+        }}
+      >
+        <BurgerButton
+          isSideBarVisible={props.isSideBarVisible}
+          setIsSideBarVisible={props.setIsSideBarVisible}
+        />
+      </ListItemText>
       <ListItemButton
         selected={selectedSection === "homepage"}
         onClick={() => handleListItemClick("homepage")}
@@ -136,7 +154,7 @@ export default function NestedList(props) {
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List
           sx={{
-            maxHeight: '300px',
+            maxHeight: '100%',
             bgcolor: Colors.color_side_bar_list,
             overflowY: 'auto',
             padding: 0,

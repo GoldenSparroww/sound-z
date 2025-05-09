@@ -102,6 +102,7 @@ export default function TrackMoreContextMenuButton(props) {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
+        sx={{maxHeight: '30vh'}}
         onClose={handleClose}
       >
 
