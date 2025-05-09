@@ -6,7 +6,7 @@ const colors = {
   color_details: '#EC625F',
   color_text: '#EDEDED',
 
-  color_background: '#575757', //'#525252',
+  color_background: '#575757', //'#525252', /*#222222*/
   color_side_bar: '#414141',
   color_side_bar_list: '#525252',
   color_nav_bar: '#313131',

@@ -7,14 +7,21 @@ import CardActionArea from '@mui/material/CardActionArea';
 import Colors from '../global/Colors.js';
 
 const TrackCard = (props) => {
+  const CurrentColor = (props.current.id === props.track.id) ? Colors.color_details : Colors.color_text;
+
+  const handleClick = (track) => {
+    props.setCurrent(track);
+    props.ChangeActiveList(0,[]);
+  }
+
   return (
     <Card
       sx={{
-        minWidth: "300px",
-        maxWidth: "300px",
+        minWidth: "15rem",
+        maxWidth: "15rem",
         height: "100%",
         display: 'flex',
-        backgroundColor: Colors.color_footer
+        backgroundColor: Colors.color_footer,
       }}
     >
       <CardActionArea
@@ -22,7 +29,7 @@ const TrackCard = (props) => {
           width: '100%',
           justifyContent: 'space-between',
         }}
-        onClick={() => {props.setCurrent(props.track)}}
+        onClick={() => handleClick(props.track)}
       >
         <CardMedia
           component="img"
@@ -31,11 +38,21 @@ const TrackCard = (props) => {
           image={`http://localhost/music/images/${props.track.image}`}
           alt="Track image"
         />
-        <CardContent>
-          <Typography gutterBottom variant="h4" component="div">
+        <CardContent >
+          <Typography
+            sx={{ color: CurrentColor }}
+            gutterBottom
+            variant="h5"
+            component="div"
+          >
             {props.track.name}
           </Typography>
-          <Typography gutterBottom variant="body1" component="div">
+          <Typography
+            sx={{ color: CurrentColor }}
+            gutterBottom
+            variant="body1"
+            component="div"
+          >
             {props.track.artist}
           </Typography>
         </CardContent>

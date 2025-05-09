@@ -14,6 +14,8 @@ const MainSection = (props) => {
           setShownPopupMenu={props.setShownPopupMenu}
           recentTracks={props.recentTracks}
           setCurrent={props.setCurrent}
+          current={props.current}
+          ChangeActiveList={props.ChangeActiveList}
         />
       </div>
     )

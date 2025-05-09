@@ -122,17 +122,19 @@ const FrameLayout = () => {
   useEffect(() => {
     if (IsEmptyObject(current)) return;
 
-    setRecentTracks([
-      ...recentTracks,
-      current
-    ])
+    if (recentTracks.some((track) => track.id === current.id)) return;
 
-    if (recentTracks.length > 10) {
+    if (recentTracks.length + 1 > 10) {
       setRecentTracks([
-        ...recentTracks.slice(0, 9)
+        ...recentTracks.slice(1, 10),
+        current
       ]);
+    } else {
+      setRecentTracks([
+        ...recentTracks,
+        current
+      ])
     }
-
 
   }, [current]);
 
