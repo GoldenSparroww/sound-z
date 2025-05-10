@@ -37,8 +37,9 @@
 
 #footer-player{
     grid-area: footer-player;
-    padding: 3em;
-    background-color: darkseagreen;
+    padding: 1.5em;
+    /*background-color: darkseagreen;*/
+    background-color: var(--color-footer);
 }
 
 @media (max-width: 1000px) {

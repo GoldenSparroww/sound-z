@@ -4,6 +4,7 @@
 const colors = {
   color_empty_field: '#EDEDED',
   color_details: '#EC625F',
+  color_details_hover: '#ff8a87',
   color_text: '#EDEDED',
 
   color_background: '#575757', //'#525252', /*#222222*/

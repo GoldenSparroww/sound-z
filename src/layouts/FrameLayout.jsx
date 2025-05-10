@@ -5,7 +5,6 @@ import SideBar from "./SideBar.jsx";
 import PopupMenu from "../components/PopupMenu.jsx";
 import NavBar from "./NavBar.jsx";
 import Footer from "./Footer.jsx";
-import AudioPlayer from "../components/AudioPlayer.jsx";
 import ThemeSongsList from "../global/ThemeSongsList.js";
 import {ThemeProvider} from "@mui/material/styles";
 import {Snackbar} from "@mui/material";
@@ -203,19 +202,18 @@ const FrameLayout = () => {
           />
         </ThemeProvider>
 
-        <Footer id={"footer-player"}>
-          <AudioPlayer
-            current={current}
-            setCurrent={setCurrent}
-            activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
-            activeList={activeList}
-            setActiveList={setActiveList}
-            immediateFollowingTracks={immediateFollowingTracks}
-            setImmediateFollowingTracks={setImmediateFollowingTracks}
-            queueTracksMap={queueTracksMap}
-          />
-        </Footer>
+        <Footer
+          id={"footer-player"}
+          current={current}
+          setCurrent={setCurrent}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          activeList={activeList}
+          setActiveList={setActiveList}
+          immediateFollowingTracks={immediateFollowingTracks}
+          setImmediateFollowingTracks={setImmediateFollowingTracks}
+          queueTracksMap={queueTracksMap}
+        />
       </div>
 
       <Snackbar

@@ -1,6 +1,7 @@
 :root {
     --color-empty-field: #EDEDED;
     --color-details: #EC625F;
+    --color-details-hover: #ff8a87;
     --color-text: #EDEDED;
 
     --color-background: #575757;
