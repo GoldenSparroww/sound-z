@@ -39,6 +39,7 @@ function Footer(props) {
 
   useEffect(() => {
     const audio = audioRef.current;
+
     if (!audio) return;
 
     // tato podminka resi problem s bufferem po nastaveni src u audio na "", kde si audio ele. stale pamatoval
@@ -57,7 +58,9 @@ function Footer(props) {
       setDuration(audio.duration);
     };
 
+    //událost se spouští pravidelně během přehrávání
     audio.addEventListener("timeupdate", updateProgress);
+    //událost se spouští, když jsou načtena metadata audia
     audio.addEventListener("loadedmetadata", updateDuration);
 
     return () => {
@@ -82,7 +85,6 @@ function Footer(props) {
     };
   }, []);
 
-
   const HandleProgressBarChange = (e) => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -93,10 +95,19 @@ function Footer(props) {
 
   const togglePlay = () => {
     const audio = audioRef.current;
+
     if (!audio) return;
 
     if (audio.paused) {
-      audio.play();
+      // asynchronni
+      // ChatGPT: Ten error Uncaught (in promise) AbortError: The play() request was interrupted by a call to pause()
+      // je známý a znamená, že se audio.play() volá, ale mezitím proběhne audio.pause() nebo jiný zásah do přehrávání,
+      // než se play() stihne dokončit – typicky po konci skladby nebo při rychlém kliknutí na play/pause.
+      audio.play().catch((error) => {
+        if (error.name !== 'AbortError') {
+          console.error('Nepodařilo se přehrát audio:', error);
+        }
+      });
     } else {
       audio.pause();
     }
@@ -113,7 +124,6 @@ function Footer(props) {
 
   return (
     <div id={props.id}>
-
         <audio
           autoPlay
           ref={audioRef}
