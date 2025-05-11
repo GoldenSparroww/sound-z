@@ -1,17 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
 import "../style/layout/FooterLayout.css"
-import {IconButton} from "@mui/material";
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import PauseIcon from '@mui/icons-material/Pause';
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import {ThemeProvider} from "@mui/material/styles";
 import ThemeAudioControls from "../global/ThemeAudioControls.js";
 import {IsEmptyObject} from "../logic/TestInput.js";
-import formatTime from "../logic/FormatTime.js";
-import Typography from "@mui/material/Typography";
 import ListItemText from "@mui/material/ListItemText";
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import AudioPlayerControls from "../components/AudioPlayerControls.jsx";
 
 function Footer(props) {
   const audioRef = useRef(null);
@@ -121,7 +115,6 @@ function Footer(props) {
     setVolume(newVolume);
   };
 
-
   return (
     <div id={props.id}>
         <audio
@@ -154,39 +147,14 @@ function Footer(props) {
           </div>
 
           <div id={"audio-controls-container"}>
-            <div id={"audio-controls"}>
-              <IconButton>
-                <KeyboardDoubleArrowLeftIcon/>
-              </IconButton>
-              <IconButton sx={{ height: '4rem', width: '4rem' }} onClick={togglePlay}>
-                {isPlaying ? (
-                  <PauseIcon sx={{ height: '3.5rem', width: '3.5rem' }} />
-                ) : (
-                  <PlayArrowIcon sx={{ height: '3.5rem', width: '3.5rem' }} />
-                )}
-              </IconButton>
-              <IconButton>
-                <KeyboardDoubleArrowRightIcon onClick={PlayNext} />
-              </IconButton>
-            </div>
-
-            <div id={"progress-bar-container"}>
-              <Typography variant={"body1"}>{formatTime(progress)}</Typography>
-              <input
-                id={"audio-progress-bar"}
-                value={progress || 0}
-                min={0}
-                max={duration || 0}
-                type="range"
-                onChange={HandleProgressBarChange}
-                style={{
-                  background: duration
-                    ? `linear-gradient(to right, var(--color-details) 0%, var(--color-details) ${progress / duration * 100}%, var(--color-empty-field) ${progress / duration * 100}%, var(--color-empty-field) 100%)`
-                    : `linear-gradient(to right, var(--color-empty-field) 0%, var(--color-empty-field) 100%)`
-                }}
-              />
-              <Typography variant={"body1"}>{formatTime(duration)}</Typography>
-            </div>
+            <AudioPlayerControls
+              togglePlay={togglePlay}
+              duration={duration}
+              progress={progress}
+              isPlaying={isPlaying}
+              PlayNext={PlayNext}
+              HandleProgressBarChange={HandleProgressBarChange}
+            />
           </div>
           <div id={"sound-progress-bar"}>
             <VolumeUpIcon />
