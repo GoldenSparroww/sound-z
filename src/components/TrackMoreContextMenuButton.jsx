@@ -25,7 +25,7 @@ export default function TrackMoreContextMenuButton(props) {
     handleClose()
     
     if (containsBoundTrack(currentPlaylist, boundTrack)) {
-      props.HandleActionPopup(`Písnička už je v playlistu ${currentPlaylist.name} obsažena!`, 3000);
+      props.HandleActionPopup(`The song is already included in the playlist "${currentPlaylist.name}"!`, 3000);
       return;
     }
     
@@ -80,8 +80,6 @@ export default function TrackMoreContextMenuButton(props) {
         playlist.id !== selectedPlaylist.id ? playlist : selectedPlaylist
       ))
     ])
-
-    //props.RefreshQueuePlaylist(selectedPlaylist.songs);
   };
 
   return (
@@ -102,20 +100,20 @@ export default function TrackMoreContextMenuButton(props) {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        sx={{maxHeight: '30vh'}}
+        sx={{maxHeight: '30vh', maxWidth: '30rem'}}
         onClose={handleClose}
       >
 
         {props.isShownInPlaylist && ([
             <MenuItem key={"remove"} onClick={() => {handleRemoveFromPlaylist(props.boundTrack)}}>
               <CloseIcon sx={{ pr: "0.3rem"}}/>
-              <ListItemText>Odebrat z playlistu</ListItemText>
+              <ListItemText>Remove from playlist</ListItemText>
             </MenuItem>,
             <Divider key={"divider"} />
         ])}
 
         <MenuItem sx={{textAlign: "center", fontSize: "1.1rem"}} disabled={true}>
-          {(!(props.playlists.length > 0)) ? "Nemáš žádný playlist" : "Add to playlist..."}
+          {(!(props.playlists.length > 0)) ? "You have no playlists" : "Add to playlist..."}
         </MenuItem>
 
         {props.playlists.length > 0 ?

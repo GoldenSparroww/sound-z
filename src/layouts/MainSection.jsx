@@ -133,7 +133,6 @@ const MainSection = (props) => {
           ChangeActiveList={props.ChangeActiveList}
           AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
           HandleActionPopup={props.HandleActionPopup}
-
           playlists={props.playlists}
           setPlaylists={props.setPlaylists}
           currentPlaylist={props.currentPlaylist}
@@ -141,7 +140,6 @@ const MainSection = (props) => {
           setShownPopupMenu={props.setShownPopupMenu}
           shownMainSection={props.shownMainSection}
           setShownMainSection={props.setShownMainSection}
-          //RefreshQueuePlaylist={props.RefreshQueuePlaylist}
         />
       </div>
     )

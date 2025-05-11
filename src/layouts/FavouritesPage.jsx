@@ -7,7 +7,7 @@ const FavouritesPage = (props) => {
   return (
     <div id={"favourites-container"}>
       <div id={"favourites-header"}>
-        <Typography variant="h1">Oblíbené</Typography>
+        <Typography variant="h1">Favourites</Typography>
       </div>
       <div id={"favourites-body"}>
         <div id={"favourites-list"}>
@@ -30,7 +30,7 @@ const FavouritesPage = (props) => {
               setPlaylists={props.setPlaylists}
             ></PrintList>
           ) : (
-            <Typography variant="h6">Zatím se ti nic nelíbí</Typography>
+            <Typography variant="h6">You don't like anything yet.</Typography>
           )}
         </div>
       </div>

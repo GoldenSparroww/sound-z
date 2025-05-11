@@ -1,5 +1,4 @@
 import * as React from 'react';
-//import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -62,8 +61,8 @@ export default function NestedList(props) {
   const handlePlaylistAdded = () => {
     if (props.playlists.length > 50) {
       props.HandleActionPopup(
-        "Dosažen maximální počet playlistů (50). " +
-        "Pro přidání smažte alespoň jeden playlist.",
+        "Maximum number of playlists reached (50). " +
+        "To add, delete at least one playlist.",
         5000
       )
       return;

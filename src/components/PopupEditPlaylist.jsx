@@ -76,7 +76,7 @@ const PopupEditPlaylist = (props) => {
         const cacheBustedUrl = uploadedUrl + "?t=" + Date.now();
         currentlyEdited.image = cacheBustedUrl;
       } else {
-        alert("Nepodařilo se nahrát obrázek.");
+        alert("Unable to upload image.");
         return;
       }
     }
@@ -108,7 +108,7 @@ const PopupEditPlaylist = (props) => {
       const result = await response.json();
       return result.imageUrl; // např. "http://localhost/images/xyz.jpg"
     } catch (error) {
-      console.error("Chyba při uploadu:", error);
+      console.error("Upload error:", error);
       return null;
     }
   };
@@ -152,7 +152,7 @@ const PopupEditPlaylist = (props) => {
 
             <TextField
               id="edit-playlist-popup-name"
-              label="Název Playlistu"
+              label="Playlist name"
               variant="outlined"
               defaultValue={currentlyEdited.name}
               onChange={(e) => TemporarySaveName(e)}
@@ -161,7 +161,7 @@ const PopupEditPlaylist = (props) => {
             />
             <TextField
               id="edit-playlist-popup-description"
-              label="Volitelný popis playlistu"
+              label="Optional description"
               variant="outlined"
               defaultValue={currentlyEdited.description}
               multiline
@@ -173,16 +173,22 @@ const PopupEditPlaylist = (props) => {
             <div
               id="edit-playlist-popup-button"
             >
-              <Button variant="filled" startIcon={<CancelIcon />} onClick={() => props.setShownPopupMenu(null)}>
-                Zrušit
+              <Button
+                variant="filled"
+                startIcon={<CancelIcon />}
+                onClick={() => props.setShownPopupMenu(null)}
+                sx={{ width: '120px' }}
+              >
+                Cancel
               </Button>
               <Button
                 variant="filled"
                 startIcon={<CheckBoxIcon />}
                 onClick={() => SaveChanges()}
                 disabled={!!nameError || !!descriptionError || currentlyEdited.name.trim() === ""}
+                sx={{ width: '120px' }}
               >
-                Uložit
+                Save
               </Button>
             </div>
           </div>

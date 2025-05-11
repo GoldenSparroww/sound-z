@@ -23,7 +23,6 @@
 
 #side-bar{
     grid-area: side-bar;
-    /*background-color: cornflowerblue;*/
     border-right: 3px solid var(--color-footer);
     overflow-y: scroll;
     scrollbar-width: none;
@@ -38,7 +37,6 @@
 #footer-player{
     grid-area: footer-player;
     padding: 1.5em;
-    /*background-color: darkseagreen;*/
     background-color: var(--color-footer);
 }
 
@@ -79,6 +77,4 @@
 #print-list-duration{
     transition: 0.2s;
 }
-
-/*----------------*/
 

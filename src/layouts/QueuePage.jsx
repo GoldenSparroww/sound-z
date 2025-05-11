@@ -16,7 +16,7 @@ const QueuePage = (props) => {
       <div id={"queue-header"}>
 
         <Typography variant="h1">
-          Fronta
+          Queue
         </Typography>
       </div>
 
@@ -24,7 +24,7 @@ const QueuePage = (props) => {
         <div id={"queue-current"}>
           {!IsEmptyObject(props.current) ? (
             <>
-              <Typography variant="h6">Právě hraje:</Typography>
+              <Typography variant="h5">Currently playing:</Typography>
               <List>
                 <ListItemButton
                   sx={{
@@ -49,9 +49,8 @@ const QueuePage = (props) => {
           ) : (
             <Typography
               variant="h6"
-              sx={{pl: 3}}
             >
-              Nejdřív musíš něco zapnout hochu
+              Queue is empty.
             </Typography>
           )}
         </div>
@@ -59,7 +58,7 @@ const QueuePage = (props) => {
 
         {props.immediateFollowingTracks.length > 0 && (
           <div id={"queue-following-tracks"}>
-            <Typography variant="h6">Další ve frontě:</Typography>
+            <Typography variant="h5">Next in queue:</Typography>
             <List>
               {props.immediateFollowingTracks.map((track, i) => (
                 <ListItemButton
@@ -107,7 +106,7 @@ const QueuePage = (props) => {
                 justifyContent: "space-between",
               }}
             >
-              <Typography variant="h6">Další z aktuálního playlistu:</Typography>
+              <Typography variant="h5">Next from current playlist:</Typography>
               <ThemeProvider theme={themeForm}>
                 <Button
                   onClick={() => {
@@ -115,7 +114,7 @@ const QueuePage = (props) => {
                   }}
                 >
                   <HighlightOffIcon sx={{ color: Colors.color_details, pr: "0.5rem" }} />
-                  Odstranit playlist z fronty
+                  Remove playlist from the queue
                 </Button>
               </ThemeProvider>
             </Box>
@@ -145,23 +144,6 @@ const QueuePage = (props) => {
             </List>
           </div>
         )}
-
-
-        {/*<PrintList
-          allSongs={[...props.immediateFollowingTracks, ...props.activeList]}
-          whatToFilter={null}
-          filter={null}
-          showArtist={true}
-          showGenre={true}
-          current={props.current}
-          setCurrent={props.setCurrent}
-          FavouritesAdd={props.FavouritesAdd}
-          FavouritesRemove={props.FavouritesRemove}
-          favouriteTracks={props.favouriteTracks}
-          ChangeActiveList={props.ChangeActiveList}
-          AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
-          HandleActionPopup={props.HandleActionPopup}
-        ></PrintList>*/}
       </div>
     </div>
   )

@@ -105,7 +105,7 @@ function Footer(props) {
       // než se play() stihne dokončit – typicky po konci skladby nebo při rychlém kliknutí na play/pause.
       audio.play().catch((error) => {
         if (error.name !== 'AbortError') {
-          console.error('Nepodařilo se přehrát audio:', error);
+          console.error('Failed to play audio:', error);
         }
       });
     } else {
@@ -140,8 +140,9 @@ function Footer(props) {
             {!IsEmptyObject(props.current) ? (
               <>
                 <img
-                style={{ width: "6rem", height: "6rem", objectFit: "cover", borderRadius: "4px" }}
-                src={`http://localhost/music/images/${props.current.image}`}
+                  style={{ width: "6rem", height: "6rem", objectFit: "cover", borderRadius: "4px" }}
+                  src={`http://localhost/music/images/${props.current.image}`}
+                  alt={"Image"}
                 />
                 <ListItemText
                   id={"currently-playing-track-text"}

@@ -34,13 +34,14 @@ const HomePage = (props) => {
   return (
     <div id={'home-page-container'}>
 
-      {props.recentTracks.length > 0 && (
-        <div id={"tile-recently-played-container"} ref={scrollRef} >
-          <div id={"header-container"}>
-            <Typography sx={{color: Colors.color_text}} gutterBottom variant="h4" component="div">
-              Recently Played Tracks
-            </Typography>
-          </div>
+      <div id={"tile-recently-played-container"} ref={scrollRef} >
+        <div id={"header-container"}>
+          <Typography sx={{color: Colors.color_text}} gutterBottom variant="h3" component="div">
+            Recently Played Tracks
+          </Typography>
+        </div>
+
+        {props.recentTracks.length > 0 ? (
           <ThemeProvider theme={themeRecentlyPlayed}>
             <div id={"tracks-container"}>
               {/* slice bez argumentu vytvori melkou kopii a tu muzeme primo prevratit reverse() */}
@@ -57,8 +58,14 @@ const HomePage = (props) => {
               ))}
             </div>
           </ThemeProvider>
-        </div>
-      )}
+        ) : (
+          <ThemeProvider theme={themeRecentlyPlayed}>
+            <div id={"tracks-container"}>
+              <Typography variant={"h6"}> You did not have played any music yet.</Typography>
+            </div>
+          </ThemeProvider>
+        )}
+      </div>
 
 
       <Tile class={"basic-tile"} id={"tile-settings"} onClick={() => props.setShownPopupMenu('settings')}>

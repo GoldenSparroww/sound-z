@@ -26,7 +26,7 @@ const PopupRemovePlaylist = (props) => {
 
       <div id={'popup-menu-content'} className="mui-like-border">
         <Typography variant="h6" color="textSecondary" component="div">
-          Opravdu si přejete playlist smazat?
+          Are you sure you want to delete this playlist?
         </Typography>
         <div
           id="edit-playlist-popup-button"
@@ -35,15 +35,17 @@ const PopupRemovePlaylist = (props) => {
             variant="filled"
             startIcon={<CancelIcon />}
             onClick={() => {props.setShownPopupMenu(false);}}
+            sx={{ width: '120px' }}
           >
-            Zrušit
+            Cancel
           </Button>
           <Button
             variant="filled"
             startIcon={<CheckBoxIcon />}
             onClick={handleRemove}
+            sx={{ width: '120px' }}
           >
-            Smazat
+            Delete
           </Button>
         </div>
       </div>

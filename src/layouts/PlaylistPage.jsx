@@ -9,29 +9,11 @@ import {ThemeProvider} from "@mui/material/styles";
 import themeForm from "../global/ThemeForm.js";
 
 const PlaylistPage = (props) => {
-  /*const [playingNow, setPlayingNow] = useState(false);*/
-
   const selectedPlaylist = props.playlists.find(playlist => playlist.id === props.currentPlaylist);
 
   const totalTrackTime = selectedPlaylist["songs"].reduce((acc, song) => acc + song.duration, 0);
 
   const trackCount = selectedPlaylist["songs"].length;
-
-  /*const PlayPlaylist = () => {
-    if (props.playlists[props.currentPlaylist]["songs"][0]) {
-      props.setCurrent(props.playlists[props.currentPlaylist]["songs"][0]);
-      props.ChangeActiveList(
-        0,
-        [...props.playlists[props.currentPlaylist]["songs"]]
-      );
-    } else {
-      props.HandleActionPopup("Playlist je prázdný!");
-    }
-  };*/
-
-  /*const PlayButtonHandle = () => {
-    setPlayingNow(!playingNow);
-  }*/
 
   const PlayButtonHandle = () => {
     props.setCurrent(selectedPlaylist.songs[0]);
@@ -84,9 +66,6 @@ const PlaylistPage = (props) => {
               Play
             </Button>
           </ThemeProvider>
-          {/*<IconButton onClick={PlayButtonHandle}>
-            {!playingNow ? <PlayCircleIcon sx={{fontSize: '5rem'}}/> : <PauseCircleIcon sx={{fontSize: '5rem'}}/>}
-          </IconButton>*/}
           <PlaylistContextMenuButton
             setShownPopupMenu={props.setShownPopupMenu}
             AddImmediateFollowingTracks={props.AddImmediateFollowingTracks}
@@ -119,10 +98,11 @@ const PlaylistPage = (props) => {
               setPlaylists={props.setPlaylists}
               isShownInPlaylist={true}
               currentPlaylist={props.currentPlaylist}
-              //RefreshQueuePlaylist={props.RefreshQueuePlaylist}
             ></PrintList>
           ) : (
-            <Typography variant="h6">Playlist je prázdný...</Typography>
+            <div id={'playlist-content'}>
+              <Typography variant="h6">Playlist is empty...</Typography>
+            </div>
           )}
         </div>
       </div>

@@ -26,16 +26,16 @@ function PrintList(props) {
   const handleFavouritesClick = (song) => {
     if (props.favouriteTracks.includes(song)){
       props.FavouritesRemove(song);
-      props.HandleActionPopup("Odebráno z oblíbených.");
+      props.HandleActionPopup("Removed from favourites.");
     } else {
       props.FavouritesAdd(song);
-      props.HandleActionPopup("Přidáno do oblíbených.");
+      props.HandleActionPopup("Added to favourites.");
     }
   }
 
   const handleQueueClick = (song) => {
     props.AddImmediateFollowingTracks(song);
-    props.HandleActionPopup("Přidáno do fronty.");
+    props.HandleActionPopup("Added to the queue.");
   }
 
   return (

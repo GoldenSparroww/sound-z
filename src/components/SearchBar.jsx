@@ -47,7 +47,7 @@ function SearchBar(props) {
     }}>
       <TextField
         fullWidth
-        label="Hledat"
+        label="Search"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         variant="filled"

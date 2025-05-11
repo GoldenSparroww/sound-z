@@ -105,10 +105,6 @@ const FrameLayout = () => {
     }
   }
 
-  /*const RefreshQueuePlaylist = (list) => {
-    setActiveList(list);
-  }*/
-
   /*-----------------------------------------------------------------------------------------*/
   const HandleActionPopup = (message, duration = 1000) => {
     setActionPopupMessage(message);
