@@ -12,7 +12,7 @@ function AudioPlayerControls(props) {
     <>
       <div id={"audio-controls"}>
         <IconButton>
-          <KeyboardDoubleArrowLeftIcon/>
+          <KeyboardDoubleArrowLeftIcon onClick={props.PlayPrev} />
         </IconButton>
         <IconButton sx={{ height: '4rem', width: '4rem' }} onClick={props.togglePlay}>
           {props.isPlaying ? (

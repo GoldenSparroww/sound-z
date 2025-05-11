@@ -13,21 +13,53 @@ function Footer(props) {
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1); // 1 = 100%
+  // pokud v queue jdu z playlistove songy na immediate songu, tak mi zustane index posledni songy s playlistu
+  // kdyz pak řada immediate skonci a vrati se k playlistu, a ja budu chtit krok zpet. Tak se puvodni index playlistu
+  // rovnou odecte a tim padem se preskoci jeden song dozadu, tahle promena mi v tomhle bugu brani - opravuje ho
+  // protoze si drzim informaci jestli si mam drzet posledni index a neodecitat jednicku, viz. playPrev
+  const [keepLastPlaylistIndex, setKeepLastPlaylistIndex] = useState(false)
 
   const PlayNext = () => {
     if (props.queueTracksMap.includes("immediateItem")) {
       props.setCurrent(props.immediateFollowingTracks[0]);
       props.setImmediateFollowingTracks(props.immediateFollowingTracks.slice(1));
+      setKeepLastPlaylistIndex(true);
     }
     else if (props.queueTracksMap.includes("acitveListItem")) {
       if (props.activeIndex + 1 <= props.activeList.length - 1 ) {
         props.setCurrent(props.activeList[props.activeIndex + 1]);
         props.setActiveIndex(props.activeIndex + 1);
       } else {
-        props.setCurrent({});
+        const audio = audioRef.current;
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }
+    else {
+      const audio = audioRef.current;
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }
+
+  const PlayPrev = () => {
+    if (props.queueTracksMap.includes("acitveListItem")) {
+      // pokud si mame drzet index z minula, tak vime ze je platny a nebude odecitat jednicku a rovnou pustime
+      if (keepLastPlaylistIndex){
+        props.setCurrent(props.activeList[props.activeIndex]);
+        props.setActiveIndex(props.activeIndex);
+        setKeepLastPlaylistIndex(false);
+
+      } else if (props.activeIndex - 1 >= 0 ) {
+        props.setCurrent(props.activeList[props.activeIndex - 1]);
+        props.setActiveIndex(props.activeIndex - 1);
+      } else {
+        const audio = audioRef.current;
+        audio.currentTime = 0;
       }
     } else {
-      props.setCurrent({});
+      const audio = audioRef.current;
+      audio.currentTime = 0;
     }
   }
 
@@ -154,6 +186,7 @@ function Footer(props) {
               isPlaying={isPlaying}
               PlayNext={PlayNext}
               HandleProgressBarChange={HandleProgressBarChange}
+              PlayPrev={PlayPrev}
             />
           </div>
           <div id={"sound-progress-bar"}>
