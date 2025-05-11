@@ -9,7 +9,7 @@ function SearchResults(props) {
 
       {props.searchedResults.tracks.length > 0 && (
         <div className={"search-results-field"} id={"search-results-tracks"}>
-          <Typography variant="h6">SKLADBY</Typography>
+          <Typography variant="h4">Tracks</Typography>
           <PrintList
             allSongs={props.searchedResults.tracks}
             whatToFilter={null}
@@ -33,7 +33,7 @@ function SearchResults(props) {
 
       {props.searchedResults.genres.length > 0 && (
         <div className={"search-results-field"} id={"search-results-genres"}>
-          <Typography variant="h6">ŽÁNRY</Typography>
+          <Typography variant="h4">Genres</Typography>
           <List>
             {props.searchedResults.genres.map((genre, idx) => (
               <ListItemButton
@@ -49,7 +49,7 @@ function SearchResults(props) {
 
       {props.searchedResults.artists.length > 0 && (
         <div className={"search-results-field"} id={"search-results-artists"}>
-          <Typography variant="h6">AUTOŘI</Typography>
+          <Typography variant="h4">Artists</Typography>
           <List>
             {props.searchedResults.artists.map((artist, idx) => (
               <ListItemButton

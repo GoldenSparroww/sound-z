@@ -25,6 +25,11 @@ const themeSongsList = createTheme({
         },
         h1: {
           color: Colors.color_empty_field,
+          fontSize: 'clamp(2rem, 10vw, 6rem)',
+        },
+        h4: {
+          color: Colors.color_empty_field,
+          padding: "1rem",
         },
       }
     },
