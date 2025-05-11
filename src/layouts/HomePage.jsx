@@ -1,6 +1,5 @@
 import "../style/layout/HomePageLayout.css"
 import Tile from "../components/Tile.jsx"
-import SettingsIcon from '@mui/icons-material/Settings';
 import InfoIcon from '@mui/icons-material/Info';
 import HelpIcon from '@mui/icons-material/Help';
 import TrackCard from "../components/TrackCard.jsx";
@@ -68,10 +67,10 @@ const HomePage = (props) => {
       </div>
 
 
-      <Tile class={"basic-tile"} id={"tile-settings"} onClick={() => props.setShownPopupMenu('settings')}>
-        <SettingsIcon sx={{fontSize: "8rem"}} />
+      {/*<Tile class={"basic-tile"} id={"tile-settings"} onClick={() => props.setShownPopupMenu('settings')}>
+        <SettingsIcon sx={{fontSize: "8rem"}}/>
         <span>Settings</span>
-      </Tile>
+      </Tile>*/}
 
       <Tile class={"basic-tile"} id={"tile-about"} onClick={() => props.setShownPopupMenu('about')}>
         <InfoIcon sx={{fontSize: "8rem"}}/>

@@ -5,6 +5,9 @@ const ThemeForm = createTheme({
   components: {
     MuiTypography: {
       styleOverrides: {
+        root: {
+          color: Colors.color_text,
+        },
         primary: {
           color: Colors.color_empty_field,
           fontSize: '1.2rem',
