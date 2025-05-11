@@ -6,6 +6,10 @@ const BurgerButton = (props) => {
   return (
     <div className={"burger-button"}>
       <IconButton
+        sx={{
+          width: "3rem",
+          height: "3rem",
+        }}
         onClick={() => {
           props.setIsSideBarVisible(!props.isSideBarVisible)
         }}

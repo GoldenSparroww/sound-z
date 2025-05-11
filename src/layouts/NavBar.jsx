@@ -22,10 +22,7 @@ function NavBar(props) {
           allSongs={props.allSongs}
           setAllSongs={props.setAllSongs}/>
         <div id={"burger-button-container"} className={"side-div"}>
-          <BurgerButton
-            isSideBarVisible={props.isSideBarVisible}
-            setIsSideBarVisible={props.setIsSideBarVisible}
-          />
+          <div id={"placeholder"} />
         </div>
       </ThemeProvider>
     </div>
