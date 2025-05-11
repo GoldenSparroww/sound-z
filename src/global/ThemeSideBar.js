@@ -64,7 +64,7 @@ const themeSideBar = createTheme({
         root: {
           color: Colors.color_empty_field,
           transition: '0.2s',
-          height: "100px",
+          height: "6.2rem", /* cca 100px ve 100% */
 
           '&.Mui-selected': {
             backgroundColor: Colors.color_selection,

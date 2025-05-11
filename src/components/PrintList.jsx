@@ -50,7 +50,7 @@ function PrintList(props) {
               <Typography
                 id={"print-list-line-number"}
                 sx={{
-                  pr: 3,
+                  pr: "3rem",
                   fontSize: "1.2rem",
                   minWidth: "40px",
                   overflow: "hidden",

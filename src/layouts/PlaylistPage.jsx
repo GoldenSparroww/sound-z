@@ -32,7 +32,7 @@ const PlaylistPage = (props) => {
           {selectedPlaylist["name"]}
         </span>
         <div
-          style={{width:'300px', height:'300px'}}
+          style={{/*width:'300px', height:'300px'*/ width: "19rem", height: "19rem" }}
           id={'playlist-image'}
         >
           <img

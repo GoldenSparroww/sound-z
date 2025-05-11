@@ -25,7 +25,7 @@ const ThemeForm = createTheme({
           boxShadow: 'none',
           textTransform: 'none',
           fontSize: "1rem",
-          padding: '6px 12px',
+          padding: '0.4rem 0.8rem', /* cca 6px 12px */
           border: '1px solid',
           lineHeight: 1.5,
           backgroundColor: Colors.color_footer,
