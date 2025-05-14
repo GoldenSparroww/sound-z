@@ -11,9 +11,10 @@ import themeRecentlyPlayed from "../global/ThemeRecentlyPlayed.js";
 import {useEffect, useRef} from "react";
 
 const HomePage = (props) => {
-
   // princip posunu horziontalne
   const scrollRef = useRef(null);
+
+  // pridani listeneru na horizonatlni scroll
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -65,12 +66,6 @@ const HomePage = (props) => {
           </ThemeProvider>
         )}
       </div>
-
-
-      {/*<Tile class={"basic-tile"} id={"tile-settings"} onClick={() => props.setShownPopupMenu('settings')}>
-        <SettingsIcon sx={{fontSize: "8rem"}}/>
-        <span>Settings</span>
-      </Tile>*/}
 
       <Tile class={"basic-tile"} id={"tile-about"} onClick={() => props.setShownPopupMenu('about')}>
         <InfoIcon sx={{fontSize: "8rem"}}/>

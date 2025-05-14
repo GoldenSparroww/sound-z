@@ -11,11 +11,14 @@ import {Snackbar} from "@mui/material";
 import {IsEmptyObject} from "../logic/TestInput.js";
 
 const FrameLayout = () => {
+  // obsluha bocniho menu, hlavni sekce a popup menu
   const [isSideBarVisible, setIsSideBarVisible] = useState(false);
   const [shownMainSection, setShownMainSection] = useState("homepage");
   const [shownPopupMenu, setShownPopupMenu] = useState(null);
 
+  // list objektu vsech dostupnych pisnicek
   const [allSongs, setAllSongs] = useState([]);
+  // objekt listů pro hledani
   const [searchedResults, setSearchedResults] = useState({ tracks: [], genres: [], artists: [] });
 
   const [current, setCurrent] = useState({}); /* URL of current track */
@@ -25,19 +28,29 @@ const FrameLayout = () => {
   const [currentGenre, setCurrentGenre] = useState(null);
   const [currentPlaylist, setCurrentPlaylist] = useState(null);
 
+  // udrzuje list objektu toho co je v oblibenych
   const [favouriteTracks, setFavouriteTracks] = useState([]);
 
+  // udrzuje list objektu hudby, ktera bezprostredne nasleduje ve fronte - manualne pridana
   const [immediateFollowingTracks, setImmediateFollowingTracks] = useState([]);
+  // obsahuje kompletni list prostoru, kde bylo kliknuto na posledni skladbu
   const [activeList, setActiveList] = useState([]);
+  // index huby v ramci ulozeneho seznamu
   const [activeIndex, setActiveIndex] = useState(0);
+  // symbolicka mapa fronty, udrzuje seznam dvou druhu slov, kde jedno rika ze ve fronte jsou nejaky pocty manualne pridane hudby
+  // a nejaky konkretni list (manualne pridane se odmazavaji, automaticky ne)
+  // slouzi pro detekci vypisu fronty
   const [queueTracksMap, setQueueTracksMap] = useState([]);
 
+  // stavy pro obsluhu vyskakovaciho oznameni
   const [actionPopup, setActionPopup] = useState(false);
   const [actionPopupMessage, setActionPopupMessage] = useState("");
   const [actionPopupDuration, setActionPopupDuration] = useState(1000)
 
+  //obsahuje list objektu poslednich 10 prehranych skladeb
   const [recentTracks, setRecentTracks] = useState([])
 
+  // obsahuje list playlistu
   const [playlists, setPlaylists] = useState([]);
 
   const ChangeMainSection = (section, isPlaylist = false) => {
@@ -74,6 +87,7 @@ const FrameLayout = () => {
 
   /*-----------------------------------------------------------------------------------------*/
   /* Kvuli asynchornim zmenam stavu immediateFollowingTracks, activeList musim pouzit useEffect jinak nesiham zmeny */
+  // aktualizace mapy fronty
   useEffect(() => {
     setQueueTracksMap([
       ...immediateFollowingTracks.map(() => "immediateItem"),
@@ -112,6 +126,7 @@ const FrameLayout = () => {
     setActionPopup(true);
   }
 
+  // aktualizace posledni prehrane hudby
   useEffect(() => {
     if (IsEmptyObject(current)) return;
 
@@ -141,6 +156,7 @@ const FrameLayout = () => {
         setPlaylists={setPlaylists}
         setCurrentPlaylist={setCurrentPlaylist}
         setShownMainSection={setShownMainSection}
+        HandleActionPopup={HandleActionPopup}
       />
 
       <div id={"grid-container"}>
@@ -152,6 +168,7 @@ const FrameLayout = () => {
           setSearchedResults={setSearchedResults}
           allSongs={allSongs}
           setAllSongs={setAllSongs}
+          HandleActionPopup={HandleActionPopup}
         >
         </NavBar>
 
@@ -187,7 +204,6 @@ const FrameLayout = () => {
             ChangeActiveList={ChangeActiveList}
             AddImmediateFollowingTracks={AddImmediateFollowingTracks}
             activeIndex={activeIndex}
-            //RefreshQueuePlaylist={RefreshQueuePlaylist}
             HandleActionPopup={HandleActionPopup}
             playlists={playlists}
             setPlaylists={setPlaylists}

@@ -4,7 +4,7 @@ import PrintList from "../components/PrintList.jsx";
 import "../style/layout/SearchResultsLayout.css"
 import AudioFileIcon from "@mui/icons-material/AudioFile";
 
-function GenrePage(props) {
+const GenrePage = (props) => {
   return (
     <>
       <div className={"search-results-specific-field-header"}>

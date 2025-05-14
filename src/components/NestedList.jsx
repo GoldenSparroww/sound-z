@@ -21,7 +21,7 @@ import GetPlaylistAutomaticName from "../logic/GetPlaylistAutomaticName.js";
 import BurgerButton from "./BurgerButton.jsx";
 
 
-export default function NestedList(props) {
+const NestedList = (props) => {
   const [open, setOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState("");
 
@@ -225,3 +225,5 @@ export default function NestedList(props) {
     </List>
   );
 }
+
+export default NestedList;

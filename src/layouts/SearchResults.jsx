@@ -3,7 +3,7 @@ import * as React from "react";
 import "../style/layout/SearchResultsLayout.css"
 import PrintList from "../components/PrintList.jsx";
 
-function SearchResults(props) {
+const SearchResults = (props) => {
   return (
     <div id="search-results-container">
 

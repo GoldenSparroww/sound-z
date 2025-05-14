@@ -7,7 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import AudioPlayerControls from "../components/AudioPlayerControls.jsx";
 
-function Footer(props) {
+const Footer = (props) => {
   const audioRef = useRef(null);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -19,24 +19,37 @@ function Footer(props) {
   // protoze si drzim informaci jestli si mam drzet posledni index a neodecitat jednicku, viz. playPrev
   const [keepLastPlaylistIndex, setKeepLastPlaylistIndex] = useState(false)
 
+  // tohle je pro specialni pripad kdy je do manulani casti fronty pridano vice istanci stejne hudby a je potřeba na ni prepnou
+  // audio element automaticky nezmeni svuj src, protoze url zustava stejne
+  // proto je treba ho manulane zastavit a znova nacist
+  const HandleIfNextTrackIsSame = (audio, lastSong, newSong) => {
+    if (lastSong.url === newSong.url) {
+      audio.pause();
+      audio.load();
+      audio.play();
+    }
+  }
+
   const PlayNext = () => {
+    const audio = audioRef.current;
+
     if (props.queueTracksMap.includes("immediateItem")) {
+      HandleIfNextTrackIsSame(audio, props.current, props.immediateFollowingTracks[0]);
       props.setCurrent(props.immediateFollowingTracks[0]);
       props.setImmediateFollowingTracks(props.immediateFollowingTracks.slice(1));
       setKeepLastPlaylistIndex(true);
     }
     else if (props.queueTracksMap.includes("acitveListItem")) {
       if (props.activeIndex + 1 <= props.activeList.length - 1 ) {
+        HandleIfNextTrackIsSame(audio, props.current, props.activeList[props.activeIndex + 1]);
         props.setCurrent(props.activeList[props.activeIndex + 1]);
         props.setActiveIndex(props.activeIndex + 1);
       } else {
-        const audio = audioRef.current;
         audio.pause();
         audio.currentTime = 0;
       }
     }
     else {
-      const audio = audioRef.current;
       audio.pause();
       audio.currentTime = 0;
     }

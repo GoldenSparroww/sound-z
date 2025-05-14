@@ -8,7 +8,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import AddIcon from '@mui/icons-material/Add';
 import QueueIcon from '@mui/icons-material/Queue';
 
-export default function PlaylistContextMenuButton(props) {
+const PlaylistContextMenuButton = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const selectedPlaylist = props.playlists.find(playlist => playlist.id === props.currentPlaylist);
@@ -72,3 +72,5 @@ export default function PlaylistContextMenuButton(props) {
     </div>
   );
 }
+
+export default PlaylistContextMenuButton;

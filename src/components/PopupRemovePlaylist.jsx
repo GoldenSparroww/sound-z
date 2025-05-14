@@ -7,7 +7,6 @@ import {ThemeProvider} from "@mui/material/styles";
 import themeForm from "../global/ThemeForm.js";
 
 const PopupRemovePlaylist = (props) => {
-
   const handleRemove = () => {
     props.setShownPopupMenu(false);
     props.setShownMainSection("homepage");

@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import formatTime from "../logic/FormatTime.js";
 import React from "react";
 
-function AudioPlayerControls(props) {
+const AudioPlayerControls = (props) => {
   return (
     <>
       <div id={"audio-controls"}>

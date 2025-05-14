@@ -3,7 +3,7 @@ import {TextField, Box, IconButton} from "@mui/material";
 import GetSearchedResults from "../logic/GetSearchedResults.js";
 import SearchIcon from '@mui/icons-material/Search';
 
-function SearchBar(props) {
+const SearchBar = (props) => {
   const [inputValue, setInputValue] = useState("");
 
   const API_URL = "http://localhost/list.php";
@@ -19,7 +19,11 @@ function SearchBar(props) {
   useEffect(() => {
     fetch(API_URL)
       .then(res => res.json())
-      .then(data => props.setAllSongs(data));
+      .then(data => props.setAllSongs(data))
+      .catch(error => {
+        props.HandleActionPopup(`Error while getting data from server. Check your internet connection`, 5000);
+        console.error(`Error while getting data from server.${error}`);
+      });
   }, []);
 
   useEffect(() => {

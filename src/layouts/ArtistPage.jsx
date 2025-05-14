@@ -4,7 +4,7 @@ import PrintList from "../components/PrintList.jsx";
 import "../style/layout/SearchResultsLayout.css"
 import FaceIcon from '@mui/icons-material/Face';
 
-function ArtistPage(props) {
+const ArtistPage = (props) => {
   return (
     <>
       <div className="search-results-specific-field-header">

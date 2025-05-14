@@ -9,7 +9,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import GetPlaylistAutomaticId from "../logic/GetPlaylistAutomaticId.js";
 import GetPlaylistAutomaticName from "../logic/GetPlaylistAutomaticName.js";
 
-export default function TrackMoreContextMenuButton(props) {
+const TrackMoreContextMenuButton = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -141,3 +141,5 @@ export default function TrackMoreContextMenuButton(props) {
     </>
   );
 }
+
+export default TrackMoreContextMenuButton;
