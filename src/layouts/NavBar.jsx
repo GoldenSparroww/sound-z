@@ -20,7 +20,9 @@ const NavBar = (props) => {
           ChangeMainSection={props.ChangeMainSection}
           setSearchedResults={props.setSearchedResults}
           allSongs={props.allSongs}
-          setAllSongs={props.setAllSongs}/>
+          setAllSongs={props.setAllSongs}
+          HandleActionPopup={props.HandleActionPopup}
+        />
         <div id={"burger-button-container"} className={"side-div"}>
           <div id={"placeholder"} />
         </div>

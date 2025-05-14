@@ -19,8 +19,12 @@ const SearchBar = (props) => {
   useEffect(() => {
     fetch(API_URL)
       .then(res => res.json())
-      .then(data => props.setAllSongs(data));
-  }, []);
+      .then(data => props.setAllSongs(data))
+      .catch(error => {
+        props.HandleActionPopup(`Error while getting data from server. Check your internet connection`, 5000);
+        console.error(`Error while getting data from server.${error}`);
+      });
+  }, [inputValue]);
 
   useEffect(() => {
     searchInputValue();

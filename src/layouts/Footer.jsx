@@ -19,8 +19,22 @@ const Footer = (props) => {
   // protoze si drzim informaci jestli si mam drzet posledni index a neodecitat jednicku, viz. playPrev
   const [keepLastPlaylistIndex, setKeepLastPlaylistIndex] = useState(false)
 
+  const HandleIfNextTrackIsSame = (audio, lastSong, newSong) => {
+    console.log(audio);
+    console.log( lastSong.url);
+    console.log(newSong.url);
+    if (lastSong.url === newSong.url) {
+      audio.pause();
+      audio.load();
+      audio.play();
+    }
+  }
+
   const PlayNext = () => {
+    const audio = audioRef.current;
+
     if (props.queueTracksMap.includes("immediateItem")) {
+      HandleIfNextTrackIsSame(audio, props.current, props.immediateFollowingTracks[0]);
       props.setCurrent(props.immediateFollowingTracks[0]);
       props.setImmediateFollowingTracks(props.immediateFollowingTracks.slice(1));
       setKeepLastPlaylistIndex(true);
@@ -30,13 +44,11 @@ const Footer = (props) => {
         props.setCurrent(props.activeList[props.activeIndex + 1]);
         props.setActiveIndex(props.activeIndex + 1);
       } else {
-        const audio = audioRef.current;
         audio.pause();
         audio.currentTime = 0;
       }
     }
     else {
-      const audio = audioRef.current;
       audio.pause();
       audio.currentTime = 0;
     }

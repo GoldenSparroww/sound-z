@@ -76,7 +76,7 @@ const PopupEditPlaylist = (props) => {
         const cacheBustedUrl = uploadedUrl + "?t=" + Date.now();
         currentlyEdited.image = cacheBustedUrl;
       } else {
-        alert("Unable to upload image.");
+          props.HandleActionPopup(`Error uploading image. Check your internet connection.`, 5000);
         return;
       }
     }
@@ -108,11 +108,10 @@ const PopupEditPlaylist = (props) => {
       const result = await response.json();
       return result.imageUrl; // např. "http://localhost/images/xyz.jpg"
     } catch (error) {
-      console.error("Upload error:", error);
+        console.error(`Error uploading image. Check your internet connection. ${error}`);
       return null;
     }
   };
-
 
   return (
     <>
