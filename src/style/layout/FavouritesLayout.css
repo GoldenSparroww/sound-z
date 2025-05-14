@@ -1,0 +1,19 @@
+#favourites-container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#favourites-header{
+    background-color: var(--color-side-bar);
+    padding: 3rem;
+}
+
+#favourites-body{
+    padding: 1.5rem;
+}
+
+#favourites-list{
+    padding: 1rem;
+    background-color: var(--color-side-bar);
+}

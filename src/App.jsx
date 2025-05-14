@@ -1,8 +1,10 @@
-import FrameLayout from "./components/FrameLayout.jsx";
+import FrameLayout from "./layouts/FrameLayout.jsx";
 
-function App() {
+const App = () => {
   return (
-    <FrameLayout />
+    <>
+      <FrameLayout />
+    </>
   )
 }
 
