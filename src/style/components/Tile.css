@@ -1,0 +1,28 @@
+@import "../../global/Variables.css";
+
+.tile-general-attributes {
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text);
+    overflow: hidden;
+    gap: 1rem;
+    font-size: var(--font-tile-size);
+    user-select: none;
+    border-radius: 4px;
+}
+
+.tile-general-attributes:hover {
+    background-color: var(--color-hover) /*!important*/;
+    cursor: pointer;
+}
+
+.tile-general-attributes:active {
+    background-color: var(--color-selection) /*!important*/;
+}
+
+.tile-general-attributes {
+    background-color: var(--color-side-bar);
+}

@@ -1,0 +1,22 @@
+#queue-container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#queue-body{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+}
+
+#queue-header{
+    background-color: var(--color-side-bar);
+    padding: 3rem;
+}
+
+#queue-current, #queue-following-tracks, #queue-following-in-playlist{
+    padding: 1rem;
+    background-color: var(--color-side-bar);
+}

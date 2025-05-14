@@ -1,0 +1,38 @@
+@import "../../global/Variables.css";
+
+#search-results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+}
+
+.search-results-field {
+    background-color: var(--color-side-bar);
+    padding: 1rem;
+}
+
+.search-results-specific-field-body {
+    padding: 1.5rem;
+}
+
+.search-results-specific-field-content {
+    padding: 1rem;
+    background-color: var(--color-side-bar);
+}
+
+.search-results-specific-field-header {
+    background-color: var(--color-side-bar);
+    padding: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    color: var(--color-text);
+}
+
+@media (max-width: 1000px) {
+    #search-results-icon{
+        display: none;
+    }
+}

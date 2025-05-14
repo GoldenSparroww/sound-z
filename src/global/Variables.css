@@ -1,0 +1,19 @@
+:root {
+    --color-empty-field: #EDEDED;
+    --color-details: #EC625F;
+    --color-details-hover: #ff8a87;
+    --color-text: #EDEDED;
+
+    --color-background: #575757;
+    --color-side-bar: #414141;
+    --color-side-bar-list: #525252;
+    --color-nav-bar: #313131;
+    --color-footer: #313131;
+
+    --color-selection: #887271;
+    --color-hover: #666160;
+
+    /*#############################*/
+
+    --font-tile-size: 1.5rem;
+}
