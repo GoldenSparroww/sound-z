@@ -7,7 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import AudioPlayerControls from "../components/AudioPlayerControls.jsx";
 
-function Footer(props) {
+const Footer = (props) => {
   const audioRef = useRef(null);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);

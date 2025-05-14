@@ -6,7 +6,7 @@ import * as React from "react";
 import formatTime from "../logic/FormatTime.js";
 import TrackMoreContextMenuButton from "./TrackMoreContextMenuButton.jsx";
 
-function PrintList(props) {
+const PrintList = (props) => {
   const filteredSongs = props.allSongs.filter(song => {
     return (props.whatToFilter !== null ? song[props.whatToFilter] : true) === (props.filter !== null ? props.filter : true)
   });

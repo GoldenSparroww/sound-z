@@ -3,7 +3,7 @@ import {TextField, Box, IconButton} from "@mui/material";
 import GetSearchedResults from "../logic/GetSearchedResults.js";
 import SearchIcon from '@mui/icons-material/Search';
 
-function SearchBar(props) {
+const SearchBar = (props) => {
   const [inputValue, setInputValue] = useState("");
 
   const API_URL = "http://localhost/list.php";

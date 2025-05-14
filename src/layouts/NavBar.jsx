@@ -5,7 +5,7 @@ import "../style/layout/NavBarLayout.css"
 import {ThemeProvider} from "@mui/material/styles";
 import themeSearchBar from "../global/ThemeSearchBar.js";
 
-function NavBar(props) {
+const NavBar = (props) => {
 
   return (
     <div id={props.id}>
