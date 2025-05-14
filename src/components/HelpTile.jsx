@@ -23,7 +23,7 @@ const HelpTile = (props) => {
           <Typography variant={"h5"} sx={{pt: "0.5rem"}}>1. Getting started</Typography>
           <Typography variant={"body1"}> In order to find or play any music, you first need to search for it. </Typography>
           <Typography variant={"body1"}> Navigation bar contains search field, type anything you want to search here. </Typography>
-          <Typography variant={"h5"} sx={{pt: "0.5rem"}}>2 Searched results</Typography>
+          <Typography variant={"h5"} sx={{pt: "0.5rem"}}>2. Searched results</Typography>
           <Typography variant={"body1"}> Upon searching something, in main section you will see the results. </Typography>
           <Typography variant={"body1"}> Results are divided into 3 categories: "Tracks, Genres, Artists". </Typography>
           <Typography variant={"body1"}> Tracks are playable, genre and author items will direct you to their pages. </Typography>
