@@ -7,9 +7,22 @@ import PlaylistContextMenuButton from "../components/PlaylistContextMenuButton.j
 import {Button, Typography} from "@mui/material";
 import {ThemeProvider} from "@mui/material/styles";
 import themeForm from "../global/ThemeForm.js";
+import {useEffect, useState} from "react";
 
 const PlaylistPage = (props) => {
   const selectedPlaylist = props.playlists.find(playlist => playlist.id === props.currentPlaylist);
+
+  const [disablePlay, setDisablePlay] = useState(
+    selectedPlaylist.songs.length === 0
+  )
+
+  useEffect(() => {
+    if (selectedPlaylist.songs.length === 0) {
+      setDisablePlay(true);
+    } else {
+      setDisablePlay(false);
+    }
+  }, [selectedPlaylist]);
 
   const totalTrackTime = selectedPlaylist["songs"].reduce((acc, song) => acc + song.duration, 0);
 
@@ -62,7 +75,7 @@ const PlaylistPage = (props) => {
         </div>
         <div id={'playlist-options'}>
           <ThemeProvider theme={themeForm}>
-            <Button variant="filled" startIcon={<PlayCircleIcon />} onClick={PlayButtonHandle}>
+            <Button disabled={disablePlay} variant="filled" startIcon={<PlayCircleIcon />} onClick={PlayButtonHandle}>
               Play
             </Button>
           </ThemeProvider>
