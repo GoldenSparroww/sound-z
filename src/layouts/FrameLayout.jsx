@@ -29,7 +29,58 @@ const FrameLayout = () => {
   const [currentPlaylist, setCurrentPlaylist] = useState(null);
 
   // udrzuje list objektu toho co je v oblibenych
-  const [favouriteTracks, setFavouriteTracks] = useState([]);
+  const [favouriteTracks, setFavouriteTracks] = useState([
+    {
+      "id": 13,
+      "name": "Deadlocked",
+      "artist": "F-777",
+      "genre": "Electronic",
+      "file": "F-777 - Deadlocked.mp3",
+      "image": "image (13).jpg",
+      "duration": 206,
+      "url": "http://localhost/music/F-777 - Deadlocked.mp3"
+    },
+    {
+      "id": 12,
+      "name": "Dance of The Violins",
+      "artist": "F-777",
+      "genre": "Electronic",
+      "file": "F-777 - Dance of The Violins.mp3",
+      "image": "image (12).jpg",
+      "duration": 335,
+      "url": "http://localhost/music/F-777 - Dance of The Violins.mp3"
+    },
+    {
+      "id": 2,
+      "name": "7 Years Old",
+      "artist": "Lukas Graham",
+      "genre": "Pop",
+      "file": "7 Years Old.mp3",
+      "image": "image (2).jpg",
+      "duration": 239,
+      "url": "http://localhost/music/7 Years Old.mp3"
+    },
+    {
+      "id": 4,
+      "name": "Amadeus",
+      "artist": "Copyright Free Music",
+      "genre": "Classical",
+      "file": "Copyright Free Music - Amadeus.mp3",
+      "image": "image (4).jpg",
+      "duration": 242,
+      "url": "http://localhost/music/Copyright Free Music - Amadeus.mp3"
+    },
+    {
+      "id": 8,
+      "name": "Bad",
+      "artist": "David Guetta",
+      "genre": "Dubstep",
+      "file": "David Guetta - Bad.mp3",
+      "image": "image (8).jpg",
+      "duration": 171,
+      "url": "http://localhost/music/David Guetta - Bad.mp3"
+    }
+  ]);
 
   // udrzuje list objektu hudby, ktera bezprostredne nasleduje ve fronte - manualne pridana
   const [immediateFollowingTracks, setImmediateFollowingTracks] = useState([]);
@@ -48,10 +99,260 @@ const FrameLayout = () => {
   const [actionPopupDuration, setActionPopupDuration] = useState(1000)
 
   //obsahuje list objektu poslednich 10 prehranych skladeb
-  const [recentTracks, setRecentTracks] = useState([])
+  const [recentTracks, setRecentTracks] = useState(
+    [
+      {
+        "id": 2,
+        "name": "7 Years Old",
+        "artist": "Lukas Graham",
+        "genre": "Pop",
+        "file": "7 Years Old.mp3",
+        "image": "image (2).jpg",
+        "duration": 239,
+        "url": "http://localhost/music/7 Years Old.mp3"
+      },
+      {
+        "id": 1,
+        "name": "Donuts [Bass Boosted - HQ]",
+        "artist": "2SCOOPS",
+        "genre": "Bass Boosted",
+        "file": "2SCOOPS - Donuts [Bass Boosted - HQ].mp3",
+        "image": "image_1.jpg",
+        "duration": 180,
+        "url": "http://localhost/music/2SCOOPS - Donuts [Bass Boosted - HQ].mp3"
+      },
+      {
+        "id": 12,
+        "name": "Dance of The Violins",
+        "artist": "F-777",
+        "genre": "Electronic",
+        "file": "F-777 - Dance of The Violins.mp3",
+        "image": "image (12).jpg",
+        "duration": 335,
+        "url": "http://localhost/music/F-777 - Dance of The Violins.mp3"
+      },
+      {
+        "id": 13,
+        "name": "Deadlocked",
+        "artist": "F-777",
+        "genre": "Electronic",
+        "file": "F-777 - Deadlocked.mp3",
+        "image": "image (13).jpg",
+        "duration": 206,
+        "url": "http://localhost/music/F-777 - Deadlocked.mp3"
+      },
+      {
+        "id": 14,
+        "name": "The Seven Seas",
+        "artist": "F-777",
+        "genre": "Electronic",
+        "file": "F-777 - The Seven Seas.mp3",
+        "image": "image (14).jpg",
+        "duration": 143,
+        "url": "http://localhost/music/F-777 - The Seven Seas.mp3"
+      },
+      {
+        "id": 4,
+        "name": "Amadeus",
+        "artist": "Copyright Free Music",
+        "genre": "Classical",
+        "file": "Copyright Free Music - Amadeus.mp3",
+        "image": "image (4).jpg",
+        "duration": 242,
+        "url": "http://localhost/music/Copyright Free Music - Amadeus.mp3"
+      },
+      {
+        "id": 11,
+        "name": "Pentakill",
+        "artist": "Different Heaven",
+        "genre": "Electronic",
+        "file": "Different Heaven - Pentakill.mp3",
+        "image": "image (11).jpg",
+        "duration": 212,
+        "url": "http://localhost/music/Different Heaven - Pentakill.mp3"
+      },
+      {
+        "id": 10,
+        "name": "My Heart",
+        "artist": "Different Heaven",
+        "genre": "Electronic",
+        "file": "Different Heaven - My Heart.mp3",
+        "image": "image (10).jpg",
+        "duration": 267,
+        "url": "http://localhost/music/Different Heaven - My Heart.mp3"
+      },
+      {
+        "id": 7,
+        "name": "Raabta",
+        "artist": "CryJaxx",
+        "genre": "Electronic",
+        "file": "CryJaxx - Raabta.mp3",
+        "image": "image (7).jpg",
+        "duration": 183,
+        "url": "http://localhost/music/CryJaxx - Raabta.mp3"
+      },
+      {
+        "id": 6,
+        "name": "SP1CE - Shockwave",
+        "artist": "Copyright Free Music",
+        "genre": "Electronic",
+        "file": "Copyright Free Music - SP1CE - Shockwave.mp3",
+        "image": "image (6).jpg",
+        "duration": 184,
+        "url": "http://localhost/music/Copyright Free Music - SP1CE - Shockwave.mp3"
+      }
+    ]
+  )
 
   // obsahuje list playlistu
-  const [playlists, setPlaylists] = useState([]);
+  const [playlists, setPlaylists] = useState([
+    {
+      "id": 0,
+      "name": "Scary ghost",
+      "image": "http://localhost/userdata/myuser/playlists/0.jpg?t=1748625320619",
+      "description": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently",
+      "songs": [
+        {
+          "id": 1,
+          "name": "Donuts [Bass Boosted - HQ]",
+          "artist": "2SCOOPS",
+          "genre": "Bass Boosted",
+          "file": "2SCOOPS - Donuts [Bass Boosted - HQ].mp3",
+          "image": "image_1.jpg",
+          "duration": 180,
+          "url": "http://localhost/music/2SCOOPS - Donuts [Bass Boosted - HQ].mp3"
+        },
+        {
+          "id": 2,
+          "name": "7 Years Old",
+          "artist": "Lukas Graham",
+          "genre": "Pop",
+          "file": "7 Years Old.mp3",
+          "image": "image (2).jpg",
+          "duration": 239,
+          "url": "http://localhost/music/7 Years Old.mp3"
+        },
+        {
+          "id": 3,
+          "name": "Boom - How Do You Do (C. Baumann Remix)",
+          "artist": "Vengaboys",
+          "genre": "Eurodance",
+          "file": "Boom - How Do You Do (C. Baumann Remix).mp3",
+          "image": "image (3).jpg",
+          "duration": 214,
+          "url": "http://localhost/music/Boom - How Do You Do (C. Baumann Remix).mp3"
+        },
+        {
+          "id": 4,
+          "name": "Amadeus",
+          "artist": "Copyright Free Music",
+          "genre": "Classical",
+          "file": "Copyright Free Music - Amadeus.mp3",
+          "image": "image (4).jpg",
+          "duration": 242,
+          "url": "http://localhost/music/Copyright Free Music - Amadeus.mp3"
+        },
+        {
+          "id": 5,
+          "name": "Bumpy Sax",
+          "artist": "Copyright Free Music",
+          "genre": "Smooth Jazz",
+          "file": "Copyright Free Music - Bumpy Sax.mp3",
+          "image": "image (5).jpg",
+          "duration": 243,
+          "url": "http://localhost/music/Copyright Free Music - Bumpy Sax.mp3"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Summer vibes",
+      "image": "http://localhost/userdata/myuser/playlists/1.jpg?t=1748625374676",
+      "description": "",
+      "songs": [
+        {
+          "id": 11,
+          "name": "Pentakill",
+          "artist": "Different Heaven",
+          "genre": "Electronic",
+          "file": "Different Heaven - Pentakill.mp3",
+          "image": "image (11).jpg",
+          "duration": 212,
+          "url": "http://localhost/music/Different Heaven - Pentakill.mp3"
+        },
+        {
+          "id": 12,
+          "name": "Dance of The Violins",
+          "artist": "F-777",
+          "genre": "Electronic",
+          "file": "F-777 - Dance of The Violins.mp3",
+          "image": "image (12).jpg",
+          "duration": 335,
+          "url": "http://localhost/music/F-777 - Dance of The Violins.mp3"
+        },
+        {
+          "id": 13,
+          "name": "Deadlocked",
+          "artist": "F-777",
+          "genre": "Electronic",
+          "file": "F-777 - Deadlocked.mp3",
+          "image": "image (13).jpg",
+          "duration": 206,
+          "url": "http://localhost/music/F-777 - Deadlocked.mp3"
+        },
+        {
+          "id": 14,
+          "name": "The Seven Seas",
+          "artist": "F-777",
+          "genre": "Electronic",
+          "file": "F-777 - The Seven Seas.mp3",
+          "image": "image (14).jpg",
+          "duration": 143,
+          "url": "http://localhost/music/F-777 - The Seven Seas.mp3"
+        },
+        {
+          "id": 15,
+          "name": "Close [Brooks Remix]",
+          "artist": "IZECOLD",
+          "genre": "Electronic",
+          "file": "IZECOLD - Close [Brooks Remix].mp3",
+          "image": "image (15).jpg",
+          "duration": 231,
+          "url": "http://localhost/music/IZECOLD - Close [Brooks Remix].mp3"
+        },
+        {
+          "id": 16,
+          "name": "Close",
+          "artist": "IZECOLD",
+          "genre": "Electronic",
+          "file": "IZECOLD - Close.mp3",
+          "image": "image (16).jpg",
+          "duration": 282,
+          "url": "http://localhost/music/IZECOLD - Close.mp3"
+        },
+        {
+          "id": 17,
+          "name": "I Love It",
+          "artist": "Icona Pop",
+          "genre": "Electronic",
+          "file": "Icona Pop - I Love It.mp3",
+          "image": "image (17).jpg",
+          "duration": 180,
+          "url": "http://localhost/music/Icona Pop - I Love It.mp3"
+        },
+        {
+          "id": 6,
+          "name": "SP1CE - Shockwave",
+          "artist": "Copyright Free Music",
+          "genre": "Electronic",
+          "file": "Copyright Free Music - SP1CE - Shockwave.mp3",
+          "image": "image (6).jpg",
+          "duration": 184,
+          "url": "http://localhost/music/Copyright Free Music - SP1CE - Shockwave.mp3"
+        }
+      ]
+    }
+  ]);
 
   const ChangeMainSection = (section, isPlaylist = false) => {
     if (!isPlaylist) {
