@@ -36,7 +36,13 @@ const AboutTile = (props) => {
           <Typography variant={"body1"}> Jan Kopačka </Typography>
           <Typography variant={"body1"}> A24B0346P </Typography>
 
-          <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", pt: "2rem" }}>
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: "2rem"
+          }}>
             <Button
               variant="filled"
               startIcon={<CancelIcon />}

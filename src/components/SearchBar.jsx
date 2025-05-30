@@ -14,6 +14,16 @@ const SearchBar = (props) => {
   genres = genres.slice(0, 5);
   artists = artists.slice(0, 5);
 
+  const checkInputValue = (e) => {
+    let newValue = e.target.value;
+
+    if (newValue.length > 200) {
+      newValue = newValue.slice(0, 200);
+    }
+
+    setInputValue(newValue);
+  }
+
   /*------------------------------------------------*/
 
   useEffect(() => {
@@ -53,7 +63,7 @@ const SearchBar = (props) => {
         fullWidth
         label="Search"
         value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={(e) => checkInputValue(e)}
         variant="filled"
       />
       <IconButton
