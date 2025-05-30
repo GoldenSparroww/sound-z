@@ -103,9 +103,28 @@ const FrameLayout = () => {
     ])
   }, [immediateFollowingTracks, activeList])
 
-  const ChangeActiveList = (index, list) => {
-    setActiveIndex(index);
-    setActiveList(list);
+  const ChangeActiveList = (index, list, curr) => {
+    if (randomPlay){
+      const shuffled = structuredClone(list).filter((track, idx) => (idx !== index));
+
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        // Vyberu náhodný index mezi 0 a i (včetně)
+        const j = Math.floor(Math.random() * (i + 1));
+
+        // Prohodim prvky na indexech i a j
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+
+      shuffled.unshift(curr);
+
+      setTmpPlaylistInOrder(list);
+      setActiveIndex(0);
+      setActiveList(shuffled);
+
+    } else {
+      setActiveIndex(index);
+      setActiveList(list);
+    }
   }
 
   const AddImmediateFollowingTracks = (newTracks) => {
@@ -128,16 +147,18 @@ const FrameLayout = () => {
   }
 
   /*-----------------------------------------------------------------------------------------*/
+
   const HandleActionPopup = (message, duration = 1000) => {
     setActionPopupMessage(message);
     setActionPopupDuration(duration);
     setActionPopup(true);
   }
 
-  const HandleRandomPlay = (boolVal) => {
-    const shuffled = structuredClone(activeList).filter((track) => (track.id !== current.id));
+  const HandleRandomPlay = (random) => {
+    if (random) {
+      // to co hraje ted vyfiltrujeme a casem to dame jako prvni do random seznamu
+      const shuffled = structuredClone(activeList).filter((track) => (track.id !== current.id));
 
-    if (boolVal) {
       // Zamichani playlistu
       for (let i = shuffled.length - 1; i > 0; i--) {
         // Vyberu náhodný index mezi 0 a i (včetně)
@@ -147,10 +168,11 @@ const FrameLayout = () => {
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
       }
 
+      // pridavame na zacatek aktualni song co hraje
       shuffled.unshift(current);
 
       setTmpPlaylistInOrder(activeList);
-      ChangeActiveList(0, shuffled);
+      ChangeActiveList(0, shuffled, true);
     } else {
       // vrácení playlistu do původního stavu
       // najde index toho, co teď hraje, v původním playlistu
@@ -159,7 +181,11 @@ const FrameLayout = () => {
       ChangeActiveList(newIndex, tmpPlaylistInOrder);
     }
 
-    setRandomPlay(boolVal);
+    setRandomPlay(random);
+  }
+
+  const ShufflePlaylist = () => {
+
   }
 
   // aktualizace posledni prehrane hudby

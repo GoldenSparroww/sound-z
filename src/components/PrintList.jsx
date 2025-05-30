@@ -16,7 +16,8 @@ const PrintList = (props) => {
     if (!props.clearQueueOnClick) {
       props.ChangeActiveList(
         idx,
-        filteredSongs
+        filteredSongs,
+        song
       );
     } else {
       props.ChangeActiveList(0,[])
