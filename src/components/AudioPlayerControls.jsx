@@ -6,11 +6,20 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 import Typography from "@mui/material/Typography";
 import formatTime from "../logic/FormatTime.js";
 import React from "react";
+import RepeatIcon from '@mui/icons-material/Repeat';
+import ShuffleIcon from '@mui/icons-material/Shuffle';
+import Colors from "../global/Colors.js";
 
 const AudioPlayerControls = (props) => {
   return (
     <>
       <div id={"audio-controls"}>
+        <IconButton sx={{backgroundColor:"transparent"}}>
+          <ShuffleIcon
+            sx={{color: props.randomPlay ? Colors.color_details : Colors.color_background}}
+            onClick={() => props.HandleRandomPlay(!props.randomPlay)}
+          />
+        </IconButton>
         <IconButton>
           <KeyboardDoubleArrowLeftIcon onClick={props.PlayPrev} />
         </IconButton>
@@ -22,7 +31,13 @@ const AudioPlayerControls = (props) => {
           )}
         </IconButton>
         <IconButton>
-          <KeyboardDoubleArrowRightIcon onClick={props.PlayNext} />
+          <KeyboardDoubleArrowRightIcon onClick={() => props.PlayNext(false)} />
+        </IconButton>
+        <IconButton sx={{backgroundColor:"transparent"}}>
+          <RepeatIcon
+            sx={{color: props.loop ? Colors.color_details : Colors.color_background}}
+            onClick={() => props.setLoop(!props.loop)}
+          />
         </IconButton>
       </div>
 

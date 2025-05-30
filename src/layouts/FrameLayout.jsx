@@ -53,6 +53,12 @@ const FrameLayout = () => {
   // obsahuje list playlistu
   const [playlists, setPlaylists] = useState([]);
 
+  const [loop, setLoop] = useState(false);
+  const [randomPlay, setRandomPlay] = useState(false)
+  const [tmpPlaylistInOrder, setTmpPlaylistInOrder] = useState([])
+
+  /*-----------------------------------------------------------------------------------------*/
+
   const ChangeMainSection = (section, isPlaylist = false) => {
     if (!isPlaylist) {
       setShownMainSection(section);
@@ -77,6 +83,7 @@ const FrameLayout = () => {
   }
 
   /*-----------------------------------------------------------------------------------------*/
+
   const FavouritesAdd = (newTrack) => {
     setFavouriteTracks([...favouriteTracks, newTrack]);
   }
@@ -86,6 +93,7 @@ const FrameLayout = () => {
   }
 
   /*-----------------------------------------------------------------------------------------*/
+
   /* Kvuli asynchornim zmenam stavu immediateFollowingTracks, activeList musim pouzit useEffect jinak nesiham zmeny */
   // aktualizace mapy fronty
   useEffect(() => {
@@ -124,6 +132,34 @@ const FrameLayout = () => {
     setActionPopupMessage(message);
     setActionPopupDuration(duration);
     setActionPopup(true);
+  }
+
+  const HandleRandomPlay = (boolVal) => {
+    const shuffled = structuredClone(activeList).filter((track) => (track.id !== current.id));
+
+    if (boolVal) {
+      // Zamichani playlistu
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        // Vyberu náhodný index mezi 0 a i (včetně)
+        const j = Math.floor(Math.random() * (i + 1));
+
+        // Prohodim prvky na indexech i a j
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+
+      shuffled.unshift(current);
+
+      setTmpPlaylistInOrder(activeList);
+      ChangeActiveList(0, shuffled);
+    } else {
+      // vrácení playlistu do původního stavu
+      // najde index toho, co teď hraje, v původním playlistu
+      const newIndex = tmpPlaylistInOrder.findIndex((track) => (track.id === current.id));
+      // nastaví index toho, co teď hraje a seřazený tehdejší playlist
+      ChangeActiveList(newIndex, tmpPlaylistInOrder);
+    }
+
+    setRandomPlay(boolVal);
   }
 
   // aktualizace posledni prehrane hudby
@@ -225,6 +261,10 @@ const FrameLayout = () => {
           immediateFollowingTracks={immediateFollowingTracks}
           setImmediateFollowingTracks={setImmediateFollowingTracks}
           queueTracksMap={queueTracksMap}
+          loop={loop}
+          setLoop={setLoop}
+          randomPlay={randomPlay}
+          HandleRandomPlay={HandleRandomPlay}
         />
       </div>
 
