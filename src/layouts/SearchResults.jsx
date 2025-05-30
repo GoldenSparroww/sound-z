@@ -63,6 +63,21 @@ const SearchResults = (props) => {
         </div>
       )}
 
+      {
+        props.searchedResults.tracks.length === 0 &&
+        props.searchedResults.genres.length === 0 &&
+        props.searchedResults.artists.length === 0 &&
+        (
+          <div className={"search-results-field"} id={"search-results-artists"}>
+            <Typography
+              variant="h6"
+            >
+              No matches.
+            </Typography>
+          </div>
+        )
+      }
+
     </div>
   )
 }
