@@ -30,15 +30,8 @@ const Footer = (props) => {
     }
   }
 
-  const PlayNext = (automatic) => {
+  const PlayNext = () => {
     const audio = audioRef.current;
-
-    if (automatic && props.loop) {
-      audio.pause();
-      audio.load();
-      audio.play();
-      return;
-    }
 
     if (props.queueTracksMap.includes("immediateItem")) {
       HandleIfNextTrackIsSame(audio, props.current, props.immediateFollowingTracks[0]);
@@ -174,7 +167,7 @@ const Footer = (props) => {
           ref={audioRef}
           src={props.current ? props.current.url : ''}
           style={{ width: "100%" }}
-          onEnded={() => PlayNext(true)}
+          onEnded={PlayNext}
           controlsList="nodownload"
         />
 
@@ -207,10 +200,6 @@ const Footer = (props) => {
               PlayNext={PlayNext}
               HandleProgressBarChange={HandleProgressBarChange}
               PlayPrev={PlayPrev}
-              loop={props.loop}
-              setLoop={props.setLoop}
-              randomPlay={props.randomPlay}
-              HandleRandomPlay={props.HandleRandomPlay}
             />
           </div>
           <div id={"sound-progress-bar"}>
