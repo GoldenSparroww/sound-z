@@ -78,6 +78,12 @@ const MainSection = (props) => {
           HandleActionPopup={props.HandleActionPopup}
           playlists={props.playlists}
           setPlaylists={props.setPlaylists}
+          setSongNameEnable={props.setSongNameEnable}
+          setSongArtistEnable={props.setSongArtistEnable}
+          setSongGenreEnable={props.setSongGenreEnable}
+          songNameEnable={props.songNameEnable}
+          songArtistEnable={props.songArtistEnable}
+          songGenreEnable={props.songGenreEnable}
         />
       </div>
     )
