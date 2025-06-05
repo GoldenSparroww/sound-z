@@ -139,12 +139,14 @@ const SearchResults = (props) => {
           <div className={"search-results-field"}>
 
             {/* tady ten padding je v uz nad h4 platny pro ostatni, protoze je v theme z frameLayout, tady je ale prekryty themeForm, tak ho tu nastavim manulane znova */}
-            <Typography sx={{padding:"1rem"}} variant="h4">Search options</Typography>
+            <div id={"additional-filters-header"}>
+              <Typography sx={{padding:"1rem"}} variant="h4">Search options</Typography>
+            </div>
 
             <div id={"additional-filters"}>
               <FormControl>
                 <FormGroup>
-                  <FormLabel>Search by:</FormLabel>
+                  <FormLabel>Search within:</FormLabel>
                   <FormControlLabel
                     control={<Checkbox name={"tracks"} checked={formState.searchBy.tracks} onChange={(e) => handleCheckboxChange(e)} />}
                     label="Track's name" />

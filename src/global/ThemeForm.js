@@ -87,7 +87,83 @@ const ThemeForm = createTheme({
           }
         }
       }
-    }
+    },
+
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          color: Colors.color_text,
+          '&.Mui-checked': {
+            color: Colors.color_details,
+          },
+          '&:hover': {
+            backgroundColor: Colors.color_hover,
+          },
+        },
+      },
+    },
+
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          color: Colors.color_text,
+          '&.Mui-checked': {
+            color: Colors.color_details,
+          },
+          '&:hover': {
+            backgroundColor: Colors.color_hover,
+          },
+        },
+      },
+    },
+
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: '1.2rem',
+          color: Colors.color_text,
+          '&.Mui-focused': {
+            color: Colors.color_details,
+          },
+        },
+      },
+    },
+
+    MuiFormControlLabel: {
+      styleOverrides: {
+        label: {
+          color: Colors.color_text, // Barva textu pro FormControlLabel (např. "Track's name")
+          fontSize: '1.2rem',
+        },
+      },
+    },
+
+    MuiIconButton: {
+      defaultProps: {
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          color: Colors.color_side_bar,
+          backgroundColor: Colors.color_empty_field,
+          '&:hover': {
+            backgroundColor: Colors.color_hover,
+            borderColor: Colors.color_hover,
+            color: Colors.color_empty_field,
+            boxShadow: 'none',
+          },
+          '&:active': {
+            boxShadow: 'none',
+            backgroundColor: Colors.color_selection,
+            borderColor: Colors.color_selection,
+            color: Colors.color_empty_field,
+          },
+          '&:focus': {
+            boxShadow: 'none',
+          },
+        }
+      }
+    },
   }
 })
 
