@@ -13,7 +13,7 @@ import "../style/layout/SearchResultsLayout.css"
 import PrintList from "../components/PrintList.jsx";
 import {ThemeProvider} from "@mui/material/styles";
 import ThemeForm from "../global/ThemeForm.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Colors from "../global/Colors.js";
 
 const initialState = {
@@ -28,19 +28,52 @@ const initialState = {
 
 const SearchResults = (props) => {
   const [subSection, setSubSection] = useState("tracks")
-
   const [formState, setFormState] = useState(initialState)
+  const [adjustedResults, setAdjustedResults] = useState([])
+
+  useEffect(() => {
+    setAdjustedResults([...props.searchedResults.tracks])
+  },[props.searchedResults.tracks])
 
   const ResultSectionSelect = (section) => {
     setSubSection(section)
   };
 
   const handleApply = () => {
+    const { orderBy, ordering } = formState;
 
+    if (ordering === "none") {
+      setAdjustedResults([...props.searchedResults.tracks]);
+      return;
+    }
+
+    // prijima sortovaci funkci
+    const sortedTracks = [...props.searchedResults.tracks].sort((a, b) => {
+      let comparison = 0;
+
+      switch (orderBy) {
+        case "tracks":
+          comparison = a.name.localeCompare(b.name);
+          break;
+        case "artists":
+          comparison = a.artist.localeCompare(b.artist);
+          break;
+        case "genres":
+          comparison = a.genre.localeCompare(b.genre);
+          break;
+        default:
+          return;
+      }
+
+      // pokud je descending tak vynasobenim -1 se obrati poradi
+      return ordering === "descending" ? comparison * -1 : comparison;
+    });
+
+    setAdjustedResults(sortedTracks);
   };
 
   const handleReset = () => {
-
+    setFormState(initialState);
   };
 
   const handleCheckboxChange = (e) => {
@@ -143,7 +176,7 @@ const SearchResults = (props) => {
           <div className={"search-results-field"} id={"search-results-tracks"}>
             <Typography variant="h4">Tracks</Typography>
             <PrintList
-              allSongs={props.searchedResults.tracks}
+              allSongs={adjustedResults}
               whatToFilter={null}
               filter={null}
               showArtist={true}
