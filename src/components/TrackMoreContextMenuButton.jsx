@@ -10,6 +10,12 @@ import GetPlaylistAutomaticId from "../logic/GetPlaylistAutomaticId.js";
 import GetPlaylistAutomaticName from "../logic/GetPlaylistAutomaticName.js";
 
 const TrackMoreContextMenuButton = (props) => {
+  // 3.
+  // timeout kvuli animaci
+  // filtrovani na zacatku
+
+  const filteredPlaylists = props.playlists.filter((plyls) => (!plyls.songs.some((song) => song.id === props.boundTrack.id)))
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -23,24 +29,27 @@ const TrackMoreContextMenuButton = (props) => {
 
   const handleTrackAdd = (currentPlaylist, boundTrack) => {
     handleClose()
-    
-    if (containsBoundTrack(currentPlaylist, boundTrack)) {
-      props.HandleActionPopup(`The song is already included in the playlist "${currentPlaylist.name}"!`, 3000);
-      return;
-    }
-    
-    const updatedPlaylist = {
-      ...currentPlaylist,
-      songs: [
-        ...currentPlaylist.songs,
-        boundTrack,
-      ]
-    }
 
-    props.setPlaylists([
-      ...props.playlists.map((playlist) =>
-        playlist.id !== updatedPlaylist.id ? playlist : updatedPlaylist),
-    ]);
+    setTimeout(() => {
+      if (containsBoundTrack(currentPlaylist, boundTrack)) {
+        props.HandleActionPopup(`The song is already included in the playlist "${currentPlaylist.name}"!`, 3000);
+        return;
+      }
+
+      const updatedPlaylist = {
+        ...currentPlaylist,
+        songs: [
+          ...currentPlaylist.songs,
+          boundTrack,
+        ]
+      }
+
+      props.setPlaylists([
+        ...props.playlists.map((playlist) =>
+          playlist.id !== updatedPlaylist.id ? playlist : updatedPlaylist),
+      ]);
+    }, 250)
+    //kvuli animaci
   }
   
   const containsBoundTrack = (currentPlaylist, boundTrack) => {
@@ -113,30 +122,41 @@ const TrackMoreContextMenuButton = (props) => {
         ])}
 
         <MenuItem sx={{textAlign: "center", fontSize: "1.1rem"}} disabled={true}>
-          {(!(props.playlists.length > 0)) ? "You have no playlists" : "Add to playlist..."}
+          {(!(props.playlists.length > 0)) ?
+            (
+              "You have no playlists"
+            ) : (
+              filteredPlaylists.length === 0 ?
+                ("Already contained in every playlist") :
+                ("Add to playlist...")
+            )}
         </MenuItem>
 
         {props.playlists.length > 0 ?
-          props.playlists.map((playlist, idx) => (
 
-          <MenuItem
-            key={idx}
-            onClick={() => handleTrackAdd(playlist, props.boundTrack)}
-          >
-            <ListItemText>{playlist.name}</ListItemText>
-          </MenuItem>
-        )) : (
-          <MenuItem
-            sx={{
-              textAlign: "center",
-              fontSize: "1.1rem"
-            }}
-            onClick={() => handleAddNewPlaylist(props.boundTrack)}
-          >
-            <AddBoxIcon sx={{ pr: "0.5rem" }} />
-            Vytvořit a přidat
-          </MenuItem>
-        )}
+
+          filteredPlaylists
+            .map((playlist, idx) =>
+          (
+            <MenuItem
+              key={idx}
+              onClick={() => handleTrackAdd(playlist, props.boundTrack)}
+            >
+              <ListItemText>{playlist.name}</ListItemText>
+            </MenuItem>
+          )) : (
+            <MenuItem
+              sx={{
+                textAlign: "center",
+                fontSize: "1.1rem"
+              }}
+              onClick={() => handleAddNewPlaylist(props.boundTrack)}
+            >
+              <AddBoxIcon sx={{ pr: "0.5rem" }} />
+              Vytvořit a přidat
+            </MenuItem>
+          )
+        }
       </Menu>
     </>
   );
