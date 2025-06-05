@@ -47,3 +47,16 @@
 .search-sections-selection-button {
     width: 10rem;
 }
+
+#additional-filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#form-submit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}

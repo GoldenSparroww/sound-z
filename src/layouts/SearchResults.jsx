@@ -1,4 +1,13 @@
-import {Button, List, ListItemButton, ListItemText, Typography} from "@mui/material";
+import {
+  Button,
+  Checkbox, Radio,
+  FormControlLabel,
+  FormGroup, FormLabel,
+  List,
+  ListItemButton,
+  ListItemText, RadioGroup,
+  Typography, FormControl
+} from "@mui/material";
 import * as React from "react";
 import "../style/layout/SearchResultsLayout.css"
 import PrintList from "../components/PrintList.jsx";
@@ -7,11 +16,46 @@ import ThemeForm from "../global/ThemeForm.js";
 import {useState} from "react";
 import Colors from "../global/Colors.js";
 
+const initialState = {
+  searchBy: {
+    tracks: true,
+    artists: true,
+    genres: true,
+  },
+  orderBy: "tracks",
+  ordering: "none",
+};
+
 const SearchResults = (props) => {
   const [subSection, setSubSection] = useState("tracks")
 
+  const [formState, setFormState] = useState(initialState)
+
   const ResultSectionSelect = (section) => {
     setSubSection(section)
+  };
+
+  const handleApply = () => {
+
+  };
+
+  const handleReset = () => {
+
+  };
+
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    setFormState((lastFormState) => ({
+      ...lastFormState,
+      searchBy: { ...lastFormState.searchBy, [name]: checked },
+    }));
+  };
+
+  const handleRadioChange = (e) => {
+    //name je jmeno groupy a value hodnota radio buttonu
+    const { name, value } = e.target;
+    // kvuli tomu ze uzivatel muze rychle klikat, tak je nezbytne funkcne aktualizovat prop v pripade napr. rychlim klikani
+    setFormState((lastFormState) => ({ ...lastFormState, [name]: value }));
   };
 
   return (
@@ -42,6 +86,57 @@ const SearchResults = (props) => {
           </Button>
         </div>
       </ThemeProvider>
+
+      {subSection === "tracks" && (
+        <ThemeProvider theme={ThemeForm}>
+          <div className={"search-results-field"}>
+
+            {/* tady ten padding je v uz nad h4 platny pro ostatni, protoze je v theme z frameLayout, tady je ale prekryty themeForm, tak ho tu nastavim manulane znova */}
+            <Typography sx={{padding:"1rem"}} variant="h4">Search options</Typography>
+
+            <div id={"additional-filters"}>
+              <FormControl>
+                <FormGroup>
+                  <FormLabel>Search by:</FormLabel>
+                  <FormControlLabel
+                    control={<Checkbox name={"tracks"} checked={formState.searchBy.tracks} onChange={(e) => handleCheckboxChange(e)} />}
+                    label="Track's name" />
+                  <FormControlLabel
+                    control={<Checkbox name={"artists"} checked={formState.searchBy.artists} onChange={(e) => handleCheckboxChange(e)} />}
+                    label="Artist's name" />
+                  <FormControlLabel
+                    control={<Checkbox name={"genres"} checked={formState.searchBy.genres} onChange={(e) => handleCheckboxChange(e)} />}
+                    label="Genre's name" />
+                </FormGroup>
+              </FormControl>
+
+              <FormControl>
+                <FormLabel>Order by:</FormLabel>
+                <RadioGroup name={"orderBy"} value={formState.orderBy} onChange={(e) => handleRadioChange(e)}>
+                  <FormControlLabel value="tracks" control={<Radio />} label="Track" />
+                  <FormControlLabel value="artists" control={<Radio />} label="Artist" />
+                  <FormControlLabel value="genres" control={<Radio />} label="Genre" />
+                </RadioGroup>
+              </FormControl>
+
+              <FormControl>
+                <FormLabel>Ordering:</FormLabel>
+                <RadioGroup name={"ordering"} value={formState.ordering} onChange={(e) => handleRadioChange(e)}>
+                  <FormControlLabel value="none" control={<Radio />} label="None" />
+                  <FormControlLabel value="ascending" control={<Radio />} label="Ascending (A-Z)" />
+                  <FormControlLabel value="descending" control={<Radio />} label="Descending (Z-A)" />
+                </RadioGroup>
+              </FormControl>
+
+              <div id={"form-submit"}>
+                <Button onClick={handleReset}>Reset</Button>
+                <Button onClick={handleApply}>Apply</Button>
+              </div>
+            </div>
+
+          </div>
+        </ThemeProvider>
+      )}
 
       {subSection === "tracks" ? (
         props.searchedResults.tracks.length > 0 ? (
