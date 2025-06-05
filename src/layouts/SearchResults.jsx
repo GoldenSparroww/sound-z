@@ -16,7 +16,7 @@ import ThemeForm from "../global/ThemeForm.js";
 import {useEffect, useState} from "react";
 import Colors from "../global/Colors.js";
 
-const initialState = {
+const defaultState = {
   searchBy: {
     tracks: true,
     artists: true,
@@ -27,6 +27,16 @@ const initialState = {
 };
 
 const SearchResults = (props) => {
+  const initialState = {
+    searchBy: {
+      tracks: props.songNameEnable,
+      artists: props.songArtistEnable,
+      genres: props.songGenreEnable,
+    },
+    orderBy: "tracks",
+    ordering: "none",
+  };
+
   const [subSection, setSubSection] = useState("tracks")
   const [formState, setFormState] = useState(initialState)
   const [adjustedResults, setAdjustedResults] = useState([])
@@ -41,6 +51,10 @@ const SearchResults = (props) => {
 
   const handleApply = () => {
     const { orderBy, ordering } = formState;
+
+    props.setSongNameEnable(formState.searchBy.tracks);
+    props.setSongArtistEnable(formState.searchBy.artists);
+    props.setSongGenreEnable(formState.searchBy.genres);
 
     if (ordering === "none") {
       setAdjustedResults([...props.searchedResults.tracks]);
@@ -73,7 +87,7 @@ const SearchResults = (props) => {
   };
 
   const handleReset = () => {
-    setFormState(initialState);
+    setFormState(defaultState);
   };
 
   const handleCheckboxChange = (e) => {

@@ -9,7 +9,7 @@ const SearchBar = (props) => {
   const API_URL = "http://localhost/list.php";
   const query = inputValue.toLowerCase();
 
-  let {tracks, genres, artists} = GetSearchedResults(props.allSongs, query);
+  let {tracks, genres, artists} = GetSearchedResults(props.allSongs, query, props.songNameEnable, props.songArtistEnable, props.songGenreEnable);
   //uz neni potreba
   //tracks = tracks.slice(0, 5);
   //genres = genres.slice(0, 5);
@@ -50,6 +50,13 @@ const SearchBar = (props) => {
     props.ChangeMainSection("search-results")
     props.setSearchedResults({ tracks, genres, artists });
   };
+
+  // kdyz v komponente SearchResults nastavim filtry a dam apply, tak se muze zmenit jedna z techto 3 hodnot
+  // nicmene se zmeny projevi (viditelne) az pri dalsim hledani
+  // proto po jejich zmene vyhledam prompt
+  useEffect(() => {
+    searchInputValue();
+  },[props.songArtistEnable, props.songGenreEnable, props.songArtistEnable]);
 
   return (
     <Box sx={{
