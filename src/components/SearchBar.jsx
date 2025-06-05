@@ -10,9 +10,10 @@ const SearchBar = (props) => {
   const query = inputValue.toLowerCase();
 
   let {tracks, genres, artists} = GetSearchedResults(props.allSongs, query);
-  tracks = tracks.slice(0, 5);
-  genres = genres.slice(0, 5);
-  artists = artists.slice(0, 5);
+  //uz neni potreba
+  //tracks = tracks.slice(0, 5);
+  //genres = genres.slice(0, 5);
+  //artists = artists.slice(0, 5);
 
   const checkInputValue = (e) => {
     let newValue = e.target.value;

@@ -36,3 +36,14 @@
         display: none;
     }
 }
+
+#search-sections-selection{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.search-sections-selection-button {
+    width: 10rem;
+}
