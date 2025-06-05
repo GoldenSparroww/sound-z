@@ -14,7 +14,11 @@ const TrackMoreContextMenuButton = (props) => {
   // timeout kvuli animaci
   // filtrovani na zacatku
 
+  // 4.
+  // dolni cast okolo props.showingInFavourites + komponenty printList a FavouritesPage props
+
   const filteredPlaylists = props.playlists.filter((plyls) => (!plyls.songs.some((song) => song.id === props.boundTrack.id)))
+  const containedInPlaylists = props.playlists.filter((plyls) => (plyls.songs.some((song) => song.id === props.boundTrack.id)))
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -133,8 +137,6 @@ const TrackMoreContextMenuButton = (props) => {
         </MenuItem>
 
         {props.playlists.length > 0 ?
-
-
           filteredPlaylists
             .map((playlist, idx) =>
           (
@@ -142,7 +144,7 @@ const TrackMoreContextMenuButton = (props) => {
               key={idx}
               onClick={() => handleTrackAdd(playlist, props.boundTrack)}
             >
-              <ListItemText>{playlist.name}</ListItemText>
+              {playlist.name}
             </MenuItem>
           )) : (
             <MenuItem
@@ -157,6 +159,32 @@ const TrackMoreContextMenuButton = (props) => {
             </MenuItem>
           )
         }
+
+        {/* UKOL 4 */}
+        {props.showingInFavourites && <Divider />}
+
+        {props.showingInFavourites &&
+          <MenuItem sx={{textAlign: "center", fontSize: "1.1rem"}} disabled={true}>
+            Contained in...
+          </MenuItem>
+        }
+
+        {props.showingInFavourites && (
+          containedInPlaylists.length !== 0 ? (
+            containedInPlaylists.map((playlist, idx) => (
+              <MenuItem
+                key={idx}
+                disabled={true}
+              >
+                {playlist.name}
+              </MenuItem>
+            ))
+          ) : (
+            <MenuItem disabled={true}>
+              Not contained anywhere
+            </MenuItem>
+          )
+        )}
       </Menu>
     </>
   );
