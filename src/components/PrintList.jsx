@@ -7,9 +7,6 @@ import formatTime from "../logic/FormatTime.js";
 import TrackMoreContextMenuButton from "./TrackMoreContextMenuButton.jsx";
 
 const PrintList = (props) => {
-  // vrací první truthy hodnotu, kterou najde
-  const showingInFavourites = props.favouritesPage || false
-
   const filteredSongs = props.allSongs.filter(song => {
     return (props.whatToFilter !== null ? song[props.whatToFilter] : true) === (props.filter !== null ? props.filter : true)
   });
@@ -100,7 +97,6 @@ const PrintList = (props) => {
                   currentPlaylist={props.currentPlaylist}
                   //optional, neni defaultne potreba mimo playlisty, protoze se pak stejne ani neukaze
                   //RefreshQueuePlaylist={props.RefreshQueuePlaylist}
-                  showingInFavourites={showingInFavourites}
                 />
               </div>
             </ListItemButton>

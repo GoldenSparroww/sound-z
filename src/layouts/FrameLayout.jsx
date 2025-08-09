@@ -98,10 +98,6 @@ const FrameLayout = () => {
   const [actionPopupMessage, setActionPopupMessage] = useState("");
   const [actionPopupDuration, setActionPopupDuration] = useState(1000)
 
-  const [songNameEnable, setSongNameEnable] = useState(true);
-  const [songArtistEnable, setSongArtistEnable] = useState(true);
-  const [songGenreEnable, setSongGenreEnable] = useState(true);
-
   //obsahuje list objektu poslednich 10 prehranych skladeb
   const [recentTracks, setRecentTracks] = useState(
     [
@@ -474,9 +470,6 @@ const FrameLayout = () => {
           allSongs={allSongs}
           setAllSongs={setAllSongs}
           HandleActionPopup={HandleActionPopup}
-          songNameEnable={songNameEnable}
-          songArtistEnable={songArtistEnable}
-          songGenreEnable={songGenreEnable}
         >
         </NavBar>
 
@@ -519,12 +512,6 @@ const FrameLayout = () => {
             shownMainSection={shownMainSection}
             setShownMainSection={setShownMainSection}
             recentTracks={recentTracks}
-            setSongNameEnable={setSongNameEnable}
-            setSongArtistEnable={setSongArtistEnable}
-            setSongGenreEnable={setSongGenreEnable}
-            songNameEnable={songNameEnable}
-            songArtistEnable={songArtistEnable}
-            songGenreEnable={songGenreEnable}
           />
         </ThemeProvider>
 

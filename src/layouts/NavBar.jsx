@@ -22,9 +22,6 @@ const NavBar = (props) => {
           allSongs={props.allSongs}
           setAllSongs={props.setAllSongs}
           HandleActionPopup={props.HandleActionPopup}
-          songNameEnable={props.songNameEnable}
-          songArtistEnable={props.songArtistEnable}
-          songGenreEnable={props.songGenreEnable}
         />
         <div id={"burger-button-container"} className={"side-div"}>
           <div id={"placeholder"} />

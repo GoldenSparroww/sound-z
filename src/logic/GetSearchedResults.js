@@ -1,12 +1,12 @@
-function GetSearchedResults(source, filter, songNameEnable = true, songArtistEnable = true, songGenreEnable = true) {
+function GetSearchedResults(source, filter) {
 
   const tracks = source
     .filter(song => {
-      const nameMatches = songNameEnable && song.name.toLowerCase().includes(filter);
-      const artistMatches = songArtistEnable && song.artist.toLowerCase().includes(filter);
-      const genreMatches = songGenreEnable && song.genre.toLowerCase().includes(filter);
-
-      return nameMatches || artistMatches || genreMatches;
+      return (
+        song.name.toLowerCase().includes(filter) ||
+        song.artist.toLowerCase().includes(filter) ||
+        song.genre.toLowerCase().includes(filter)
+      )
     });
 
   /* reduce((acc, song) - acc je prazdne pole, kam se budou vkladat jen unikatni hodnoty */

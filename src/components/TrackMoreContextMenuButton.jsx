@@ -10,16 +10,6 @@ import GetPlaylistAutomaticId from "../logic/GetPlaylistAutomaticId.js";
 import GetPlaylistAutomaticName from "../logic/GetPlaylistAutomaticName.js";
 
 const TrackMoreContextMenuButton = (props) => {
-  // 3.
-  // timeout kvuli animaci
-  // filtrovani na zacatku
-
-  // 4.
-  // dolni cast okolo props.showingInFavourites + komponenty printList a FavouritesPage props
-
-  const filteredPlaylists = props.playlists.filter((plyls) => (!plyls.songs.some((song) => song.id === props.boundTrack.id)))
-  const containedInPlaylists = props.playlists.filter((plyls) => (plyls.songs.some((song) => song.id === props.boundTrack.id)))
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -33,27 +23,24 @@ const TrackMoreContextMenuButton = (props) => {
 
   const handleTrackAdd = (currentPlaylist, boundTrack) => {
     handleClose()
+    
+    if (containsBoundTrack(currentPlaylist, boundTrack)) {
+      props.HandleActionPopup(`The song is already included in the playlist "${currentPlaylist.name}"!`, 3000);
+      return;
+    }
+    
+    const updatedPlaylist = {
+      ...currentPlaylist,
+      songs: [
+        ...currentPlaylist.songs,
+        boundTrack,
+      ]
+    }
 
-    setTimeout(() => {
-      if (containsBoundTrack(currentPlaylist, boundTrack)) {
-        props.HandleActionPopup(`The song is already included in the playlist "${currentPlaylist.name}"!`, 3000);
-        return;
-      }
-
-      const updatedPlaylist = {
-        ...currentPlaylist,
-        songs: [
-          ...currentPlaylist.songs,
-          boundTrack,
-        ]
-      }
-
-      props.setPlaylists([
-        ...props.playlists.map((playlist) =>
-          playlist.id !== updatedPlaylist.id ? playlist : updatedPlaylist),
-      ]);
-    }, 250)
-    //kvuli animaci
+    props.setPlaylists([
+      ...props.playlists.map((playlist) =>
+        playlist.id !== updatedPlaylist.id ? playlist : updatedPlaylist),
+    ]);
   }
   
   const containsBoundTrack = (currentPlaylist, boundTrack) => {
@@ -126,64 +113,29 @@ const TrackMoreContextMenuButton = (props) => {
         ])}
 
         <MenuItem sx={{textAlign: "center", fontSize: "1.1rem"}} disabled={true}>
-          {(!(props.playlists.length > 0)) ?
-            (
-              "You have no playlists"
-            ) : (
-              filteredPlaylists.length === 0 ?
-                ("Already contained in every playlist") :
-                ("Add to playlist...")
-            )}
+          {(!(props.playlists.length > 0)) ? "You have no playlists" : "Add to playlist..."}
         </MenuItem>
 
         {props.playlists.length > 0 ?
-          filteredPlaylists
-            .map((playlist, idx) =>
-          (
-            <MenuItem
-              key={idx}
-              onClick={() => handleTrackAdd(playlist, props.boundTrack)}
-            >
-              {playlist.name}
-            </MenuItem>
-          )) : (
-            <MenuItem
-              sx={{
-                textAlign: "center",
-                fontSize: "1.1rem"
-              }}
-              onClick={() => handleAddNewPlaylist(props.boundTrack)}
-            >
-              <AddBoxIcon sx={{ pr: "0.5rem" }} />
-              Vytvořit a přidat
-            </MenuItem>
-          )
-        }
+          props.playlists.map((playlist, idx) => (
 
-        {/* UKOL 4 */}
-        {props.showingInFavourites && <Divider />}
-
-        {props.showingInFavourites &&
-          <MenuItem sx={{textAlign: "center", fontSize: "1.1rem"}} disabled={true}>
-            Contained in...
+          <MenuItem
+            key={idx}
+            onClick={() => handleTrackAdd(playlist, props.boundTrack)}
+          >
+            <ListItemText>{playlist.name}</ListItemText>
           </MenuItem>
-        }
-
-        {props.showingInFavourites && (
-          containedInPlaylists.length !== 0 ? (
-            containedInPlaylists.map((playlist, idx) => (
-              <MenuItem
-                key={idx}
-                disabled={true}
-              >
-                {playlist.name}
-              </MenuItem>
-            ))
-          ) : (
-            <MenuItem disabled={true}>
-              Not contained anywhere
-            </MenuItem>
-          )
+        )) : (
+          <MenuItem
+            sx={{
+              textAlign: "center",
+              fontSize: "1.1rem"
+            }}
+            onClick={() => handleAddNewPlaylist(props.boundTrack)}
+          >
+            <AddBoxIcon sx={{ pr: "0.5rem" }} />
+            Vytvořit a přidat
+          </MenuItem>
         )}
       </Menu>
     </>

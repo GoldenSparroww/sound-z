@@ -28,7 +28,6 @@ const FavouritesPage = (props) => {
               HandleActionPopup={props.HandleActionPopup}
               playlists={props.playlists}
               setPlaylists={props.setPlaylists}
-              favouritesPage={true}
             ></PrintList>
           ) : (
             <Typography variant="h6">You don't like anything yet.</Typography>

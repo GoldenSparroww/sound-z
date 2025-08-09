@@ -9,7 +9,6 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Colors from "../global/Colors.js";
 import {ThemeProvider} from "@mui/material/styles";
 import themeForm from "../global/ThemeForm.js";
-import formatTime from "../logic/FormatTime.js";
 
 const QueuePage = (props) => {
   return (
@@ -43,11 +42,7 @@ const QueuePage = (props) => {
                     sx={{pl: 3}}
                     primary={props.current.name}
                     secondary={`${props.current.artist} • ${props.current.genre}`}
-                  >
-                  </ListItemText>
-                  <Typography >
-                    {formatTime(props.current.duration)}
-                  </Typography>
+                  ></ListItemText>
                 </ListItemButton>
               </List>
             </>
@@ -80,9 +75,7 @@ const QueuePage = (props) => {
                     src={`http://localhost/music/images/${track.image}`}
                     alt={track.image}
                   ></img>
-                  <ListItemText sx={{pl: 3}}
-                    secondary={track.genre}
-                  >
+                  <ListItemText sx={{pl: 3}}>
                     {track.name}
                   </ListItemText>
                   <IconButton
@@ -97,11 +90,7 @@ const QueuePage = (props) => {
                     }}
                   >
                     <HighlightOffIcon />
-
                   </IconButton>
-                  <Typography sx={{pl: "5%"}} >
-                    {formatTime(track.duration)}
-                  </Typography>
                 </ListItemButton>
               ))}
             </List>
@@ -147,14 +136,9 @@ const QueuePage = (props) => {
                       src={`http://localhost/music/images/${track.image}`}
                       alt={track.image}
                     ></img>
-                    <ListItemText sx={{pl: 3}}
-                      secondary={track.genre}
-                    >
+                    <ListItemText sx={{pl: 3}}>
                       {track.name}
                     </ListItemText>
-                    <Typography sx={{pl: "5%"}} >
-                      {formatTime(track.duration)}
-                    </Typography>
                   </ListItemButton>
                 ))}
             </List>
