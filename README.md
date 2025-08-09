@@ -1,5 +1,5 @@
 ## About
-This application was created as a project with a single goal – to learn JavaScript and the basics of React. It is supposed to be a simple music player inspired by Spotify, Soundcloud, and one very specific player from my old Nokia phone from 2010 :D.
+This application was created as a project with a single goal – make something of JavaScript and React. It is supposed to be a simple music player inspired by Spotify, Soundcloud, and one very specific player from my old Nokia phone from 2010 :D.
 ## If you are interested…
 In case you wonder how this application looks like, you have to do small setup first.
 1. Download this package and run `npm install` (assuming you already got node.js)
