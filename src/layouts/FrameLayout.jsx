@@ -31,55 +31,55 @@ const FrameLayout = () => {
   // udrzuje list objektu toho co je v oblibenych
   const [favouriteTracks, setFavouriteTracks] = useState([
     {
-      "id": 13,
-      "name": "Deadlocked",
-      "artist": "F-777",
-      "genre": "Electronic",
-      "file": "F-777 - Deadlocked.mp3",
-      "image": "image (13).jpg",
-      "duration": 206,
-      "url": "http://localhost/music/F-777 - Deadlocked.mp3"
+      "id": 6,
+      "name": "Don`t Talk",
+      "artist": "Cosmonkey",
+      "genre": "Drum & Bass",
+      "file": "dont-talk-315229.mp3",
+      "image": "image (7).jpg",
+      "duration": 111,
+      "url": "http://localhost/music/dont-talk-315229.mp3"
     },
     {
-      "id": 12,
-      "name": "Dance of The Violins",
-      "artist": "F-777",
-      "genre": "Electronic",
-      "file": "F-777 - Dance of The Violins.mp3",
-      "image": "image (12).jpg",
-      "duration": 335,
-      "url": "http://localhost/music/F-777 - Dance of The Violins.mp3"
-    },
-    {
-      "id": 2,
-      "name": "7 Years Old",
-      "artist": "Lukas Graham",
-      "genre": "Pop",
-      "file": "7 Years Old.mp3",
-      "image": "image (2).jpg",
-      "duration": 239,
-      "url": "http://localhost/music/7 Years Old.mp3"
-    },
-    {
-      "id": 4,
-      "name": "Amadeus",
-      "artist": "Copyright Free Music",
-      "genre": "Classical",
-      "file": "Copyright Free Music - Amadeus.mp3",
-      "image": "image (4).jpg",
-      "duration": 242,
-      "url": "http://localhost/music/Copyright Free Music - Amadeus.mp3"
+      "id": 7,
+      "name": "So Fresh",
+      "artist": "Cosmonkey",
+      "genre": "Drum & Bass",
+      "file": "so-fresh-315255.mp3",
+      "image": "image (8).jpg",
+      "duration": 97,
+      "url": "http://localhost/music/so-fresh-315255.mp3"
     },
     {
       "id": 8,
-      "name": "Bad",
-      "artist": "David Guetta",
-      "genre": "Dubstep",
-      "file": "David Guetta - Bad.mp3",
-      "image": "image (8).jpg",
-      "duration": 171,
-      "url": "http://localhost/music/David Guetta - Bad.mp3"
-    }
+      "name": "Gardens - Stylish Chill",
+      "artist": "penguinmusic",
+      "genre": "Ambient",
+      "file": "gardens-stylish-chill-303261.mp3",
+      "image": "image (9).jpg",
+      "duration": 117,
+      "url": "http://localhost/music/gardens-stylish-chill-303261.mp3"
+    },
+    {
+      "id": 9,
+      "name": "Kugelsicher",
+      "artist": "TremoxBeatz",
+      "genre": "Free type beat",
+      "file": "kugelsicher-by-tremoxbeatz-302838.mp3",
+      "image": "image (10).jpg",
+      "duration": 157,
+      "url": "http://localhost/music/kugelsicher-by-tremoxbeatz-302838.mp3"
+    },
+    {
+      "id": 10,
+      "name": "Dunkelheit",
+      "artist": "TremoxBeatz",
+      "genre": "Free type beat",
+      "file": "dunkelheit-by-tremoxbeatz-311367.mp3",
+      "image": "image (11).jpg",
+      "duration": 170,
+      "url": "http://localhost/music/dunkelheit-by-tremoxbeatz-311367.mp3"
+    },
   ]);
 
   // udrzuje list objektu hudby, ktera bezprostredne nasleduje ve fronte - manualne pridana
@@ -102,105 +102,135 @@ const FrameLayout = () => {
   const [recentTracks, setRecentTracks] = useState(
     [
       {
-        "id": 2,
-        "name": "7 Years Old",
-        "artist": "Lukas Graham",
-        "genre": "Pop",
-        "file": "7 Years Old.mp3",
-        "image": "image (2).jpg",
-        "duration": 239,
-        "url": "http://localhost/music/7 Years Old.mp3"
-      },
-      {
-        "id": 1,
-        "name": "Donuts [Bass Boosted - HQ]",
-        "artist": "2SCOOPS",
-        "genre": "Bass Boosted",
-        "file": "2SCOOPS - Donuts [Bass Boosted - HQ].mp3",
-        "image": "image_1.jpg",
-        "duration": 180,
-        "url": "http://localhost/music/2SCOOPS - Donuts [Bass Boosted - HQ].mp3"
-      },
-      {
-        "id": 12,
-        "name": "Dance of The Violins",
-        "artist": "F-777",
-        "genre": "Electronic",
-        "file": "F-777 - Dance of The Violins.mp3",
-        "image": "image (12).jpg",
-        "duration": 335,
-        "url": "http://localhost/music/F-777 - Dance of The Violins.mp3"
-      },
-      {
-        "id": 13,
-        "name": "Deadlocked",
-        "artist": "F-777",
-        "genre": "Electronic",
-        "file": "F-777 - Deadlocked.mp3",
-        "image": "image (13).jpg",
-        "duration": 206,
-        "url": "http://localhost/music/F-777 - Deadlocked.mp3"
-      },
-      {
-        "id": 14,
-        "name": "The Seven Seas",
-        "artist": "F-777",
-        "genre": "Electronic",
-        "file": "F-777 - The Seven Seas.mp3",
-        "image": "image (14).jpg",
-        "duration": 143,
-        "url": "http://localhost/music/F-777 - The Seven Seas.mp3"
+        "id": 3,
+        "name": "EONA - Emotional Ambient Pop",
+        "artist": "Rockot",
+        "genre": "Ambient",
+        "file": "eona-emotional-ambient-pop-351436.mp3",
+        "image": "image (4).jpg",
+        "duration": 152,
+        "url": "http://localhost/music/eona-emotional-ambient-pop-351436.mp3"
       },
       {
         "id": 4,
-        "name": "Amadeus",
-        "artist": "Copyright Free Music",
-        "genre": "Classical",
-        "file": "Copyright Free Music - Amadeus.mp3",
-        "image": "image (4).jpg",
-        "duration": 242,
-        "url": "http://localhost/music/Copyright Free Music - Amadeus.mp3"
+        "name": "Jungle Waves (Drum&Bass Electronic Inspiring Promo)",
+        "artist": "DIMMYSAD",
+        "genre": "Drum & Bass",
+        "file": "jungle-waves-drumampbass-electronic-inspiring-promo-345013.mp3",
+        "image": "image (5).jpg",
+        "duration": 132,
+        "url": "http://localhost/music/jungle-waves-drumampbass-electronic-inspiring-promo-345013.mp3"
       },
       {
-        "id": 11,
-        "name": "Pentakill",
-        "artist": "Different Heaven",
-        "genre": "Electronic",
-        "file": "Different Heaven - Pentakill.mp3",
-        "image": "image (11).jpg",
-        "duration": 212,
-        "url": "http://localhost/music/Different Heaven - Pentakill.mp3"
-      },
-      {
-        "id": 10,
-        "name": "My Heart",
-        "artist": "Different Heaven",
-        "genre": "Electronic",
-        "file": "Different Heaven - My Heart.mp3",
-        "image": "image (10).jpg",
-        "duration": 267,
-        "url": "http://localhost/music/Different Heaven - My Heart.mp3"
-      },
-      {
-        "id": 7,
-        "name": "Raabta",
-        "artist": "CryJaxx",
-        "genre": "Electronic",
-        "file": "CryJaxx - Raabta.mp3",
-        "image": "image (7).jpg",
-        "duration": 183,
-        "url": "http://localhost/music/CryJaxx - Raabta.mp3"
+        "id": 5,
+        "name": "Brain Implant (Cyberpunk Sci-Fi Trailer Action Intro)",
+        "artist": "soundbay",
+        "genre": "Drum & Bass",
+        "file": "brain-implant-cyberpunk-sci-fi-trailer-action-intro-330416.mp3",
+        "image": "image (6).jpg",
+        "duration": 49,
+        "url": "http://localhost/music/brain-implant-cyberpunk-sci-fi-trailer-action-intro-330416.mp3"
       },
       {
         "id": 6,
-        "name": "SP1CE - Shockwave",
-        "artist": "Copyright Free Music",
-        "genre": "Electronic",
-        "file": "Copyright Free Music - SP1CE - Shockwave.mp3",
-        "image": "image (6).jpg",
-        "duration": 184,
-        "url": "http://localhost/music/Copyright Free Music - SP1CE - Shockwave.mp3"
-      }
+        "name": "Don`t Talk",
+        "artist": "Cosmonkey",
+        "genre": "Drum & Bass",
+        "file": "dont-talk-315229.mp3",
+        "image": "image (7).jpg",
+        "duration": 111,
+        "url": "http://localhost/music/dont-talk-315229.mp3"
+      },
+      {
+        "id": 7,
+        "name": "So Fresh",
+        "artist": "Cosmonkey",
+        "genre": "Drum & Bass",
+        "file": "so-fresh-315255.mp3",
+        "image": "image (8).jpg",
+        "duration": 97,
+        "url": "http://localhost/music/so-fresh-315255.mp3"
+      },
+      {
+        "id": 8,
+        "name": "Gardens - Stylish Chill",
+        "artist": "penguinmusic",
+        "genre": "Ambient",
+        "file": "gardens-stylish-chill-303261.mp3",
+        "image": "image (9).jpg",
+        "duration": 117,
+        "url": "http://localhost/music/gardens-stylish-chill-303261.mp3"
+      },
+      {
+        "id": 9,
+        "name": "Kugelsicher",
+        "artist": "TremoxBeatz",
+        "genre": "Free type beat",
+        "file": "kugelsicher-by-tremoxbeatz-302838.mp3",
+        "image": "image (10).jpg",
+        "duration": 157,
+        "url": "http://localhost/music/kugelsicher-by-tremoxbeatz-302838.mp3"
+      },
+      {
+        "id": 10,
+        "name": "Dunkelheit",
+        "artist": "TremoxBeatz",
+        "genre": "Free type beat",
+        "file": "dunkelheit-by-tremoxbeatz-311367.mp3",
+        "image": "image (11).jpg",
+        "duration": 170,
+        "url": "http://localhost/music/dunkelheit-by-tremoxbeatz-311367.mp3"
+      },
+      {
+        "id": 11,
+        "name": "Movement",
+        "artist": "SoulProdMusic",
+        "genre": "Breakbeat",
+        "file": "movement-200697.mp3",
+        "image": "image (12).jpg",
+        "duration": 155,
+        "url": "http://localhost/music/movement-200697.mp3"
+      },
+      {
+        "id": 12,
+        "name": "Sandbreaker",
+        "artist": "Denys Brodovskyi",
+        "genre": "Energic",
+        "file": "sandbreaker-379630.mp3",
+        "image": "image (1).jpg",
+        "duration": 128,
+        "url": "http://localhost/music/sandbreaker-379630.mp3"
+      },
+      {
+        "id": 13,
+        "name": "Private Party",
+        "artist": "lucafrancini",
+        "genre": "Corp",
+        "file": "private-party-225212.mp3",
+        "image": "image (13).jpg",
+        "duration": 68,
+        "url": "http://localhost/music/private-party-225212.mp3"
+      },
+      {
+        "id": 14,
+        "name": "Vampire Queen (Vocal Rap Hip-Hop)",
+        "artist": "lucafrancini",
+        "genre": "Corp ",
+        "file": "vampire-queen-vocal-rap-hip-hop-213826.mp3",
+        "image": "image (14).jpg",
+        "duration": 177,
+        "url": "http://localhost/music/vampire-queen-vocal-rap-hip-hop-213826.mp3"
+      },
+      {
+        "id": 15,
+        "name": "Chic Boutique",
+        "artist": "lucafrancini",
+        "genre": "Background",
+        "file": "chic-boutique-203102.mp3",
+        "image": "image (15).jpg",
+        "duration": 163,
+        "url": "http://localhost/music/chic-boutique-203102.mp3"
+      },
     ]
   )
 
@@ -214,54 +244,54 @@ const FrameLayout = () => {
       "songs": [
         {
           "id": 1,
-          "name": "Donuts [Bass Boosted - HQ]",
-          "artist": "2SCOOPS",
-          "genre": "Bass Boosted",
-          "file": "2SCOOPS - Donuts [Bass Boosted - HQ].mp3",
-          "image": "image_1.jpg",
-          "duration": 180,
-          "url": "http://localhost/music/2SCOOPS - Donuts [Bass Boosted - HQ].mp3"
+          "name": "Tell Me What",
+          "artist": "Denys Brodovskyi",
+          "genre": "Energic",
+          "file": "tell-me-what-379638.mp3",
+          "image": "image (2).jpg",
+          "duration": 161,
+          "url": "http://localhost/music/tell-me-what-379638.mp3"
         },
         {
           "id": 2,
-          "name": "7 Years Old",
-          "artist": "Lukas Graham",
-          "genre": "Pop",
-          "file": "7 Years Old.mp3",
-          "image": "image (2).jpg",
-          "duration": 239,
-          "url": "http://localhost/music/7 Years Old.mp3"
+          "name": "Embrace",
+          "artist": "Evgeny Bardyuzha",
+          "genre": "Ambient",
+          "file": "embrace-364091.mp3",
+          "image": "image (3).jpg",
+          "duration": 157,
+          "url": "http://localhost/music/embrace-364091.mp3"
         },
         {
           "id": 3,
-          "name": "Boom - How Do You Do (C. Baumann Remix)",
-          "artist": "Vengaboys",
-          "genre": "Eurodance",
-          "file": "Boom - How Do You Do (C. Baumann Remix).mp3",
-          "image": "image (3).jpg",
-          "duration": 214,
-          "url": "http://localhost/music/Boom - How Do You Do (C. Baumann Remix).mp3"
+          "name": "EONA - Emotional Ambient Pop",
+          "artist": "Rockot",
+          "genre": "Ambient",
+          "file": "eona-emotional-ambient-pop-351436.mp3",
+          "image": "image (4).jpg",
+          "duration": 152,
+          "url": "http://localhost/music/eona-emotional-ambient-pop-351436.mp3"
         },
         {
           "id": 4,
-          "name": "Amadeus",
-          "artist": "Copyright Free Music",
-          "genre": "Classical",
-          "file": "Copyright Free Music - Amadeus.mp3",
-          "image": "image (4).jpg",
-          "duration": 242,
-          "url": "http://localhost/music/Copyright Free Music - Amadeus.mp3"
+          "name": "Jungle Waves (Drum&Bass Electronic Inspiring Promo)",
+          "artist": "DIMMYSAD",
+          "genre": "Drum & Bass",
+          "file": "jungle-waves-drumampbass-electronic-inspiring-promo-345013.mp3",
+          "image": "image (5).jpg",
+          "duration": 132,
+          "url": "http://localhost/music/jungle-waves-drumampbass-electronic-inspiring-promo-345013.mp3"
         },
         {
           "id": 5,
-          "name": "Bumpy Sax",
-          "artist": "Copyright Free Music",
-          "genre": "Smooth Jazz",
-          "file": "Copyright Free Music - Bumpy Sax.mp3",
-          "image": "image (5).jpg",
-          "duration": 243,
-          "url": "http://localhost/music/Copyright Free Music - Bumpy Sax.mp3"
-        }
+          "name": "Brain Implant (Cyberpunk Sci-Fi Trailer Action Intro)",
+          "artist": "soundbay",
+          "genre": "Drum & Bass",
+          "file": "brain-implant-cyberpunk-sci-fi-trailer-action-intro-330416.mp3",
+          "image": "image (6).jpg",
+          "duration": 49,
+          "url": "http://localhost/music/brain-implant-cyberpunk-sci-fi-trailer-action-intro-330416.mp3"
+        },
       ]
     },
     {
@@ -272,83 +302,73 @@ const FrameLayout = () => {
       "songs": [
         {
           "id": 11,
-          "name": "Pentakill",
-          "artist": "Different Heaven",
-          "genre": "Electronic",
-          "file": "Different Heaven - Pentakill.mp3",
-          "image": "image (11).jpg",
-          "duration": 212,
-          "url": "http://localhost/music/Different Heaven - Pentakill.mp3"
+          "name": "Movement",
+          "artist": "SoulProdMusic",
+          "genre": "Breakbeat",
+          "file": "movement-200697.mp3",
+          "image": "image (12).jpg",
+          "duration": 155,
+          "url": "http://localhost/music/movement-200697.mp3"
         },
         {
           "id": 12,
-          "name": "Dance of The Violins",
-          "artist": "F-777",
-          "genre": "Electronic",
-          "file": "F-777 - Dance of The Violins.mp3",
-          "image": "image (12).jpg",
-          "duration": 335,
-          "url": "http://localhost/music/F-777 - Dance of The Violins.mp3"
+          "name": "Sandbreaker",
+          "artist": "Denys Brodovskyi",
+          "genre": "Energic",
+          "file": "sandbreaker-379630.mp3",
+          "image": "image (1).jpg",
+          "duration": 128,
+          "url": "http://localhost/music/sandbreaker-379630.mp3"
         },
         {
           "id": 13,
-          "name": "Deadlocked",
-          "artist": "F-777",
-          "genre": "Electronic",
-          "file": "F-777 - Deadlocked.mp3",
+          "name": "Private Party",
+          "artist": "lucafrancini",
+          "genre": "Corp",
+          "file": "private-party-225212.mp3",
           "image": "image (13).jpg",
-          "duration": 206,
-          "url": "http://localhost/music/F-777 - Deadlocked.mp3"
+          "duration": 68,
+          "url": "http://localhost/music/private-party-225212.mp3"
         },
         {
           "id": 14,
-          "name": "The Seven Seas",
-          "artist": "F-777",
-          "genre": "Electronic",
-          "file": "F-777 - The Seven Seas.mp3",
+          "name": "Vampire Queen (Vocal Rap Hip-Hop)",
+          "artist": "lucafrancini",
+          "genre": "Corp ",
+          "file": "vampire-queen-vocal-rap-hip-hop-213826.mp3",
           "image": "image (14).jpg",
-          "duration": 143,
-          "url": "http://localhost/music/F-777 - The Seven Seas.mp3"
+          "duration": 177,
+          "url": "http://localhost/music/vampire-queen-vocal-rap-hip-hop-213826.mp3"
         },
         {
           "id": 15,
-          "name": "Close [Brooks Remix]",
-          "artist": "IZECOLD",
-          "genre": "Electronic",
-          "file": "IZECOLD - Close [Brooks Remix].mp3",
+          "name": "Chic Boutique",
+          "artist": "lucafrancini",
+          "genre": "Background",
+          "file": "chic-boutique-203102.mp3",
           "image": "image (15).jpg",
-          "duration": 231,
-          "url": "http://localhost/music/IZECOLD - Close [Brooks Remix].mp3"
+          "duration": 163,
+          "url": "http://localhost/music/chic-boutique-203102.mp3"
         },
         {
           "id": 16,
-          "name": "Close",
-          "artist": "IZECOLD",
-          "genre": "Electronic",
-          "file": "IZECOLD - Close.mp3",
+          "name": "Heart Says Yes (Beautiful Romantic Piano)",
+          "artist": "AlexGrohl",
+          "genre": "Background",
+          "file": "heart-says-yes-beautiful-romantic-piano-385509.mp3",
           "image": "image (16).jpg",
-          "duration": 282,
-          "url": "http://localhost/music/IZECOLD - Close.mp3"
+          "duration": 95,
+          "url": "http://localhost/music/heart-says-yes-beautiful-romantic-piano-385509.mp3"
         },
         {
           "id": 17,
-          "name": "I Love It",
-          "artist": "Icona Pop",
-          "genre": "Electronic",
-          "file": "Icona Pop - I Love It.mp3",
+          "name": "Follow Your Heart (Uplifting Folk Acoustic)",
+          "artist": "AlexGrohl",
+          "genre": "Adventure",
+          "file": "follow-your-heart-uplifting-folk-acoustic-385508.mp3",
           "image": "image (17).jpg",
           "duration": 180,
-          "url": "http://localhost/music/Icona Pop - I Love It.mp3"
-        },
-        {
-          "id": 6,
-          "name": "SP1CE - Shockwave",
-          "artist": "Copyright Free Music",
-          "genre": "Electronic",
-          "file": "Copyright Free Music - SP1CE - Shockwave.mp3",
-          "image": "image (6).jpg",
-          "duration": 184,
-          "url": "http://localhost/music/Copyright Free Music - SP1CE - Shockwave.mp3"
+          "url": "http://localhost/music/follow-your-heart-uplifting-folk-acoustic-385508.mp3"
         }
       ]
     }

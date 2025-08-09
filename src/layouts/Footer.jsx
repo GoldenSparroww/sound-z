@@ -178,7 +178,7 @@ const Footer = (props) => {
             {!IsEmptyObject(props.current) ? (
               <>
                 <img
-                  style={{ width: "6rem", height: "6rem", objectFit: "cover", borderRadius: "4px" }}
+                  style={{ width: "6rem", height: "6rem", objectFit: "cover",flexShrink: 0 , borderRadius: "4px" }}
                   src={`http://localhost/music/images/${props.current.image}`}
                   alt={"Image"}
                 />

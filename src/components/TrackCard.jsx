@@ -34,7 +34,7 @@ const TrackCard = (props) => {
         <CardMedia
           component="img"
           width="100%"
-
+          height="220rem"
           image={`http://localhost/music/images/${props.track.image}`}
           alt="Track image"
         />
